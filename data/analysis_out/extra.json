@@ -1,0 +1,37 @@
+{
+ "n_clean_tasks": 27,
+ "n_overlap": 21,
+ "per_model": {
+  "qwen3-8b-local": {
+   "n_benign": 216,
+   "fb_exact_all": 0.046296296296296294,
+   "n_viol": 37,
+   "intercepted": 11
+  },
+  "llama31-8b-local": {
+   "n_benign": 216,
+   "fb_exact_all": 0.21296296296296297,
+   "n_viol": 0,
+   "intercepted": 0
+  },
+  "gpt-4o-mini-2024-07-18": {
+   "n_benign": 216,
+   "fb_exact_all": 0.009259259259259259,
+   "n_viol": 59,
+   "intercepted": 8
+  },
+  "gpt-4.1-mini-2025-04-14": {
+   "n_benign": 216,
+   "fb_exact_all": 0.0,
+   "n_viol": 83,
+   "intercepted": 29
+  }
+ },
+ "clean_pooled_recall": 0.2681564245810056,
+ "clean_pooled_viol": 179,
+ "class_level_blocks": {
+  "value": 114,
+  "tool": 4,
+  "value_share": 0.9661016949152542
+ }
+}
