@@ -1,7 +1,7 @@
 """Per-suite breakdown for RQ2 / RQ3 (descriptive, same data and definitions as analysis/rq34.py and rq12.py, plan
 §14 pairing): block rate and benign cost of every defense per AgentDojo suite, pooled over the security models
 (benign cost also over Llama), plus the share of AMLP-passed attacks that TripWire stops.
-Writes data/analysis_out/per_suite.json and outputs/figs/rq3_per_suite.pdf."""
+Writes data/analysis_out/<HOLDOUT_SET>/per_suite.json and (primary set only) outputs/figs/rq3_per_suite.pdf."""
 import collections
 import json
 import os
@@ -13,6 +13,7 @@ sys.path.insert(0, D)
 sys.path.insert(0, f"{D}/analysis")
 import rq34 as R                      # noqa: E402  (same loaders, pairing and A2-rev filter)
 import m3_common as C                 # noqa: E402
+import holdout_set as HS              # noqa: E402
 
 SUITES = ["banking", "slack", "travel", "workspace"]
 
@@ -46,8 +47,9 @@ def main():
                 tw["tripwire_missed"] += 1
                 tw["amlp_stops_of_those"] += 1 - aa[k]
     out["tripwire_missed"] = dict(tw)
-    os.makedirs(f"{ROOT}/data/analysis_out", exist_ok=True)
-    json.dump(out, open(f"{ROOT}/data/analysis_out/per_suite.json", "w"), indent=1)
+    json.dump(out, open(f"{HS.OUT}/per_suite.json", "w"), indent=1)
+    if not HS.PRIMARY:                                          # the paper figure shows the primary set only
+        return
 
     import matplotlib
     matplotlib.use("Agg")
@@ -70,7 +72,6 @@ def main():
                     ax.text(j, i, f"{v:.0f}", ha="center", va="center", fontsize=6)
         ax.set_title(title, fontsize=8)
     fig.tight_layout()
-    os.makedirs(f"{ROOT}/outputs/figs", exist_ok=True)
     fig.savefig(f"{ROOT}/outputs/figs/rq3_per_suite.pdf", bbox_inches="tight")
     print(json.dumps({"tripwire_missed": out["tripwire_missed"],
                       "amlp_block": {s: round(out['block']['amlp'].get(s, 0), 3) for s in SUITES}}, indent=0))

@@ -112,7 +112,7 @@ def main():
                                          "gap_rule": kind == "fb" and p >= 0.05 and lo > 0}
         res[scope] = out
     res["n_clean_tasks"] = len(CLEAN)
-    json.dump(res, open(f"{ROOT}/data/analysis_out/seen_novel_split.json", "w"), indent=1)
+    json.dump(res, open(f"{S.OUT}/seen_novel_split.json", "w"), indent=1)
     for scope in ("all", "clean"):
         print(scope)
         for k, v in res[scope].items():

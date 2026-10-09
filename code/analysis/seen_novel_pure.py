@@ -74,7 +74,7 @@ def main():
         p, lo, hi = C.cluster_bootstrap(vals)
         res["delta"][k] = {"point": p, "ci95": [lo, hi]}
     res["H_gap_descriptive"] = {v: res["delta"][f"{v}_fb"]["point"] >= 0.05 and res["delta"][f"{v}_fb"]["ci95"][0] > 0 for v in VARS}
-    json.dump(res, open(f"{ROOT}/data/analysis_out/seen_novel_pure.json", "w"), indent=1)
+    json.dump(res, open(f"{S.OUT}/seen_novel_pure.json", "w"), indent=1)
     print(json.dumps({"pooled": {k: round(100 * v, 1) for k, v in res["pooled"].items()},
                       "delta": {k: [round(100 * v["point"], 1)] + [round(100 * x, 1) for x in v["ci95"]] for k, v in res["delta"].items()},
                       "H": res["H_gap_descriptive"]}, indent=1))

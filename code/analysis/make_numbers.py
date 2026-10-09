@@ -1,7 +1,8 @@
 """Generate outputs/numbers.tex: every number the prose uses, as a LaTeX macro computed from frozen data.
-Sources: data/analysis_out/rq12.json (analysis/rq12.py), data/m3/judge_tests.json (m3_judge.py --test, pre-registered
-C3' tests), results_m3_analyze.txt JSON head (m3_analyze.py: C1). RQ3 / RQ4 macros are added when their data land.
-Usage: python3 analysis/make_numbers.py"""
+Sources: data/analysis_out/<set>/*.json for both holdout sets of analysis/holdout_set.py (rq12, rq34, tests = C3' tests and
+C1 via analysis/holdout_tests.py, extra, clean_subset, per_suite, seen_novel*). Primary macros come from all48, the
+pre-registered holdout (plan.md §21); every macro is also emitted from clean27, the 27 holdout tasks no pilot run
+touched, with the suffix Untouched. Usage: python3 analysis/make_numbers.py"""
 import json
 import os
 import re
@@ -9,7 +10,6 @@ import re
 D = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(D)   # release root (code/ and data/ are siblings)
 OUT = f"{ROOT}/outputs/numbers.tex"
-os.makedirs(os.path.dirname(OUT), exist_ok=True)
 ALIAS = {"qwen3-8b-local": "Qwen", "llama31-8b-local": "Llama", "gpt-4o-mini-2024-07-18": "FourOMini",
          "gpt-4.1-mini-2025-04-14": "FourOneMini"}
 
@@ -18,9 +18,10 @@ def pct(x, nd=1):
     return f"{100 * x:.{nd}f}"
 
 
-def main():
+def build(S):
+    OD = f"{ROOT}/data/analysis_out/{S}"
     m = {}
-    rq = json.load(open(f"{ROOT}/data/analysis_out/rq12.json"))
+    rq = json.load(open(f"{OD}/rq12.json"))
     # ---- RQ1: chain endpoints per model (calibration fold and holdout)
     lo_rec, hi_rec, hi_cal = [], [], []
     for model, x in rq["rq1"].items():
@@ -53,7 +54,8 @@ def main():
         m[f"RqTwoIntercept{a}"] = pct(x["intercepted"] / x["n_viol"])
         m[f"RqTwoNViol{a}"] = str(x["n_viol"])
     # ---- pre-registered tests (plan.md A3, A4, §11.3)
-    t = json.load(open(f"{ROOT}/data/m3/judge_tests.json"))
+    t = json.load(open(f"{OD}/tests.json"))                     # analysis/holdout_tests.py
+    assert t["holdout_set"] == S
     fb, rec = t["c3prime_fb"], t["recall_A2rev"]
     m["CThreeNPairs"] = f"{fb['n_pairs']:,}"
     m["CThreeFbProgent"] = pct(fb["fb_progent"]); m["CThreeFbAmlp"] = pct(fb["fb_amlp"])
@@ -65,8 +67,7 @@ def main():
     m["CThreeRecMargin"] = "5"                      # plan.md §11.3(b): lower bound >= -0.05
     m["COneTarget"] = "80"                          # ROADMAP C1 premise: >= 80% of violations blocked
     m["CThreeP"] = r"p < 0.001" if fb["mcnemar_p"] < 0.001 else f"p = {fb['mcnemar_p']:.3f}"
-    txt = open(f"{ROOT}/data/results_m3_analyze.txt").read()
-    c1 = json.loads(txt[txt.index("{"): txt.rindex("}") + 1][: txt[txt.index("{"):].index("\n}") + 2])["C1"]
+    c1 = t["C1"]
     m["COneDrop"] = pct(c1["drop_pooled"]); m["COneUpper"] = pct(c1["upper95"])
     m["CTwoEps"] = "0.10"
     # ---- setup constants, derived from the frozen artefacts where possible
@@ -92,20 +93,21 @@ def main():
     # ---- abstract / conclusion aliases of the pre-registered numbers
     m["FBAMLP"] = m["CThreeFbAmlp"]; m["RecAMLP"] = m["CThreeRecAmlp"]; m["RecProgent"] = m["CThreeRecProgent"]
     # ---- review round 1 (analysis/extra_checks.py): pilot-free subset, value share of class-level blocks, n
-    x = json.load(open(f"{ROOT}/data/analysis_out/extra.json"))
+    x = json.load(open(f"{OD}/extra.json"))
     m["NClean"] = str(x["n_clean_tasks"]); m["CleanRecall"] = pct(x["clean_pooled_recall"])
     m["CleanNViol"] = str(x["clean_pooled_viol"])
     for model, a in ALIAS.items():
         m[f"CleanFbExact{a}"] = pct(x["per_model"][model]["fb_exact_all"])
     m["ClassValueShare"] = pct(x["class_level_blocks"]["value_share"])
     # ---- plan.md §15 pilot-clean robustness check (analysis/clean_subset.py)
-    cs = json.load(open(f"{ROOT}/data/analysis_out/clean_subset.json"))
+    cs = json.load(open(f"{OD}/clean_subset.json"))
     f3, rc, c1c = cs["c3prime_fb"], cs["recall"], cs["C1"]
     m["CsFbAmlp"] = pct(f3["fb_amlp"]); m["CsFbProgent"] = pct(f3["fb_progent"])
     m["CsP"] = r"p < 0.001" if f3["mcnemar_p"] < 0.001 else f"p = {f3['mcnemar_p']:.3f}"
     m["CsDLo"] = pct(f3["d_ci95"][0]); m["CsDHi"] = pct(f3["d_ci95"][1])
     m["CsRecAmlp"] = pct(rc["recall_amlp"]); m["CsRecProgent"] = pct(rc["recall_progent"])
     m["CsCOneDrop"] = pct(c1c["drop_pooled"]); m["CsCOneUpper"] = pct(c1c["upper95"])
+    m["CsRecDiff"] = pct(rc["recall_diff_amlp_minus_progent"]); m["CsRecDiffLo"], m["CsRecDiffHi"] = pct(rc["recall_diff_ci95"][0]), pct(rc["recall_diff_ci95"][1])
     sec = ["qwen3-8b-local", "gpt-4o-mini-2024-07-18", "gpt-4.1-mini-2025-04-14"]
     for arm, nm in (("amlp", "Amlp"), ("progent", "Progent")):
         bl = [100 * cs["rq3"][x][arm]["block_rate"] for x in sec]
@@ -118,7 +120,7 @@ def main():
     m["NCal"] = str(len(C.CALIBRATION)); m["NSel"] = str(len(C.SELECTION))
     m["CorrPct"] = f"{100 / (len(C.CALIBRATION) + 1):.1f}"   # conformal correction 1/(n+1)
     # ---- plan.md §16 seen vs novel (analysis/seen_novel.py) and §17 learning curve (analysis/seen_novel_curve.py)
-    sn = json.load(open(f"{ROOT}/data/analysis_out/seen_novel.json"))
+    sn = json.load(open(f"{OD}/seen_novel.json"))
     for meth, nm in (("M1a", "Val"), ("M1b", "Tool"), ("M2", "Seq")):
         m[f"Sn{nm}Novel"] = pct(sn["pooled"][f"{meth}_novel_fb"]); m[f"Sn{nm}Seen"] = pct(sn["pooled"][f"{meth}_seen_fb"])
         dd = sn["delta"][f"{meth}_fb"]
@@ -131,15 +133,15 @@ def main():
     m["SnGapMargin"] = "5"
     m["PraetorBtfr"] = "2.0"                         # Praetor arXiv 2604.26274 §7.4.1 (owner-verified, POSITIONING §1b)
     m["PraetorTraces"] = "400"
-    m["SentryInBench"] = "96.4"; m["SentryTransferLo"] = "64.4"   # Agent-Sentry 2603.22868 l.623: XGBoost 64.4 (rules 79.1) vs 96.4 (owner-verified)
+    m["SentryInBench"] = "96.4"; m["SentryTransferLo"] = "64.4"; m["SentryTransferHi"] = "79.1"   # Agent-Sentry 2603.22868 l.623: XGBoost 64.4 (rules 79.1) vs 96.4 (owner-verified)
     m["RsCrcOverInt"] = "30.6"                       # role-stratified CRC arXiv 2607.24343 Tab. 2, l.398 (owner-verified)
-    sp = json.load(open(f"{ROOT}/data/analysis_out/seen_novel_pure.json"))          # plan.md §18
+    sp = json.load(open(f"{OD}/seen_novel_pure.json"))          # plan.md §18
     for v, nm in (("M1a-pure", "ValPure"), ("M1b-pure", "ToolPure"), ("M1a-req", "ValReq"), ("M1b-pred", "ToolPred")):
         m[f"Sp{nm}Novel"] = pct(sp["pooled"][f"{v}_novel_fb"]); m[f"Sp{nm}Seen"] = pct(sp["pooled"][f"{v}_seen_fb"])
         dd = sp["delta"][f"{v}_fb"]
         m[f"Sp{nm}Delta"] = pct(dd["point"]); m[f"Sp{nm}DeltaLo"] = pct(dd["ci95"][0]); m[f"Sp{nm}DeltaHi"] = pct(dd["ci95"][1])
         m[f"Sp{nm}Flag"] = pct(sp["pooled"][f"{v}_novel_flag"])
-    ss = json.load(open(f"{ROOT}/data/analysis_out/seen_novel_split.json"))         # plan.md §19
+    ss = json.load(open(f"{OD}/seen_novel_split.json"))         # plan.md §19
     for part, nm in (("M2-seq", "SeqOnly"), ("M2-arg", "ArgOnly")):
         x = ss["all"][f"{part}_fb"]
         m[f"Ss{nm}Seen"], m[f"Ss{nm}Novel"] = pct(x["seen"]), pct(x["novel"])
@@ -148,7 +150,8 @@ def main():
         x = ss["clean"][f"{part}_fb"]
         m[f"Cl{nm}Delta"], m[f"Cl{nm}DeltaLo"], m[f"Cl{nm}DeltaHi"] = pct(x["delta"]), pct(x["ci95"][0]), pct(x["ci95"][1])
     m["ClHybridValDelta"] = pct(ss["clean"]["M1a_fb"]["delta"])
-    cpath = f"{ROOT}/data/analysis_out/seen_novel_curve.json"
+    m["ClHybridValDeltaLo"], m["ClHybridValDeltaHi"] = pct(ss["clean"]["M1a_fb"]["ci95"][0]), pct(ss["clean"]["M1a_fb"]["ci95"][1])
+    cpath = f"{OD}/seen_novel_curve.json"
     if os.path.exists(cpath):
         cv = json.load(open(cpath))
         NUMW = {1: "One", 2: "Two", 4: "Four", 6: "Six", 7: "Seven", 8: "Eight"}
@@ -190,7 +193,7 @@ def main():
     m["FidTfNoCacheUtil"] = pct(u([r for k, r in tn.items() if k[0] == "toolfence"]))
     m["FidTfNoCacheAsr"] = pct(asr([r for k, r in tn.items() if k[0] == "toolfence"]))
     # ---- RQ3 / RQ4 (analysis/rq34.py, rules plan.md §14)
-    q = json.load(open(f"{ROOT}/data/analysis_out/rq34.json"))
+    q = json.load(open(f"{OD}/rq34.json"))
     r3, r4 = q["rq3"], q["rq4"]
     SEC = ["qwen3-8b-local", "gpt-4o-mini-2024-07-18", "gpt-4.1-mini-2025-04-14"]
     def rng(arm, key, models=SEC, scale=100):
@@ -202,6 +205,11 @@ def main():
         lo, hi = rng(arm, "block_rate"); m[f"RqThree{tag}BlockMin"], m[f"RqThree{tag}BlockMax"] = lo, hi
         lo, hi = rng(arm, "benign_cost", models=[mm for mm in r3 if arm in r3[mm]])
         m[f"RqThree{tag}CostMin"], m[f"RqThree{tag}CostMax"] = lo, hi
+    ga = r3["gpt-4.1-mini-2025-04-14"]["amlp"]                      # AMLP online benign cost, gpt-4.1-mini (Result 3)
+    m["AmlpCostFourOneMini"] = pct(ga["benign_cost"])
+    m["AmlpCostLoFourOneMini"], m["AmlpCostHiFourOneMini"] = pct(ga["benign_cost_ci"][0]), pct(ga["benign_cost_ci"][1])
+    # largest upper CI end of Progent benign cost across models (Result 3), same source as tables/rq3_ci.tex
+    m["RqThreeProgentCostHiMax"] = f"{100 * max(r3[mm]['progent']['benign_cost_ci'][1] for mm in r3 if r3[mm].get('progent', {}).get('benign_cost_ci')):.1f}"
     cu = [r3[mm]["camel"]["benign_utility"] for mm in r3 if "camel" in r3[mm]]
     m["CamelUtilLow"], m["CamelUtilHigh"] = pct(min(cu)), pct(max(cu))
     nu = [r3[mm]["camel"]["benign_utility_none"] for mm in r3 if "camel" in r3[mm]]
@@ -246,7 +254,7 @@ def main():
     m["PoisonFbMax"] = pct(max(v["fb"] for mm in po for v in po[mm].values()))
     m["PoisonRunsFive"] = str(po["qwen3-8b-local"]["0.05"]["poisoned_runs"])
     # ---- per-suite breakdown and stacking with TripWire (analysis/per_suite.py)
-    ps = json.load(open(f"{ROOT}/data/analysis_out/per_suite.json"))
+    ps = json.load(open(f"{OD}/per_suite.json"))
     for suite in ("banking", "slack", "travel", "workspace"):
         m[f"SuiteAmlp{suite.capitalize()}"] = pct(ps["block"]["amlp"][suite])
         m[f"SuiteProgent{suite.capitalize()}"] = pct(ps["block"]["progent"][suite])
@@ -254,10 +262,22 @@ def main():
     m["TwMissedAmlpStops"] = str(ps["tripwire_missed"]["amlp_stops_of_those"])
     m["RecAllAmlp"] = pct(t["recall_all35"]["recall_amlp"]); m["RecAllProgent"] = pct(t["recall_all35"]["recall_progent"])
     m["RecAllN"] = str(t["recall_all35"]["n_violations"])
-    lines = ["% generated by analysis/make_numbers.py; do not edit by hand"]
+    m["NTasksEval"] = str(t["n_tasks"])            # tasks in the evaluated holdout set (48 primary, 27 untouched)
+    return m
+
+
+def main():
+    prim, sec = build("all48"), build("clean27")                  # plan.md §21: primary = pre-registered 48 tasks
+    assert prim["NTasksEval"] == "48" and sec["NTasksEval"] == "27" and prim["NPilotOverlap"] == "21"
+    assert prim["NClean"] == "27"
+    m = dict(prim)
+    m.update({k + "Untouched": v for k, v in sec.items()})
+    lines = ["% generated by analysis/make_numbers.py; do not edit by hand",
+             "% primary macros: all 48 holdout tasks (pre-registered); suffix Untouched: the 27 holdout tasks no pilot run touched"]
     for k, val in m.items():
         assert re.fullmatch(r"[A-Za-z]+", k), k
         lines.append(f"\\newcommand{{\\{k}}}{{{val}\\xspace}}")
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
     open(OUT, "w").write("\n".join(lines) + "\n")
     print(f"{len(m)} macros -> {OUT}")
 

@@ -15,6 +15,7 @@ import m3_judge as MJ       # noqa: E402
 import m3_analyze as MA     # noqa: E402
 import rq34 as R            # noqa: E402
 from extra_checks import pilot_test_tasks   # noqa: E402
+import holdout_set as HS    # noqa: E402
 
 CLEAN = C.HOLDOUT - pilot_test_tasks()
 
@@ -36,8 +37,7 @@ def main():
     rq3, _ = R.rq3(False)
     res["rq3"] = {m: {a: {k: v[k] for k in ("benign_cost", "benign_cost_ci", "block_rate", "block_rate_ci", "n_benign", "n_attack")
                           if k in v} for a, v in x.items() if a != "amlp_vs_tripwire"} for m, x in rq3.items()}
-    os.makedirs(f"{ROOT}/data/analysis_out", exist_ok=True)
-    json.dump(res, open(f"{ROOT}/data/analysis_out/clean_subset.json", "w"), indent=1)
+    json.dump(res, open(f"{HS.OUT}/clean_subset.json", "w"), indent=1)
     print(json.dumps({k: res[k] for k in ("n_clean_tasks", "c3prime_fb", "recall", "C1")}, indent=1))
 
 

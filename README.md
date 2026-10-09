@@ -32,17 +32,22 @@ data/
   pilot/              frozen pilot snapshot read by envbuild.py (tw_main_20261005.jsonl, embeddings, environment dumps)
   fidelity_*.jsonl, progent_ab_*.jsonl, agentsentry_fidelity_results.json   baseline fidelity checks
   results_m3_analyze.txt, results_m3_judge_test*.{txt,json}                 frozen outputs of m3_analyze.py / m3_judge.py --test
-  analysis_out/       JSON outputs of the analysis scripts (seen_novel_emb.json.gz is the embedding cache, gzipped)
+  analysis_out/       JSON outputs of the analysis scripts, one directory per holdout set
+    all48/            all 48 holdout tasks, the pre-registered primary set of the paper
+    clean27/          the 27 holdout tasks no pilot run touched, printed beside every main number
+    seen_novel_emb.json.gz   embedding cache shared by both sets (gzipped)
+    _superseded_flat/ outputs of the earlier 48-task-only analysis, kept for the record, read by no script
 outputs/              created on demand: numbers.tex, figs/, tables/ (written by make_numbers.py, make_figs.py, ...)
 third_party/          licenses and provenance of upstream projects used by the baseline ports (see third_party/README.md)
 PREREGISTRATION.md    the pre-registration and amendment log (plan), scrubbed of host names, paths and personal names
+SCRUB.md              internal scrub report (quotes the forbidden patterns; remove before publishing)
 LICENSE               MIT
 ```
 
 Every row is one agent run and carries the model, suite, user task, injection task, defense, rep, seed, utility and
 security outcome, the tool-call trace and bookkeeping fields. In `served_root`, `hub:<model>` marks a model reached
 through a hosted OpenAI-compatible gateway and `local:<name>` a self-hosted vLLM model. Hosts, endpoints and paths of
-the original runs were removed. No metric field was changed.
+the original runs were removed (see `SCRUB.md`). No metric field was changed.
 
 ## Environment
 
@@ -101,6 +106,7 @@ Offline, from the frozen data in `data/` (no model access):
 
 | Command | What it produces |
 |---|---|
+| `HOLDOUT_SET=clean27\|all48 python3 analysis/<script>.py` | Environment switch read by `analysis/holdout_set.py`, which every analysis script imports. `all48` evaluates on all 48 holdout tasks, the primary set of the paper. `clean27` (the default of the switch) evaluates on the 27 holdout tasks that no pilot run touched, the robustness check for the pilot overlap. Mining, selection and calibration rows and the envelopes are the same in both modes. The scripts write to `data/analysis_out/<set>/`. The paper reports `all48` with the `clean27` value beside it. |
 | `python3 analysis/rq12.py` | RQ1 and RQ2: per model and per element of the nested chain, calibration-fold loss and bound, holdout false-block rate and interception of the undefended successful attacks, interception of the tool layer per attacker tool, share of violations invisible to it. Writes `data/analysis_out/rq12.json`. |
 | `python3 analysis/rq34.py [--dry-run]` | RQ3 and RQ4 exactly as pre-registered in plan section 14 (`--dry-run` only validates the row schema and counts pairs). Writes `data/analysis_out/rq34.json`. |
 | `python3 analysis/extra_checks.py` | Review-round checks: RQ1 and RQ2 on holdout tasks that the pilot test split never contained, and the share of blocked benign mining runs refused for a value rather than a tool. Writes `extra.json`. |
@@ -110,14 +116,16 @@ Offline, from the frozen data in `data/` (no model access):
 | `python3 analysis/seen_novel_curve.py` | Data-volume learning curve of the seen-novel gap (plan section 17). Writes `seen_novel_curve.json`. |
 | `python3 analysis/seen_novel_pure.py` | Pure-mined ablation of the AMLP parts (plan section 18). Writes `seen_novel_pure.json`. |
 | `python3 analysis/seen_novel_split.py` | Automaton component split and clean-subset replication (plan section 19): the Praetor-style pDFA with its argument guards off or with per-tool argument schemas only, seen versus novel, and every part of sections 16 and 18 restricted to the holdout tasks no pilot run touched. Writes `seen_novel_split.json`. |
-| `python3 analysis/make_numbers.py` | Every number used in the prose as a LaTeX macro, computed from the frozen data and the JSON files above. Writes `outputs/numbers.tex`. |
-| `python3 analysis/make_figs.py` | Figures and tables of the paper from `data/analysis_out/*.json`. Writes `outputs/figs/*.pdf`, `outputs/tables/*.tex`. |
+| `python3 analysis/holdout_tests.py` | Pre-registered C3' false-block test, recall side and C1 on the active holdout set (`m3_judge.c3_tests`, `m3_judge.recall_side`, `m3_analyze.c1`). With `HOLDOUT_SET=all48` it asserts that the result equals `data/m3/judge_tests.json` and `data/results_m3_analyze.txt`. Writes `data/analysis_out/<set>/tests.json`. |
+| `python3 analysis/holdout_set.py` | Not run directly. Defines the two sets and filters holdout rows of the other set when `m3_common.read_jsonl` is called. |
+| `python3 analysis/make_numbers.py` | Every number used in the prose as a LaTeX macro, computed from the frozen data and the JSON files of both sets. Primary macros come from `all48`, the same macro from `clean27` carries the suffix `Untouched`. Writes `outputs/numbers.tex`. |
+| `python3 analysis/make_figs.py` | Figures and tables of the paper from `data/analysis_out/*.json`. One run reads both sets. Figures `outputs/figs/*.pdf` show `all48`. Every main table in `outputs/tables/*.tex` prints the `clean27` value after each differing `all48` value as `\untouched{...}`. |
 | `python3 analysis/make_method_fig.py` | The method figure, drawn in code. Writes `outputs/figs/method.pdf` and a preview PNG in the current directory. |
 | `python3 m3_analyze.py` | C1 non-inferiority test and the per-arm table (stdout is the content of `data/results_m3_analyze.txt`). |
 | `python3 m3_judge.py --test` | The pre-registered judge tests (`data/m3/judge_tests.json`). |
 
-Run the `rq12`, `rq34`, `extra_checks`, `per_suite`, `clean_subset`, `seen_novel*` scripts before `make_numbers.py` and
-`make_figs.py`, since the latter read their JSON output. Frozen copies of those JSON files are in `data/analysis_out/`,
+Run the `rq12`, `rq34`, `extra_checks`, `per_suite`, `clean_subset`, `seen_novel*`, `holdout_tests` scripts (once per set) before `make_numbers.py` and
+`make_figs.py`, since the latter read their JSON output. Frozen copies of those JSON files are in `data/analysis_out/clean27/` and `data/analysis_out/all48/`,
 so `make_numbers.py` and `make_figs.py` also run directly. Rerunning the analysis rewrites the JSON files in place.
 
 With model access (new agent runs, not needed to check the paper's numbers):
@@ -139,7 +147,7 @@ The `.sh` drivers launch the steps above for all four models in parallel and ass
 `PREREGISTRATION.md` holds the plan with its amendments in the order they were written (protocol rules R1 to R6, the
 chain of nested configurations, decision rules, and sections 14 to 19 for the RQ3/RQ4 analysis, the pilot-clean check,
 the seen-versus-novel test, its learning curve, the pure-mined ablation and the automaton split). Paths and script names inside it are those
-of the original development tree: `analysis/out/` is `data/analysis_out/` here and the `pilot/` snapshot is
+of the original development tree: `analysis/out/<set>/` is `data/analysis_out/<set>/` here (and `analysis/out/*.json` of the early sections is `data/analysis_out/_superseded_flat/`) and the `pilot/` snapshot is
 `data/pilot/`.
 
 ## Known limits of this release
@@ -147,4 +155,4 @@ of the original development tree: `analysis/out/` is `data/analysis_out/` here a
 - Runs against hosted models are not bit-reproducible, because the gateway does not guarantee deterministic output.
 - The virtual environments, Progent policy caches, logs and the paper sources are not included.
 - Some strings in the rows (for example file names under a fictional user home directory, `bluesparrowtech.com` addresses) are
-  AgentDojo benchmark content or text invented by the agent. They are kept on purpose (fictional AgentDojo or agent-invented values).
+  AgentDojo benchmark content or text invented by the agent. They are kept on purpose, see `SCRUB.md`.

@@ -14,11 +14,12 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import m3_common as C          # noqa: E402
 import m3_envelope as ME       # noqa: E402
 import m3_select as MS         # noqa: E402
+import holdout_set as HS       # noqa: E402
 
 SECURITY = ["qwen3-8b-local", "gpt-4o-mini-2024-07-18", "gpt-4.1-mini-2025-04-14"]
 
 
-def pilot_test_tasks():
+def pilot_test_tasks():                      # same rule as holdout_set.pilot_test_tasks
     h = json.load(open(f"{D}/holdout_split.json"))
     out = set()
     for s, uts in h["holdout"].items():
@@ -68,8 +69,7 @@ def main():
     res["clean_pooled_viol"] = tot["viol"]
     res["class_level_blocks"] = {"value": val_blocks, "tool": tool_blocks,
                                  "value_share": val_blocks / (val_blocks + tool_blocks) if val_blocks + tool_blocks else None}
-    os.makedirs(f"{ROOT}/data/analysis_out", exist_ok=True)
-    json.dump(res, open(f"{ROOT}/data/analysis_out/extra.json", "w"), indent=1)
+    json.dump(res, open(f"{HS.OUT}/extra.json", "w"), indent=1)
     print(json.dumps(res, indent=1))
 
 

@@ -1,5 +1,7 @@
-"""Method figure (Figure 1) of the AMLP paper, drawn in code.
-Usage: python3 analysis/make_method_fig.py  ->  outputs/figs/method.pdf (+ method.png preview)
+"""Method figure (Figure 1) of the AMLP paper, drawn in code, single-column width.
+Offline path: task folds -> allowlist family -> calibration. Online path: enforcement and measurement on the holdout.
+Layout is relative: every row is placed below the previous one and every box right of its neighbour (no hand-placed coordinates).
+Usage: python3 analysis/make_method_fig.py [preview.png]  ->  outputs/figs/method.pdf (+ preview PNG in the current directory)
 """
 import sys
 from pathlib import Path
@@ -8,144 +10,195 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Rectangle
 
-plt.rcParams.update({"pdf.fonttype": 42, "font.family": "DejaVu Sans",
-                     "mathtext.fontset": "dejavusans"})
-ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT.parent / "outputs" / "figs"
-FS = 8
-W, H = 6.5, 4.55
+plt.rcParams.update({"pdf.fonttype": 42, "font.family": "DejaVu Sans", "mathtext.fontset": "dejavusans"})
+ROOT = Path(__file__).resolve().parent.parent.parent   # release root (code/ and outputs/ are siblings)
+OUT = ROOT / "outputs" / "figs"
+
+FS = 6.6                      # body labels at single-column width
+W = 3.33                      # \columnwidth of usenix-2020-09, inches
+STRIP = 0.17                  # offline / online label strip
+PX, PW = STRIP + 0.03, W - STRIP - 0.05   # panel x and width
+PAD, GAP, VGAP, TITLE = 0.06, 0.09, 0.07, 0.17
 
 C_HOLD, C_SEL, C_CAL = "#E8A33D", "#5FAE7B", "#5B8DD6"
-C_BOX, C_EDGE, C_TXT = "#F4F5F7", "#6B7280", "#1F2937"
-C_PANEL = "#FFFFFF"
+C_BOX, C_EDGE, C_TXT, C_LAYER = "#F4F5F7", "#6B7280", "#1F2937", "#EEF3FB"
+C_OK, C_NO = "#5FAE7B", "#D9534F"
+
+draw = []                     # deferred draw calls: final height is known only after layout
+
+
+def box(x, y, w, h, text="", fc=C_BOX, ec=C_EDGE, fs=FS, weight="normal", color=C_TXT, r=0.03, lw=0.6):
+    draw.append(lambda ax: (
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0,rounding_size={r}",
+                                    fc=fc, ec=ec, lw=lw, zorder=2)),
+        text and ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=fs,
+                         color=color, weight=weight, zorder=3, linespacing=1.12)))
+    return (x, y, w, h)
+
+
+def text(x, y, s, fs=FS, ha="center", weight="normal", color=C_TXT):
+    draw.append(lambda ax: ax.text(x, y, s, ha=ha, va="center", fontsize=fs, weight=weight, color=color,
+                                   zorder=3, linespacing=1.12))
+
+
+def arrow(p, q, color=C_EDGE, lw=0.7, rad=0.0):
+    draw.append(lambda ax: ax.add_patch(FancyArrowPatch(p, q, arrowstyle="-|>", mutation_scale=6, color=color,
+                                                        lw=lw, connectionstyle=f"arc3,rad={rad}", zorder=4,
+                                                        shrinkA=0, shrinkB=0)))
+
+
+def hrow(x0, widths, gap=GAP):
+    """x positions of boxes placed left to right, each right of its neighbour."""
+    xs = []
+    for w in widths:
+        xs.append(x0)
+        x0 += w + gap
+    return xs
+
+
+def right(b): return (b[0] + b[2], b[1] + b[3] / 2)
+def left(b): return (b[0], b[1] + b[3] / 2)
+def top(b): return (b[0] + b[2] / 2, b[1] + b[3])
+def bottom(b): return (b[0] + b[2] / 2, b[1])
+
+
+class Panel:
+    """Panel whose top edge sits VGAP below the previous panel; rows stack downwards inside it."""
+    def __init__(self, y_top, num, title):
+        self.top, self.y = y_top, y_top - TITLE - PAD
+        text(PX + 0.06, y_top - TITLE / 2 - 0.02, f"{num}  {title}", fs=FS + 0.4, ha="left", weight="bold")
+
+    def row(self, h):
+        self.y -= h
+        y = self.y
+        self.y -= PAD
+        return y
+
+    def close(self):
+        top_, bot = self.top, self.y
+        draw.insert(0, lambda ax: ax.add_patch(FancyBboxPatch((PX, bot), PW, top_ - bot,
+                    boxstyle="round,pad=0,rounding_size=0.04", fc="white", ec="#9CA3AF", lw=0.7, zorder=1)))
+        return bot - VGAP
+
+
+IX = PX + PAD                 # inner x
+IW = PW - 2 * PAD             # inner width
+
+# ---------------- ① Task folds ----------------
+y = 0.0
+p1 = Panel(y, "①", "Task folds")
+by = p1.row(0.17)
+segs = [("holdout", 0.5, C_HOLD), ("sel.", 0.25, C_SEL), ("cal.", 0.25, C_CAL)]
+xs = hrow(IX, [IW * f for _, f, _ in segs], gap=0)
+fold = {}
+for (name, f, c), x in zip(segs, xs):
+    draw.append(lambda ax, x=x, f=f, c=c: ax.add_patch(Rectangle((x, by), IW * f, 0.17, fc=c, ec="white", lw=0.8, zorder=2)))
+    text(x + IW * f / 2, by + 0.085, name, weight="bold", color="white")
+    fold[name] = (x, by, IW * f, 0.17)
+ly = pool_y = p1.row(0.12) + 0.06
+text(fold["holdout"][0] + fold["holdout"][2] / 2, ly, "novel tasks, never mined")
+text(fold["sel."][0] + IW * 0.25, ly, "benign runs $\\rightarrow$ pool $B$")
+y = p1.close()
+
+# ---------------- ② Allowlist family ----------------
+p2 = Panel(y, "②", "Allowlist family")
+lh = 0.50
+ly = p2.row(lh)
+tw = IW * 0.37
+xs = hrow(IX, [tw, IW - tw - GAP])
+tool = box(xs[0], ly, tw, lh, "tool layer $T$\n$g(p)\\ \\cup$ tools of $r$\nnearest tasks in $B$", fc=C_LAYER, ec=C_CAL)
+val = box(xs[1], ly, IW - tw - GAP, lh,
+          "value layer $V_\\ell$, per control arg\nmined $\\cup$ env entities $\\cup$ literals of $p$\n"
+          "$\\ell$: exact $\\subset$ email $\\subset$ class $\\subset$ any", fc=C_LAYER, ec=C_CAL)
+y = p2.close()
+arrow((fold["sel."][0] + IW * 0.25 - 0.25, pool_y - 0.06), (tool[0] + tool[2] * 0.85, tool[1] + tool[3]), color=C_EDGE)
+arrow((fold["sel."][0] + IW * 0.25 + 0.05, pool_y - 0.06), (val[0] + val[2] * 0.6, val[1] + val[3]), color=C_EDGE)
+
+# ---------------- ③ Calibration ----------------
+p3 = Panel(y, "③", "Calibration   (target $\\varepsilon$)")
+ch = 0.28
+cy = p3.row(ch)
+chain = ["exact\n$r{=}0$", "$\\cdots$", "exact\n$r_{\\max}$", "email", "class", "any"]
+cw = (IW - 5 * GAP) / 6
+xs = hrow(IX, [cw] * 6)
+cb = []
+for i, (lab, x) in enumerate(zip(chain, xs)):
+    cb.append(box(x, cy, cw, ch, lab, fc=C_LAYER if lab != "$\\cdots$" else "white",
+                  ec=C_CAL if lab != "$\\cdots$" else "white"))
+    if i:
+        arrow(right(cb[i - 1]), left(cb[i]))
+bry = p3.row(0.09) + 0.07
+
+
+def bracket(x0, x1, s):
+    draw.append(lambda ax: ax.plot([x0, x0, x1, x1], [bry + 0.03, bry, bry, bry + 0.03], color=C_EDGE, lw=0.5, zorder=3))
+    text((x0 + x1) / 2, bry - 0.06, s)
+
+
+bracket(cb[0][0], cb[2][0] + cw, "$r$ grows")
+bracket(cb[3][0], cb[5][0] + cw, "$\\ell$ coarsens")
+p3.row(0.03)
+rh = 0.30
+ry = p3.row(rh)
+ww = [IW * 0.66, IW - IW * 0.66 - GAP]
+xs = hrow(IX, ww)
+crc = box(xs[0], ry, ww[0], rh, "cal.: first $\\lambda \\in \\Lambda$ with\n"
+          "$\\frac{n}{n+1}\\bar{L}_n(\\lambda) + \\frac{1}{n+1} \\leq \\varepsilon \\;\\rightarrow\\; \\hat\\lambda$",
+          ec=C_CAL)
+sel = box(xs[1], ry, ww[1], rh, "sel.: predictor\n$g^\\ast$ with most flags", ec=C_SEL)
+y = p3.close()
+arrow((IX + IW / 2, p3.top + VGAP), (IX + IW / 2, p3.top))
+offline_bot = p3.y
+
+# ---------------- ④ Enforcement and measurement (online) ----------------
+p4 = Panel(y, "④", "Enforcement and measurement on holdout")
+fh = 0.30
+fy = p4.row(fh)
+fw = [IW * 0.21, IW * 0.16, IW * 0.21]
+fw.append(IW - sum(fw) - 3 * GAP)
+xs = hrow(IX, fw)
+run = box(xs[0], fy, fw[0], fh, "holdout run\n$\\pm$ injection", ec=C_HOLD, fc="#FDF3E3")
+call = box(xs[1], fy, fw[1], fh, "call $(t, v)$")
+chk = box(xs[2], fy, fw[2], fh, "$t \\in T$ and\n$v \\in V_{\\hat\\ell}$ ?", ec=C_CAL, weight="bold")
+oh = (fh - 0.04) / 2
+ok = box(xs[3], fy + oh + 0.04, fw[3], oh, "yes: execute", fc="#E8F4EC", ec=C_OK)
+no = box(xs[3], fy, fw[3], oh, "no: error to agent", fc="#FBEAEA", ec=C_NO)
+arrow(right(run), left(call)); arrow(right(call), left(chk))
+arrow(right(chk), left(ok)); arrow(right(chk), left(no))
+mh = 0.24
+my = p4.row(mh)
+mw = [IW * 0.30, IW * 0.33]
+mw.append(IW - sum(mw) - 2 * GAP)
+xs = hrow(IX, mw)
+m1 = box(xs[0], my, mw[0], mh, "no attack:\nfalse block, cost")
+m2 = box(xs[1], my, mw[1], mh, "attack:\ninterception, flag")
+m3 = box(xs[2], my, mw[2], mh, "paired: McNemar,\ntask bootstrap")
+arrow(right(m1), left(m2)); arrow(right(m2), left(m3))
+y = p4.close()
+arrow((IX + IW / 2, p4.top + VGAP), (IX + IW / 2, p4.top))
+text(IX + IW / 2 + 0.08, p4.top + VGAP / 2 + 0.01, "$\\hat\\lambda,\\ g^\\ast$", ha="left", fs=FS - 0.4)
+
+# ---------------- offline / online strip ----------------
+H = -y + 0.02
+top_y = 0.0
+
+
+def strip(y0, y1, s, c):
+    draw.append(lambda ax: ax.add_patch(Rectangle((0.02, y1), STRIP - 0.03, y0 - y1, fc=c, ec="none", zorder=1)))
+    draw.append(lambda ax: ax.text(0.02 + (STRIP - 0.03) / 2, (y0 + y1) / 2, s, rotation=90, ha="center",
+                                   va="center", fontsize=FS + 0.4, weight="bold", color="white", zorder=3))
+
+
+strip(top_y, offline_bot - PAD, "offline", "#6B7280")
+strip(p4.top, p4.y + PAD - 0.0, "online", C_HOLD)
 
 fig = plt.figure(figsize=(W, H))
 ax = fig.add_axes([0, 0, 1, 1])
-ax.set_xlim(0, W); ax.set_ylim(0, H); ax.axis("off")
-
-
-def box(x, y, w, h, text="", fc=C_BOX, ec=C_EDGE, fs=FS, lw=0.8, r=0.04, weight="normal", color=C_TXT, ls="-"):
-    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle=f"round,pad=0,rounding_size={r}",
-                                fc=fc, ec=ec, lw=lw, ls=ls, zorder=2))
-    if text:
-        ax.text(x + w / 2, y + h / 2, text, ha="center", va="center", fontsize=fs,
-                color=color, weight=weight, zorder=3, linespacing=1.15)
-
-
-def arrow(p, q, color=C_EDGE, lw=1.0, rad=0.0, ls="-"):
-    ax.add_patch(FancyArrowPatch(p, q, arrowstyle="-|>", mutation_scale=8, color=color, lw=lw,
-                                 connectionstyle=f"arc3,rad={rad}", linestyle=ls, zorder=4,
-                                 shrinkA=0, shrinkB=0))
-
-
-def panel(x, y, w, h, num, title):
-    ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=0.06",
-                                fc=C_PANEL, ec="#9CA3AF", lw=0.9, zorder=1))
-    ax.text(x + 0.08, y + h - 0.13, f"{num}  {title}", ha="left", va="center", fontsize=FS + 0.5,
-            weight="bold", color=C_TXT, zorder=3)
-
-
-def chip(x, y, text, c, w=0.62, h=0.19):
-    box(x, y, w, h, text, fc=c, ec=c, fs=FS - 0.5, r=0.05, color="white", weight="bold")
-
-
-# ---------------- panel positions (snake: 1 2 / 4 3) ----------------
-TOP_Y, TOP_H = 2.38, 2.1
-BOT_Y, BOT_H = 0.05, 2.18
-X1, W1 = 0.05, 2.45
-X2, W2 = 2.65, 3.8
-
-# ---------------- 1 Task folds ----------------
-panel(X1, TOP_Y, W1, TOP_H, "①", "Task folds")
-ax.text(X1 + W1 / 2, TOP_Y + 1.68, "tasks of each suite", ha="center", va="center", fontsize=FS, color=C_TXT)
-bx, bw, by, bh = X1 + 0.15, 2.15, TOP_Y + 1.18, 0.38
-segs = [("holdout", 0.5, C_HOLD), ("selection", 0.25, C_SEL), ("calibration", 0.25, C_CAL)]
-# draw: calibration and selection left, holdout right so non-holdout is contiguous
-order = [("holdout", 0.5, C_HOLD), ("selection", 0.25, C_SEL), ("calibration", 0.25, C_CAL)]
-cx = bx
-centers = {}
-for name, f, c in order:
-    ww = bw * f
-    ax.add_patch(Rectangle((cx, by), ww, bh, fc=c, ec="white", lw=1.2, zorder=2))
-    centers[name] = (cx + ww / 2, cx, cx + ww)
-    cx += ww
-ax.text(centers["selection"][0], by + bh / 2, "sel.", ha="center", va="center", fontsize=FS, color="white", weight="bold", zorder=3)
-ax.text(centers["calibration"][0], by + bh / 2, "cal.", ha="center", va="center", fontsize=FS, color="white", weight="bold", zorder=3)
-ax.text(centers["holdout"][0], by + bh / 2, "holdout", ha="center", va="center", fontsize=FS, color="white", weight="bold", zorder=3)
-ax.text(centers["holdout"][0], by - 0.14, "novel tasks", ha="center", va="center", fontsize=FS, color=C_TXT)
-ax.text((centers["selection"][1] + centers["calibration"][2]) / 2, by - 0.14, "non-holdout", ha="center", va="center", fontsize=FS, color=C_TXT)
-ax.annotate("", xy=(centers["selection"][1] + 0.02, by - 0.04), xytext=(centers["calibration"][2] - 0.02, by - 0.04),
-            arrowprops=dict(arrowstyle="<->", color=C_EDGE, lw=0.8), zorder=4)
-ax.text(X1 + W1 / 2, TOP_Y + 0.62, "task-disjoint folds,\nseed fixed before any run", ha="center", va="center",
-        fontsize=FS, color=C_TXT, linespacing=1.15)
-ax.text(X1 + W1 / 2, TOP_Y + 0.22, r"no holdout run in any policy", ha="center", va="center", fontsize=FS, color=C_TXT)
-
-# ---------------- 2 Allowlist family ----------------
-panel(X2, TOP_Y, W2, TOP_H, "②", "Allowlist family")
-rx, rw = X2 + 0.12, 1.2
-box(rx, TOP_Y + 1.18, rw, 0.55, "benign runs\nof non-holdout\ntasks", fs=FS)
-box(rx, TOP_Y + 0.28, rw, 0.45, "mined pool", fs=FS)
-arrow((rx + rw / 2, TOP_Y + 1.18), (rx + rw / 2, TOP_Y + 0.73))
-# feed from folds
-arrow((X1 + W1 - 0.15, TOP_Y + 1.38), (rx, TOP_Y + 1.45), color="#4B5563", lw=1.4)
-tx, tw = X2 + 1.62, 2.06
-box(tx, TOP_Y + 1.0, tw, 0.76, "", fc="#EEF3FB", ec=C_CAL)
-ax.text(tx + tw / 2, TOP_Y + 1.62, "tool layer  $T(p)$", ha="center", va="center", fontsize=FS, weight="bold", color=C_TXT, zorder=3)
-ax.text(tx + tw / 2, TOP_Y + 1.28, "LLM-predicted tools\n$\\cup$ tools of $r$ nearest\nmined tasks", ha="center", va="center", fontsize=FS, color=C_TXT, zorder=3, linespacing=1.1)
-box(tx, TOP_Y + 0.1, tw, 0.76, "", fc="#EEF3FB", ec=C_CAL)
-ax.text(tx + tw / 2, TOP_Y + 0.72, "value layer  $V_\\ell$", ha="center", va="center", fontsize=FS, weight="bold", color=C_TXT, zorder=3)
-ax.text(tx + tw / 2, TOP_Y + 0.36, "level $\\ell\\in$ {exact, email,\nclass, any}", ha="center", va="center", fontsize=FS, color=C_TXT, zorder=3, linespacing=1.1)
-arrow((rx + rw, TOP_Y + 0.5), (tx, TOP_Y + 0.5))
-arrow((rx + rw, TOP_Y + 0.62), (tx, TOP_Y + 1.25), rad=-0.15)
-
-# ---------------- 3 Calibration (bottom right) ----------------
-panel(X2, BOT_Y, W2, BOT_H, "③", "Calibration")
-arrow((X2 + W2 / 2, TOP_Y), (X2 + W2 / 2, BOT_Y + BOT_H))
-chain = [("exact", "$r{=}0$"), ("…", ""), ("exact", "all"), ("email", "all"), ("class", "all"), ("any", "all")]
-n = len(chain); cw, gap = 0.5, 0.1
-cx0 = X2 + (W2 - (n * cw + (n - 1) * gap)) / 2
-cy, ch = BOT_Y + 1.14, 0.44
-ax.text(cx0 - 0.0, cy + ch + 0.16, "nested chain  $\\Lambda$", ha="left", va="center", fontsize=FS, weight="bold", color=C_TXT)
-for i, (a, b) in enumerate(chain):
-    x = cx0 + i * (cw + gap)
-    if a == "…":
-        ax.text(x + cw / 2, cy + ch / 2, "…", ha="center", va="center", fontsize=FS + 2, color=C_TXT)
-    else:
-        box(x, cy, cw, ch, f"{a}\n{b}", fs=FS, fc="#EEF3FB" if i < 3 else "#E3EAF6", ec=C_CAL, lw=0.9)
-    if i < n - 1:
-        arrow((x + cw + 0.005, cy + ch / 2), (x + cw + gap - 0.005, cy + ch / 2), lw=0.8)
-# brackets
-def bracket(x0, x1, y, text):
-    ax.plot([x0, x0, x1, x1], [y + 0.05, y, y, y + 0.05], color=C_EDGE, lw=0.8, zorder=3)
-    ax.text((x0 + x1) / 2, y - 0.11, text, ha="center", va="center", fontsize=FS, color=C_TXT)
-bracket(cx0, cx0 + 3 * cw + 2 * gap, cy - 0.04, "$r$ grows")
-bracket(cx0 + 3 * (cw + gap), cx0 + n * cw + (n - 1) * gap, cy - 0.04, "$\\ell$ coarsens")
-# CRC
-box(X2 + 0.12, BOT_Y + 0.1, 2.45, 0.66, "", fc="#F4F5F7")
-chip(X2 + 0.18, BOT_Y + 0.60, "cal.", C_CAL, w=0.36, h=0.16)
-ax.text(X2 + 0.58, BOT_Y + 0.68, "CRC: first $\\lambda\\in\\Lambda$ with", ha="left", va="center", fontsize=FS, color=C_TXT)
-ax.text(X2 + 1.345, BOT_Y + 0.33, "$\\frac{n}{n+1}\\,\\bar{L}_n(\\lambda)+\\frac{1}{n+1}\\leq\\varepsilon$", ha="center", va="center", fontsize=FS + 3, color=C_TXT)
-box(X2 + 2.68, BOT_Y + 0.1, 1.0, 0.66, "", fc="#F4F5F7")
-chip(X2 + 2.74, BOT_Y + 0.60, "sel.", C_SEL, w=0.36, h=0.16)
-ax.text(X2 + 3.18, BOT_Y + 0.35, "tool\npredictor", ha="center", va="center", fontsize=FS, color=C_TXT, linespacing=1.1)
-
-# ---------------- 4 Measurement (bottom left) ----------------
-panel(X1, BOT_Y, W1, BOT_H, "④", "Measurement")
-# arrows: holdout down into 4, policy from 3 to 4
-arrow((centers["holdout"][0], TOP_Y), (centers["holdout"][0], BOT_Y + BOT_H - 0.0), color=C_HOLD, lw=1.4)
-arrow((X2, BOT_Y + 0.43), (X1 + W1, BOT_Y + 0.43), lw=1.0)
-ax.text((X2 + X1 + W1) / 2, BOT_Y + 0.55, "$\\hat\\lambda$", ha="center", va="center", fontsize=FS, color=C_TXT)
-chip(X1 + 0.12, BOT_Y + 1.72 - 0.06, "holdout", C_HOLD, w=0.62, h=0.17)
-box(X1 + 0.12, BOT_Y + 0.88, W1 - 0.24, 0.68, "", fc="#F4F5F7")
-ax.text(X1 + W1 / 2, BOT_Y + 1.34, "every defense", ha="center", va="center", fontsize=FS, weight="bold", color=C_TXT, zorder=3)
-ax.text(X1 + W1 / 2, BOT_Y + 1.06, "AMLP, Progent, CaMeL,\nAgent-Sentry, MELON, …", ha="center", va="center", fontsize=FS, color=C_TXT, zorder=3, linespacing=1.1)
-box(X1 + 0.12, BOT_Y + 0.12, 1.0, 0.54, "benign cost\ninterception", fs=FS)
-box(X1 + 1.2, BOT_Y + 0.12, 1.13, 0.54, "McNemar +\ntask-cluster\nbootstrap", fs=FS)
-arrow((X1 + W1 / 2 - 0.3, BOT_Y + 0.88), (X1 + 0.62, BOT_Y + 0.66))
-arrow((X1 + 1.12, BOT_Y + 0.39), (X1 + 1.2, BOT_Y + 0.39), lw=0.8)
-
+ax.set_xlim(0, W); ax.set_ylim(-H + 0.01, 0.01); ax.axis("off")
+for f in draw:
+    f(ax)
 OUT.mkdir(parents=True, exist_ok=True)
 fig.savefig(OUT / "method.pdf")
 prev = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("method_preview.png")
-fig.savefig(prev, dpi=200)
-print("wrote", OUT / "method.pdf", prev)
+fig.savefig(prev, dpi=150)
+print("wrote", OUT / "method.pdf", prev, f"{W}x{H:.2f}in")

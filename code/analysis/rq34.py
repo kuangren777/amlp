@@ -1,7 +1,7 @@
 """RQ3 / RQ4 analysis, implementing plan.md §14 exactly (rules frozen at ffe6dfef before any metric was computed).
 
 --dry-run: validates the row schema and counts pairs per (model, arm / condition) without computing or printing any
-metric. Full run writes data/analysis_out/rq34.json (metrics) for analysis/make_numbers.py and analysis/make_figs.py.
+metric. Full run writes data/analysis_out/<HOLDOUT_SET>/rq34.json (metrics) for analysis/make_numbers.py and analysis/make_figs.py.
 Usage: python3 analysis/rq34.py [--dry-run]"""
 from __future__ import annotations
 
@@ -19,8 +19,9 @@ import m3_common as C          # noqa: E402
 import m3_envelope as ME       # noqa: E402
 import m3_select as MS         # noqa: E402
 from amlp import SIDE          # noqa: E402
+import holdout_set as HS       # noqa: E402  (HOLDOUT_SET switch, filters holdout rows)
 
-OUT = f"{ROOT}/data/analysis_out"
+OUT = HS.OUT
 SECURITY = ["qwen3-8b-local", "gpt-4o-mini-2024-07-18", "gpt-4.1-mini-2025-04-14"]
 ARMS = ["amlp", "block_all", "spotlighting", "sandwich", "tool_filter", "pi_detector", "melon", "tripwire", "progent",
         "camel", "agentsentry"]

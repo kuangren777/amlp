@@ -29,9 +29,10 @@ import envbuild as EB          # noqa: E402
 from amlp import SIDE, CTRL, control_values, lift  # noqa: E402
 from rq12 import sel_entry, holdout_benign, holdout_violations, SECURITY  # noqa: E402
 import m3_select as MS         # noqa: E402
+import holdout_set as HS       # noqa: E402
 
-OUT = f"{ROOT}/data/analysis_out"
-EMB_CACHE = f"{OUT}/seen_novel_emb.json"   # released as seen_novel_emb.json.gz (read transparently)
+OUT = HS.OUT
+EMB_CACHE = f"{ROOT}/data/analysis_out/seen_novel_emb.json"   # shared by both holdout sets; released as seen_novel_emb.json.gz (read transparently)
 W, THETA, EPS_NUM, EPS_STR = 3, 3, 0.05, 0.05
 
 
@@ -90,7 +91,8 @@ class Embedder:
                     sys.stderr.write(f"embed retry {att}: {ex}\n"); time.sleep(10)
             else:
                 raise SystemExit("embedding failed")
-        json.dump(self.cache, open(EMB_CACHE, "w"))
+        if todo:                                    # cache is shared by concurrent runs: rewrite only on change
+            json.dump(self.cache, open(EMB_CACHE, "w"))
 
     def vec(self, t):
         return np.asarray(self.cache[t])

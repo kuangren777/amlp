@@ -1,0 +1,135 @@
+{
+ "per_model": {
+  "qwen3-8b-local": {
+   "M1a_novel_fb": 0.046296296296296294,
+   "M1a_seen_fb": 0.023148148148148147,
+   "M1b_novel_fb": 0.0,
+   "M1b_seen_fb": 0.0,
+   "M2_novel_fb": 0.8148148148148148,
+   "M2_seen_fb": 0.33796296296296297,
+   "M1a_novel_flag": 0.8648648648648649,
+   "M1a_seen_flag": 0.8648648648648649,
+   "M1b_novel_flag": 0.2972972972972973,
+   "M1b_seen_flag": 0.2972972972972973,
+   "M2_novel_flag": 1.0,
+   "M2_seen_flag": 1.0,
+   "M2_pool_loo_fb": 0.3596938775510204
+  },
+  "llama31-8b-local": {
+   "M1a_novel_fb": 0.21296296296296297,
+   "M1a_seen_fb": 0.125,
+   "M1b_novel_fb": 0.0,
+   "M1b_seen_fb": 0.0,
+   "M2_novel_fb": 0.9351851851851852,
+   "M2_seen_fb": 0.6759259259259259,
+   "M2_pool_loo_fb": 0.6505102040816326
+  },
+  "gpt-4o-mini-2024-07-18": {
+   "M1a_novel_fb": 0.009259259259259259,
+   "M1a_seen_fb": 0.009259259259259259,
+   "M1b_novel_fb": 0.0,
+   "M1b_seen_fb": 0.0,
+   "M2_novel_fb": 0.8703703703703703,
+   "M2_seen_fb": 0.2824074074074074,
+   "M1a_novel_flag": 0.7627118644067796,
+   "M1a_seen_flag": 0.7627118644067796,
+   "M1b_novel_flag": 0.13559322033898305,
+   "M1b_seen_flag": 0.13559322033898305,
+   "M2_novel_flag": 1.0,
+   "M2_seen_flag": 1.0,
+   "M2_pool_loo_fb": 0.288265306122449
+  },
+  "gpt-4.1-mini-2025-04-14": {
+   "M1a_novel_fb": 0.0,
+   "M1a_seen_fb": 0.0,
+   "M1b_novel_fb": 0.0,
+   "M1b_seen_fb": 0.0,
+   "M2_novel_fb": 0.875,
+   "M2_seen_fb": 0.11574074074074074,
+   "M1a_novel_flag": 0.7710843373493976,
+   "M1a_seen_flag": 0.7710843373493976,
+   "M1b_novel_flag": 0.3493975903614458,
+   "M1b_seen_flag": 0.3493975903614458,
+   "M2_novel_flag": 1.0,
+   "M2_seen_flag": 1.0,
+   "M2_pool_loo_fb": 0.21428571428571427
+  }
+ },
+ "pooled": {
+  "M1a_novel_fb": 0.06712962962962964,
+  "M1a_seen_fb": 0.03935185185185185,
+  "M1b_novel_fb": 0.0,
+  "M1b_seen_fb": 0.0,
+  "M2_novel_fb": 0.8738425925925926,
+  "M2_seen_fb": 0.35300925925925924,
+  "M1a_novel_flag": 0.7877094972067039,
+  "M1a_seen_flag": 0.7877094972067039,
+  "M1b_novel_flag": 0.2681564245810056,
+  "M1b_seen_flag": 0.2681564245810056,
+  "M2_novel_flag": 1.0,
+  "M2_seen_flag": 1.0
+ },
+ "n": {
+  "M1a_novel_fb": 864,
+  "M1a_seen_fb": 864,
+  "M1b_novel_fb": 864,
+  "M1b_seen_fb": 864,
+  "M2_novel_fb": 864,
+  "M2_seen_fb": 864,
+  "M1a_novel_flag": 179,
+  "M1a_seen_flag": 179,
+  "M1b_novel_flag": 179,
+  "M1b_seen_flag": 179,
+  "M2_novel_flag": 179,
+  "M2_seen_flag": 179
+ },
+ "delta": {
+  "M1a_fb": {
+   "point": 0.027777777777777776,
+   "ci95": [
+    0.005787037037037037,
+    0.05555555555555555
+   ]
+  },
+  "M1b_fb": {
+   "point": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "M2_fb": {
+   "point": 0.5208333333333334,
+   "ci95": [
+    0.42824074074074076,
+    0.6134259259259259
+   ]
+  },
+  "M1a_flag": {
+   "point": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "M1b_flag": {
+   "point": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "M2_flag": {
+   "point": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "H_gap": {
+  "M1a": false,
+  "M2": true
+ },
+ "general_claim_allowed": false
+}

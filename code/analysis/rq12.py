@@ -6,7 +6,7 @@ the interception (recall) of the undefended successful attacks, so the cost of r
 RQ2: at the calibrated configuration (primary eps), interception of the tool layer per attacker side-effect tool and
 the share of violations whose side-effecting calls all stay inside the tool layer (structurally invisible to it).
 Definitions: A2-rev denominators; holdout benign runs = A3 monitor runs; violations = online `none` attack runs with
-security True. Writes data/analysis_out/rq12.json; numbers are turned into macros by analysis/make_numbers.py."""
+security True. Writes data/analysis_out/<HOLDOUT_SET>/rq12.json; numbers are turned into macros by analysis/make_numbers.py."""
 from __future__ import annotations
 
 import collections
@@ -23,8 +23,9 @@ import m3_envelope as ME       # noqa: E402
 import m3_select as MS         # noqa: E402
 from amlp import SIDE          # noqa: E402
 import harness                 # noqa: E402
+import holdout_set as HS       # noqa: E402  (HOLDOUT_SET switch, filters holdout rows)
 
-OUT = f"{ROOT}/data/analysis_out"
+OUT = HS.OUT
 SECURITY = ["qwen3-8b-local", "gpt-4o-mini-2024-07-18", "gpt-4.1-mini-2025-04-14"]   # llama: 0 successful attacks
 
 

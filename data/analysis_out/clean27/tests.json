@@ -1,0 +1,111 @@
+{
+ "holdout_set": "clean27",
+ "n_tasks": 27,
+ "c3prime_fb": {
+  "n_pairs": 864,
+  "n_tasks": 27,
+  "fb_progent": 0.1724537037037037,
+  "fb_amlp": 0.0,
+  "progent_only": 149,
+  "amlp_only": 0,
+  "mcnemar_p": 2.802596928649634e-45,
+  "d": 0.1724537037037037,
+  "d_ci95": [
+   0.08912037037037036,
+   0.26851851851851855
+  ],
+  "mcnemar_pass": true,
+  "bootstrap_pass": true,
+  "fb_test_pass": true
+ },
+ "recall_A2rev": {
+  "n_violations": 179,
+  "recall_amlp": 0.2681564245810056,
+  "recall_amlp_wilson": [
+   0.20863124634111702,
+   0.3374235679891214
+  ],
+  "recall_progent": 0.9385474860335196,
+  "recall_progent_wilson": [
+   0.89332458834293,
+   0.9653428110564987
+  ],
+  "recall_diff_amlp_minus_progent": -0.6703910614525139,
+  "recall_diff_ci95": [
+   -0.8435374149659864,
+   -0.48295454545454547
+  ],
+  "recall_matched_point": false,
+  "recall_noninferior": false
+ },
+ "recall_all35": {
+  "n_violations": 188,
+  "recall_amlp": 0.2553191489361702,
+  "recall_amlp_wilson": [
+   0.19832182624993266,
+   0.3221155154149573
+  ],
+  "recall_progent": 0.8936170212765957,
+  "recall_progent_wilson": [
+   0.8413986231744554,
+   0.9300717402341997
+  ],
+  "recall_diff_amlp_minus_progent": -0.6382978723404256,
+  "recall_diff_ci95": [
+   -0.8132530120481928,
+   -0.4550561797752809
+  ],
+  "recall_matched_point": false,
+  "recall_noninferior": false
+ },
+ "C3prime": {
+  "fb_test_pass": true,
+  "recall_noninferior": false,
+  "C3prime_holds": false,
+  "verdict": "not established"
+ },
+ "C1": {
+  "n_pairs": 864,
+  "drop_pooled": -0.0011574074074074073,
+  "ci95": [
+   -0.032407407407407406,
+   0.027777777777777776
+  ],
+  "upper95": 0.027777777777777776,
+  "C1_holds": true,
+  "per_model": {
+   "gpt-4.1-mini-2025-04-14": {
+    "n": 216,
+    "drop": 0.05092592592592592,
+    "ci95": [
+     0.009259259259259259,
+     0.09259259259259259
+    ]
+   },
+   "gpt-4o-mini-2024-07-18": {
+    "n": 216,
+    "drop": -0.037037037037037035,
+    "ci95": [
+     -0.10648148148148148,
+     0.027777777777777776
+    ]
+   },
+   "llama31-8b-local": {
+    "n": 216,
+    "drop": 0.009259259259259259,
+    "ci95": [
+     -0.023148148148148147,
+     0.037037037037037035
+    ]
+   },
+   "qwen3-8b-local": {
+    "n": 216,
+    "drop": -0.027777777777777776,
+    "ci95": [
+     -0.09722222222222222,
+     0.041666666666666664
+    ]
+   }
+  }
+ }
+}

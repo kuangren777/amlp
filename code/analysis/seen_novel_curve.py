@@ -64,7 +64,7 @@ def main():
     r = res
     r["M2_confound_ruled_out"] = (r["M2_novel8_minus_seen1"]["point"] >= 0.05 and r["M2_novel8_minus_seen1"]["ci95"][0] > 0
                                   and r["M2_novel4_minus_novel8"] < 0.05)
-    json.dump(res, open(f"{ROOT}/data/analysis_out/seen_novel_curve.json", "w"), indent=1)
+    json.dump(res, open(f"{S.OUT}/seen_novel_curve.json", "w"), indent=1)
     print(json.dumps({k: (v if not isinstance(v, dict) or "point" in v else {kk: round(100 * vv["point"], 1) for kk, vv in v.items()})
                       for k, v in res.items()}, indent=1))
 
