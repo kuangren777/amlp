@@ -36,6 +36,7 @@ data/
     all48/            all 48 holdout tasks, the pre-registered primary set of the paper
     clean27/          the 27 holdout tasks no pilot run touched, printed beside every main number
     seen_novel_emb.json.gz   embedding cache shared by both sets (gzipped)
+    resplit.json, flag_before_harm*.json, fidelity_benign.json, value_block_cause.json   plan section 22 outputs, not per set
     _superseded_flat/ outputs of the earlier 48-task-only analysis, kept for the record, read by no script
 outputs/              created on demand: numbers.tex, figs/, tables/ (written by make_numbers.py, make_figs.py, ...)
 third_party/          licenses and provenance of upstream projects used by the baseline ports (see third_party/README.md)
@@ -107,10 +108,11 @@ Offline, from the frozen data in `data/` (no model access):
 | Command | What it produces |
 |---|---|
 | `HOLDOUT_SET=clean27\|all48 python3 analysis/<script>.py` | Environment switch read by `analysis/holdout_set.py`, which every analysis script imports. `all48` evaluates on all 48 holdout tasks, the primary set of the paper. `clean27` (the default of the switch) evaluates on the 27 holdout tasks that no pilot run touched, the robustness check for the pilot overlap. Mining, selection and calibration rows and the envelopes are the same in both modes. The scripts write to `data/analysis_out/<set>/`. The paper reports `all48` with the `clean27` value beside it. |
-| `python3 analysis/rq12.py` | RQ1 and RQ2: per model and per element of the nested chain, calibration-fold loss and bound, holdout false-block rate and interception of the undefended successful attacks, interception of the tool layer per attacker tool, share of violations invisible to it. Writes `data/analysis_out/rq12.json`. |
-| `python3 analysis/rq34.py [--dry-run]` | RQ3 and RQ4 exactly as pre-registered in plan section 14 (`--dry-run` only validates the row schema and counts pairs). Writes `data/analysis_out/rq34.json`. |
+| `python3 analysis/rq12.py` | RQ1 and RQ2: per model and per element of the nested chain, calibration-fold loss and bound, holdout false-block rate and interception of the undefended successful attacks, interception of the tool layer per attacker tool, share of violations invisible to it. Writes `data/analysis_out/<set>/rq12.json`. |
+| `python3 analysis/rq34.py [--dry-run]` | RQ3 and RQ4 exactly as pre-registered in plan section 14 (`--dry-run` only validates the row schema and counts pairs). Writes `data/analysis_out/<set>/rq34.json`. Environment switch `ATTACK_ORACLE`: `exec` (default, the main text) counts an attack as successful when a call matching a ground-truth side-effecting call of its injection task ran without a refusal (`analysis/exec_oracle.py`, plan section 22); `agentdojo` uses the AgentDojo security flag of the row (appendix `app:oracle`). The frozen appendix outputs `rq34_agentdojo.json` and `per_suite_agentdojo.json` in each set directory are the `ATTACK_ORACLE=agentdojo` runs, renamed after the run (the scripts always write `rq34.json` and `per_suite.json`). |
+| `python3 analysis/exec_oracle.py` | Library, not run directly. Execution-semantics attack oracle imported by `rq34.py` (and through it by `per_suite.py` and `flag_before_harm.py`). Reads the step logs `data/m3/steps/online_*.jsonl.gz` and the task definitions of `harness.py`. |
 | `python3 analysis/extra_checks.py` | Review-round checks: RQ1 and RQ2 on holdout tasks that the pilot test split never contained, and the share of blocked benign mining runs refused for a value rather than a tool. Writes `extra.json`. |
-| `python3 analysis/per_suite.py` | Per-suite breakdown of block rate and benign cost of every defense, and the share of AMLP-passed attacks that TripWire stops. Writes `per_suite.json` and `outputs/figs/rq3_per_suite.pdf`. |
+| `python3 analysis/per_suite.py` | Per-suite breakdown of block rate and benign cost of every defense, and the share of AMLP-passed attacks that TripWire stops. Writes `per_suite.json` (honours `ATTACK_ORACLE`) and `outputs/figs/rq3_per_suite.pdf`. |
 | `python3 analysis/clean_subset.py` | Pilot-clean robustness check (plan section 15): C1, the C3' tests and the RQ3 per-arm numbers on holdout tasks that no pilot run touched. Writes `clean_subset.json`. |
 | `python3 analysis/seen_novel.py` | Seen-versus-novel transfer of mined least privilege (plan section 16), AMLP against a Praetor-style pDFA. Writes `seen_novel.json`. Uses `data/analysis_out/seen_novel_emb.json.gz` as embedding cache. Needs model access (`LLM_API_BASE`, `LLM_API_KEY`, model `bge-m3`) only if a text is missing from the cache. |
 | `python3 analysis/seen_novel_curve.py` | Data-volume learning curve of the seen-novel gap (plan section 17). Writes `seen_novel_curve.json`. |
@@ -120,11 +122,16 @@ Offline, from the frozen data in `data/` (no model access):
 | `python3 analysis/holdout_set.py` | Not run directly. Defines the two sets and filters holdout rows of the other set when `m3_common.read_jsonl` is called. |
 | `python3 analysis/make_numbers.py` | Every number used in the prose as a LaTeX macro, computed from the frozen data and the JSON files of both sets. Primary macros come from `all48`, the same macro from `clean27` carries the suffix `Untouched`. Writes `outputs/numbers.tex`. |
 | `python3 analysis/make_figs.py` | Figures and tables of the paper from `data/analysis_out/*.json`. One run reads both sets. Figures `outputs/figs/*.pdf` show `all48`. Every main table in `outputs/tables/*.tex` prints the `clean27` value after each differing `all48` value as `\untouched{...}`. |
+| `python3 analysis/resplit.py` | Calibration-split robustness (plan section 22): the calibration and holdout roles of the tasks are swapped and redrawn, and the holdout false-block and flag rate at the calibrated configuration are recomputed. Writes `data/analysis_out/resplit.json`. |
+| `python3 analysis/flag_before_harm.py` | Flag-before-harm (plan section 22): for each successful attack, whether the envelope refuses a call before the first harmful call of the run, for the replayed holdout runs and the online AMLP and Progent arms. Writes `data/analysis_out/flag_before_harm.json` and `flag_before_harm_online_valueonly.json`. |
+| `python3 analysis/fidelity_benign.py` | Benign-side utility of the Agent-Sentry and CaMeL fidelity runs, from `data/agentsentry_fidelity_results.json` and `data/fidelity_camel.jsonl` (plan section 22.3). Writes `data/analysis_out/fidelity_benign.json`. |
+| `python3 analysis/value_block_cause.py` | Which kind of value (user-request value versus mined value) causes the value-layer false blocks of `llama31-8b-local` (plan section 22). Writes `data/analysis_out/value_block_cause.json`. |
+| `python3 analysis/make_example_fig.py` | The page-1 example: one logged undefended attack run replayed against the calibrated allowlist, the first refused call being the first harmful call. Reads the logs and the envelope (needs `harness.py` and the step logs, no model access). Writes `outputs/tables/example_replay.tex`. |
 | `python3 analysis/make_method_fig.py` | The method figure, drawn in code. Writes `outputs/figs/method.pdf` and a preview PNG in the current directory. |
 | `python3 m3_analyze.py` | C1 non-inferiority test and the per-arm table (stdout is the content of `data/results_m3_analyze.txt`). |
 | `python3 m3_judge.py --test` | The pre-registered judge tests (`data/m3/judge_tests.json`). |
 
-Run the `rq12`, `rq34`, `extra_checks`, `per_suite`, `clean_subset`, `seen_novel*`, `holdout_tests` scripts (once per set) before `make_numbers.py` and
+Run the `rq12`, `rq34`, `extra_checks`, `per_suite`, `clean_subset`, `seen_novel*`, `holdout_tests` scripts (once per set) and `resplit`, `flag_before_harm`, `fidelity_benign`, `value_block_cause` (once, they write to the top level of `data/analysis_out/`) before `make_numbers.py` and
 `make_figs.py`, since the latter read their JSON output. Frozen copies of those JSON files are in `data/analysis_out/clean27/` and `data/analysis_out/all48/`,
 so `make_numbers.py` and `make_figs.py` also run directly. Rerunning the analysis rewrites the JSON files in place.
 

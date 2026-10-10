@@ -14,7 +14,7 @@ import sys
 D = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(D)   # release root (code/ and data/ are siblings)
 sys.path.insert(0, D)
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, f"{D}/analysis")
 import m3_common as C          # noqa: E402
 import m3_envelope as ME       # noqa: E402
 import m3_select as MS         # noqa: E402
@@ -88,9 +88,22 @@ def paired_benign(model, arm, on, mon):
     return keys, base, it
 
 
+ORACLE = os.environ.get("ATTACK_ORACLE", "exec")      # plan.md §22.6: exec (main text) | agentdojo (appendix)
+assert ORACLE in ("exec", "agentdojo"), ORACLE
+
+
+def attack_success(r) -> int:
+    if ORACLE == "exec":
+        import exec_oracle as EO
+        v = EO.success(r)
+        if v is not None:
+            return v
+    return int(bool(r["security"]))
+
+
 def paired_attack(arm, on):
-    none = {(r["suite"], r["ut"], r["it"], r["rep"]): int(bool(r["security"])) for r in on if arm_of(r) == "none" and r["part"] == "b"}
-    it = {(r["suite"], r["ut"], r["it"], r["rep"]): int(bool(r["security"])) for r in on if arm_of(r) == arm and r["part"] == "b"}
+    none = {(r["suite"], r["ut"], r["it"], r["rep"]): attack_success(r) for r in on if arm_of(r) == "none" and r["part"] == "b"}
+    it = {(r["suite"], r["ut"], r["it"], r["rep"]): attack_success(r) for r in on if arm_of(r) == arm and r["part"] == "b"}
     keys = sorted(set(none) & set(it))
     return keys, none, it
 

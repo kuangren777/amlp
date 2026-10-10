@@ -1,0 +1,22 @@
+{
+ "plan": "\u00a722.3",
+ "agentsentry": {
+  "util_ours": 94.83352468427096,
+  "util_published": 96.4,
+  "n_seeds": 3,
+  "n_benign": 871,
+  "gap_pp": 1.5664753157290505,
+  "within_10pp": true
+ },
+ "camel": {
+  "util_none": 87.62886597938144,
+  "util_camel": 53.608247422680414,
+  "n": 97,
+  "model": "o4-mini-2025-04-16",
+  "published_none": 84.0,
+  "published_camel": 77.0,
+  "comparison": "indicative only (different model)",
+  "drop_pp": 34.02061855670103,
+  "published_drop_pp": 7.0
+ }
+}

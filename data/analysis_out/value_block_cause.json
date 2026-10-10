@@ -1,0 +1,30 @@
+{
+ "qwen3-8b-local": {
+  "runs": 384,
+  "blocked_tool": 0,
+  "blocked_value": 13,
+  "benign_utility": 0.6536458333333334,
+  "utility_of_blocked": 0.23076923076923078
+ },
+ "llama31-8b-local": {
+  "runs": 384,
+  "blocked_tool": 0,
+  "blocked_value": 105,
+  "benign_utility": 0.203125,
+  "utility_of_blocked": 0.10476190476190476
+ },
+ "gpt-4o-mini-2024-07-18": {
+  "runs": 384,
+  "blocked_tool": 0,
+  "blocked_value": 2,
+  "benign_utility": 0.7135416666666666,
+  "utility_of_blocked": 0.0
+ },
+ "gpt-4.1-mini-2025-04-14": {
+  "runs": 384,
+  "blocked_tool": 0,
+  "blocked_value": 0,
+  "benign_utility": 0.7890625,
+  "utility_of_blocked": null
+ }
+}

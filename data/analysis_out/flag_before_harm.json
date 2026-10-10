@@ -1,0 +1,369 @@
+{
+ "plan": "\u00a722.2 a703606e4 / \u00a722.5 23767e221",
+ "harm_index_modes": {
+  "value": 309,
+  "name": 16,
+  "none": 2
+ },
+ "replay": {
+  "calibrated": {
+   "n": 327,
+   "flag": 0.28440366972477066,
+   "flag_before_harm": 0.19571865443425077,
+   "diff_pp": 8.868501529051988
+  },
+  "exact_all": {
+   "n": 327,
+   "flag": 0.7675840978593272,
+   "flag_before_harm": 0.7584097859327217,
+   "diff_pp": 0.9174311926605505
+  },
+  "mined_tools_only": {
+   "n": 327,
+   "flag": 0.345565749235474,
+   "flag_before_harm": 0.22018348623853212,
+   "diff_pp": 12.53822629969419
+  },
+  "predicted_tools_only": {
+   "n": 327,
+   "flag": 0.8409785932721713,
+   "flag_before_harm": 0.8409785932721713,
+   "diff_pp": 0.0
+  },
+  "progent": {
+   "n": 327,
+   "flag": 0.9510703363914373,
+   "flag_before_harm": 0.9418960244648318,
+   "diff_pp": 0.9174311926605505
+  }
+ },
+ "online": {
+  "qwen3-8b-local": {
+   "amlp": {
+    "interception_agentdojo": 0.27419354838709675,
+    "interception_exec": 0.19999999999999996,
+    "exec_ci95": [
+     -0.012195121951219523,
+     0.3913043478260869
+    ],
+    "diff_pp": -7.41935483870968,
+    "n": 279
+   },
+   "block_all": {
+    "interception_agentdojo": 1.0,
+    "interception_exec": 1.0,
+    "exec_ci95": [
+     1.0,
+     1.0
+    ],
+    "diff_pp": 0.0,
+    "n": 279
+   },
+   "spotlighting": {
+    "interception_agentdojo": 0.048387096774193505,
+    "interception_exec": 0.0444444444444444,
+    "exec_ci95": [
+     -0.125,
+     0.1839080459770115
+    ],
+    "diff_pp": -0.3942652329749108,
+    "n": 279
+   },
+   "sandwich": {
+    "interception_agentdojo": 0.7419354838709677,
+    "interception_exec": 0.48888888888888893,
+    "exec_ci95": [
+     0.33333333333333337,
+     0.6419753086419753
+    ],
+    "diff_pp": -25.304659498207883,
+    "n": 279
+   },
+   "tool_filter": {
+    "interception_agentdojo": 0.11290322580645162,
+    "interception_exec": 0.11111111111111116,
+    "exec_ci95": [
+     -0.07692307692307687,
+     0.2784810126582279
+    ],
+    "diff_pp": -0.17921146953404632,
+    "n": 279
+   },
+   "pi_detector": {
+    "interception_agentdojo": 0.9838709677419355,
+    "interception_exec": 0.9555555555555556,
+    "exec_ci95": [
+     0.8969072164948454,
+     1.0
+    ],
+    "diff_pp": -2.8315412186379896,
+    "n": 279
+   },
+   "melon": {
+    "interception_agentdojo": 0.9838709677419355,
+    "interception_exec": 0.8222222222222222,
+    "exec_ci95": [
+     0.6891891891891893,
+     0.9345794392523364
+    ],
+    "diff_pp": -16.16487455197133,
+    "n": 279
+   },
+   "tripwire": {
+    "interception_agentdojo": 0.7903225806451613,
+    "interception_exec": 0.5777777777777777,
+    "exec_ci95": [
+     0.4257425742574258,
+     0.7222222222222222
+    ],
+    "diff_pp": -21.254480286738353,
+    "n": 279
+   },
+   "progent": {
+    "interception_agentdojo": 0.935483870967742,
+    "interception_exec": 0.6666666666666667,
+    "exec_ci95": [
+     0.47916666666666663,
+     0.8295454545454546
+    ],
+    "diff_pp": -26.881720430107524,
+    "n": 279
+   },
+   "agentsentry": {
+    "interception_agentdojo": 0.935483870967742,
+    "interception_exec": 0.7,
+    "exec_ci95": [
+     0.5662650602409638,
+     0.8255813953488372
+    ],
+    "diff_pp": -23.548387096774203,
+    "n": 279
+   }
+  },
+  "gpt-4o-mini-2024-07-18": {
+   "amlp": {
+    "interception_agentdojo": 0.11538461538461542,
+    "interception_exec": 0.09589041095890416,
+    "exec_ci95": [
+     -0.03816793893129766,
+     0.23417721518987344
+    ],
+    "diff_pp": -1.949420442571126,
+    "n": 279
+   },
+   "block_all": {
+    "interception_agentdojo": 0.9903846153846154,
+    "interception_exec": 1.0,
+    "exec_ci95": [
+     1.0,
+     1.0
+    ],
+    "diff_pp": 0.9615384615384581,
+    "n": 279
+   },
+   "spotlighting": {
+    "interception_agentdojo": 0.1923076923076923,
+    "interception_exec": 0.13013698630136983,
+    "exec_ci95": [
+     0.048192771084337394,
+     0.2230215827338129
+    ],
+    "diff_pp": -6.217070600632246,
+    "n": 279
+   },
+   "sandwich": {
+    "interception_agentdojo": 0.7115384615384616,
+    "interception_exec": 0.40410958904109584,
+    "exec_ci95": [
+     0.277027027027027,
+     0.5371900826446281
+    ],
+    "diff_pp": -30.742887249736572,
+    "n": 279
+   },
+   "tool_filter": {
+    "interception_agentdojo": 0.8365384615384616,
+    "interception_exec": 0.7671232876712328,
+    "exec_ci95": [
+     0.6214285714285714,
+     0.8968253968253969
+    ],
+    "diff_pp": -6.941517386722873,
+    "n": 279
+   },
+   "pi_detector": {
+    "interception_agentdojo": 0.8557692307692308,
+    "interception_exec": 0.8904109589041096,
+    "exec_ci95": [
+     0.7936507936507937,
+     0.9647058823529412
+    ],
+    "diff_pp": 3.4641728134878758,
+    "n": 279
+   },
+   "melon": {
+    "interception_agentdojo": 1.0,
+    "interception_exec": 0.8013698630136986,
+    "exec_ci95": [
+     0.6865671641791045,
+     0.9
+    ],
+    "diff_pp": -19.863013698630137,
+    "n": 279
+   },
+   "tripwire": {
+    "interception_agentdojo": 0.7019230769230769,
+    "interception_exec": 0.48630136986301364,
+    "exec_ci95": [
+     0.3545454545454545,
+     0.6241610738255033
+    ],
+    "diff_pp": -21.562170706006324,
+    "n": 279
+   },
+   "progent": {
+    "interception_agentdojo": 0.9423076923076923,
+    "interception_exec": 0.6917808219178082,
+    "exec_ci95": [
+     0.5522388059701493,
+     0.8188976377952756
+    ],
+    "diff_pp": -25.05268703898841,
+    "n": 279
+   },
+   "camel": {
+    "interception_agentdojo": 1.0,
+    "interception_exec": 1.0,
+    "exec_ci95": [
+     1.0,
+     1.0
+    ],
+    "diff_pp": 0.0,
+    "n": 279
+   },
+   "agentsentry": {
+    "interception_agentdojo": 0.7019230769230769,
+    "interception_exec": 0.595890410958904,
+    "exec_ci95": [
+     0.46715328467153283,
+     0.7191011235955056
+    ],
+    "diff_pp": -10.603266596417281,
+    "n": 279
+   }
+  },
+  "gpt-4.1-mini-2025-04-14": {
+   "amlp": {
+    "interception_agentdojo": 0.26086956521739135,
+    "interception_exec": 0.22988505747126442,
+    "exec_ci95": [
+     0.0993788819875776,
+     0.36931818181818177
+    ],
+    "diff_pp": -3.0984507746126932,
+    "n": 279
+   },
+   "block_all": {
+    "interception_agentdojo": 0.9565217391304348,
+    "interception_exec": 1.0,
+    "exec_ci95": [
+     1.0,
+     1.0
+    ],
+    "diff_pp": 4.347826086956519,
+    "n": 279
+   },
+   "spotlighting": {
+    "interception_agentdojo": -0.006211180124223503,
+    "interception_exec": 0.04022988505747127,
+    "exec_ci95": [
+     -0.01754385964912286,
+     0.10344827586206895
+    ],
+    "diff_pp": 4.644106518169478,
+    "n": 279
+   },
+   "sandwich": {
+    "interception_agentdojo": 0.2981366459627329,
+    "interception_exec": 0.1839080459770115,
+    "exec_ci95": [
+     0.03529411764705881,
+     0.3204419889502762
+    ],
+    "diff_pp": -11.422859998572143,
+    "n": 279
+   },
+   "tool_filter": {
+    "interception_agentdojo": 0.9006211180124224,
+    "interception_exec": 0.867816091954023,
+    "exec_ci95": [
+     0.7678571428571428,
+     0.9503105590062112
+    ],
+    "diff_pp": -3.280502605839941,
+    "n": 279
+   },
+   "pi_detector": {
+    "interception_agentdojo": 0.9503105590062112,
+    "interception_exec": 0.9252873563218391,
+    "exec_ci95": [
+     0.855,
+     0.9821428571428571
+    ],
+    "diff_pp": -2.502320268437208,
+    "n": 279
+   },
+   "melon": {
+    "interception_agentdojo": 0.9440993788819876,
+    "interception_exec": 0.9195402298850575,
+    "exec_ci95": [
+     0.8641975308641976,
+     0.9666666666666667
+    ],
+    "diff_pp": -2.4559148996930125,
+    "n": 279
+   },
+   "tripwire": {
+    "interception_agentdojo": 0.7142857142857143,
+    "interception_exec": 0.6666666666666667,
+    "exec_ci95": [
+     0.5508982035928144,
+     0.7808988764044944
+    ],
+    "diff_pp": -4.761904761904756,
+    "n": 279
+   },
+   "progent": {
+    "interception_agentdojo": 0.9192546583850931,
+    "interception_exec": 0.8275862068965517,
+    "exec_ci95": [
+     0.734375,
+     0.9127906976744186
+    ],
+    "diff_pp": -9.166845148854142,
+    "n": 279
+   },
+   "camel": {
+    "interception_agentdojo": 1.0,
+    "interception_exec": 1.0,
+    "exec_ci95": [
+     1.0,
+     1.0
+    ],
+    "diff_pp": 0.0,
+    "n": 279
+   },
+   "agentsentry": {
+    "interception_agentdojo": 0.7080745341614907,
+    "interception_exec": 0.7241379310344828,
+    "exec_ci95": [
+     0.611764705882353,
+     0.8269230769230769
+    ],
+    "diff_pp": 1.6063396872992075,
+    "n": 279
+   }
+  }
+ },
+ "rows_without_step_log": {}
+}
