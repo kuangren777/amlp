@@ -2,21 +2,25 @@
  "plan": "\u00a722.3",
  "agentsentry": {
   "util_ours": 94.83352468427096,
-  "util_published": 96.4,
+  "util_published": 69.1,
+  "blocked_ours": 89.24731182795699,
+  "blocked_published": 91.2,
   "n_seeds": 3,
   "n_benign": 871,
-  "gap_pp": 1.5664753157290505,
-  "within_10pp": true
+  "gap_pp": -25.73352468427096,
+  "within_10pp": false
  },
  "camel": {
   "util_none": 87.62886597938144,
   "util_camel": 53.608247422680414,
+  "util_nopolicy": 73.19587628865979,
+  "util_camel_L": 50.51546391752577,
   "n": 97,
   "model": "o4-mini-2025-04-16",
-  "published_none": 84.0,
-  "published_camel": 77.0,
-  "comparison": "indicative only (different model)",
+  "published_none": 79.4,
+  "published_camel": 76.3,
+  "comparison": "same model (o4-mini); authors' utility is their no-policy run",
   "drop_pp": 34.02061855670103,
-  "published_drop_pp": 7.0
+  "published_drop_pp": 3.1000000000000085
  }
 }

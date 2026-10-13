@@ -25,6 +25,10 @@ import m3_select as MS         # noqa: E402
 from rq12 import sel_entry, holdout_violations, SECURITY  # noqa: E402
 
 SEED, N_DEFAULT, K = 20261010, 100, 8
+# plan.md §22.10 (R2): CHAIN=alt coarsens the value level at the predicted tools first, then widens the tool layer
+ALT_CHAIN = [("exact", 0), ("email", 0), ("class", 0)] + [("class", r) for r in (1, 2, 4, 8, 1000)] + [("any", 1000)]
+CHAIN = ALT_CHAIN if os.environ.get("CHAIN") == "alt" else MS.CHAIN
+OUTNAME = "resplit_altchain.json" if os.environ.get("CHAIN") == "alt" else "resplit.json"
 EPS = (0.05, 0.10, 0.15)
 
 
@@ -84,16 +88,19 @@ def losses(pool, tasks, runs_of, H, pred, level, r):
     return out
 
 
+HARM = {}                                           # row_id -> harm index (plan.md §22.2), filled in main()
+
+
 def run_split(full, H, Cal, pred, viol):
     pool = Split(full, H)
     chain = []
-    for level, r in MS.CHAIN:
+    for level, r in CHAIN:
         L = losses(pool, Cal, full.ben, H, pred, level, r)
         chain.append({"level": level, "r": r, "mean_loss": sum(L) / len(L), "bound": MS.crc_bound(L), "n": len(L)})
     res = {"chain": chain}
     for eps in EPS:
         feas = [c for c in chain if c["bound"] <= eps]
-        lv, r = (feas[0]["level"], feas[0]["r"]) if feas else MS.CHAIN[-1]
+        lv, r = (feas[0]["level"], feas[0]["r"]) if feas else CHAIN[-1]
         hb = [o for t in H for o in full.ben[t]]
         fb_k = 0
         cache = {}
@@ -101,10 +108,13 @@ def run_split(full, H, Cal, pred, viol):
             cache[t] = ME.build(pool, *t, exclude_tasks=H, predictor=pred, r=r, level=lv)
             fb_k += sum(ME.first_block(cache[t], o["trace"]) is not None for o in full.ben[t])
         vh = [v for v in viol if (v["suite"], v["ut"]) in H]
-        fl = sum(ME.first_block(cache[(v["suite"], v["ut"])], v["trace"]) is not None for v in vh)
+        fbs = [ME.first_block(cache[(v["suite"], v["ut"])], v["trace"]) for v in vh]
+        fl = sum(f is not None for f in fbs)
+        flbh = sum(f is not None and (HARM[v["row_id"]] is None or f <= HARM[v["row_id"]]) for f, v in zip(fbs, vh))
         res[str(eps)] = {"feasible": bool(feas), "level": lv, "r": r, "keeps_value_layer": bool(feas) and lv != "any",
                          "holdout_fb": fb_k / len(hb), "holdout_fb_n": len(hb),
-                         "flag": fl / len(vh) if vh else None, "flag_n": len(vh)}
+                         "flag": fl / len(vh) if vh else None, "flag_before_harm": flbh / len(vh) if vh else None,
+                         "flag_n": len(vh)}
     return res
 
 
@@ -123,13 +133,17 @@ def main():
     F = folds()
     rng = np.random.default_rng(SEED)
     splits = [(C.HOLDOUT, C.SELECTION, C.CALIBRATION)] + [draw(rng, F) for _ in range(n)]
-    res = {"meta": {"seed": SEED, "n_splits": n, "k": K, "eps": EPS, "chain": MS.CHAIN, "plan": "§22.1 a703606e4"},
+    res = {"meta": {"seed": SEED, "n_splits": n, "k": K, "eps": EPS, "chain": CHAIN, "plan": "§22.1 a703606e4 / §22.10 c622c64c1"},
            "models": {}}
     for m in C.MODELS:
         e = sel_entry(m, MS.PRIMARY_EPS)
         pred = e["chosen"]["predictor"]
         full = pool_for(m)
         viol = holdout_violations(m) if m in SECURITY else []
+        import flag_before_harm as FB
+        gt = FB.ground_truth()
+        for v in viol:
+            HARM[v["row_id"]] = FB.harm_index([(c["f"], c["a"]) for c in v["trace"]], gt[(v["suite"], v["it"])])[0]
         orig = run_split(full, *splits[0][:1], splits[0][2], pred, viol)
         rows = []
         for i, (H, _, Cal) in enumerate(splits[1:], 1):
@@ -147,12 +161,17 @@ def main():
                 "fb_mean_kept": float(np.mean([x["holdout_fb"] for x in kept])) if kept else None,
                 "flag_mean_kept": float(np.mean([x["flag"] for x in kept if x["flag"] is not None])) if any(
                     x["flag"] is not None for x in kept) else None,
+                "flag_bh_mean_kept": float(np.mean([x["flag_before_harm"] for x in kept if x["flag_before_harm"] is not None])) if any(
+                    x["flag_before_harm"] is not None for x in kept) else None,
+                "flag_range_kept": [float(min(x["flag"] for x in kept if x["flag"] is not None)), float(max(x["flag"] for x in kept if x["flag"] is not None))] if any(
+                    x["flag"] is not None for x in kept) else None,
+                "fb_range_kept": [float(min(x["holdout_fb"] for x in kept)), float(max(x["holdout_fb"] for x in kept))] if kept else None,
                 "flag_mean_dropped": float(np.mean([x[str(eps)]["flag"] for x in rows if not x[str(eps)]["keeps_value_layer"]
                                                      and x[str(eps)]["flag"] is not None])) if m in SECURITY else None}
         res["models"][m] = {"predictor": pred, "original_split": orig, "published_chosen": e["chosen"],
                             "summary": summ, "diagnostic_run_source": diagnostic(full, pred), "splits": rows}
         print(m, json.dumps({k: (v["kept"], v["n"]) for k, v in summ.items()}), flush=True)
-    json.dump(res, open(f"{ROOT}/data/analysis_out/resplit.json", "w"), indent=1)
+    json.dump(res, open(f"{ROOT}/data/analysis_out/{OUTNAME}", "w"), indent=1)
 
 
 if __name__ == "__main__":

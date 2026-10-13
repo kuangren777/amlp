@@ -55,6 +55,8 @@ def harm_index(calls, gt):
 def replay(gt):
     res, modes = {}, collections.Counter()
     tot = collections.defaultdict(lambda: [0, 0, 0])            # policy -> [n, flagged, flagged_before_harm]
+    tot27 = collections.defaultdict(lambda: [0, 0, 0])          # same on the 27 pilot-untouched tasks
+    import holdout_set as HS
     for m in SECURITY:
         e = sel_entry(m, MS.PRIMARY_EPS)
         pred, k = e["chosen"]["predictor"], e["k"]
@@ -76,17 +78,20 @@ def replay(gt):
                             "predicted_tools_only": SP.variant("M1b-pred", novel, *t, pred)}
             fbs = {p: ME.first_block(env, v["trace"]) for p, env in cache[t].items()}
             for p, fb in fbs.items():
-                x = tot[p]
-                x[0] += 1; x[1] += fb is not None; x[2] += fb is not None and (h is None or fb <= h)
+                for T in ((tot, tot27) if t in HS.CLEAN else (tot,)):
+                    x = T[p]
+                    x[0] += 1; x[1] += fb is not None; x[2] += fb is not None and (h is None or fb <= h)
             j = judge.get((v["row_id"], "progent"))
             if j is not None:
                 st = steps.get(v["row_id"], [])
                 hs, _ = harm_index([(s["function"], s["args"]) for s in st], gt[key])
                 fb = j["first_block"]
-                x = tot["progent"]
-                x[0] += 1; x[1] += fb is not None; x[2] += fb is not None and (hs is None or fb <= hs)
+                for T in ((tot, tot27) if t in HS.CLEAN else (tot,)):
+                    x = T["progent"]
+                    x[0] += 1; x[1] += fb is not None; x[2] += fb is not None and (hs is None or fb <= hs)
     for p, (n, f, fbh) in tot.items():
         res[p] = {"n": n, "flag": f / n, "flag_before_harm": fbh / n, "diff_pp": 100 * (f - fbh) / n}
+    res["clean27"] = {p: {"n": n, "flag": f / n, "flag_before_harm": fbh / n} for p, (n, f, fbh) in tot27.items()}
     return res, dict(modes)
 
 
@@ -127,7 +132,11 @@ def online_exec(gt):
 def main():
     gt = ground_truth()
     rp, modes = replay(gt)
-    on, miss = online_exec(gt)
+    if "--replay-only" in sys.argv:                 # keep the frozen online block (plan.md §22.6)
+        old = json.load(open(f"{ROOT}/data/analysis_out/flag_before_harm.json"))
+        on, miss = old["online"], old["rows_without_step_log"]
+    else:
+        on, miss = online_exec(gt)
     res = {"plan": "§22.2 a703606e4 / §22.5 23767e221", "harm_index_modes": modes, "replay": rp,
            "online": on, "rows_without_step_log": miss}
     json.dump(res, open(f"{ROOT}/data/analysis_out/flag_before_harm.json", "w"), indent=1)

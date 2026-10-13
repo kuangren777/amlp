@@ -13,7 +13,6 @@ import os
 import sys
 
 D = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ROOT = os.path.dirname(D)   # release root (code/ and data/ are siblings)
 sys.path.insert(0, f"{D}/analysis")
 import seen_novel as S                        # noqa: E402
 from seen_novel import C, ME, MS, SIDE, EB, sel_entry, holdout_benign, holdout_violations, SECURITY  # noqa: E402
@@ -42,6 +41,7 @@ VARS = ("M1a-pure", "M1a-req", "M1b-pure", "M1b-pred")
 
 def main():
     tot = collections.defaultdict(lambda: [0, 0])
+    pm = collections.defaultdict(lambda: [0, 0])               # (model, variant, setting, kind) -> [blocked, n]
     blk = collections.defaultdict(lambda: collections.defaultdict(list))
     for m in C.MODELS:
         e = sel_entry(m, MS.PRIMARY_EPS)
@@ -63,6 +63,8 @@ def main():
                 bs = ME.first_block(variant(v, seen, *t, pred), run["trace"]) is not None
                 tot[(v, "novel", kind)][0] += bn; tot[(v, "novel", kind)][1] += 1
                 tot[(v, "seen", kind)][0] += bs; tot[(v, "seen", kind)][1] += 1
+                pm[(m, v, "novel", kind)][0] += bn; pm[(m, v, "novel", kind)][1] += 1
+                pm[(m, v, "seen", kind)][0] += bs; pm[(m, v, "seen", kind)][1] += 1
                 blk[f"{v}_{kind}"][t].append(int(bn) - int(bs) if kind == "fb" else int(bs) - int(bn))
         for b in ben:
             judge("fb", b, [r for r in own[(b["suite"], b["ut"])] if r["rep"] != b["rep"]])
@@ -73,6 +75,10 @@ def main():
     for k, vals in blk.items():
         p, lo, hi = C.cluster_bootstrap(vals)
         res["delta"][k] = {"point": p, "ci95": [lo, hi]}
+    res["per_model"] = collections.defaultdict(dict)          # cold read 95d6ba9 H2: per-model support of the pooled gaps
+    for (mm, v, st, kind), x in pm.items():
+        res["per_model"][mm][f"{v}_{st}_{kind}"] = x[0] / x[1]
+    res["per_model"] = dict(res["per_model"])
     res["H_gap_descriptive"] = {v: res["delta"][f"{v}_fb"]["point"] >= 0.05 and res["delta"][f"{v}_fb"]["ci95"][0] > 0 for v in VARS}
     json.dump(res, open(f"{S.OUT}/seen_novel_pure.json", "w"), indent=1)
     print(json.dumps({"pooled": {k: round(100 * v, 1) for k, v in res["pooled"].items()},

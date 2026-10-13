@@ -561,3 +561,132 @@ An analysis with no row here is not run. There are none: every §22 output maps 
 - **22.2 Replay.** Calibrated AMLP 28.4 → 19.6 and mined tools only 34.6 → 22.0 exceed 5 points, so the headline flags (\RecAMLP, \RecProgent) count flags before harm. The pre-registered hypothesis tests and the RQ2 split keep plain flags as registered. Progent moves 0.9 points.
 - **22.2 Online. Deviation:** the pre-registered oracle's name-only fallback matched legitimate user-task calls and is invalid. Ruling ra-01 #1747 ①: the main text uses the value-match execution oracle (`analysis/exec_oracle.py`, rq34 `ATTACK_ORACLE=exec`). AgentDojo-oracle outputs are kept as `analysis/out/<set>/rq34_agentdojo.json` and `per_suite_agentdojo.json` and reported in the appendix with the defect. For AMLP and Progent the oracles differ by at most 3.9 points. Benign costs are unchanged.
 - **22.3.** Agent-Sentry benign utility is 94.8 against the published 96.4 (within 10). CaMeL's benign drop is 34.0 points on o4-mini against the authors' 7 (indicative only). Both are added to the appendix rows.
+
+### 22.7 Erratum to 22.3 (af4, 2026-10-10 SGT, found while fixing cold read 49cd6f5)
+The first benign-side fidelity check compared our Agent-Sentry replay's benign utility (94.8%) against 96.4%. That is the XGBoost headline on Agent-Sentry Bench, a different dataset. The setting our blocked-share replay reproduces is the published 5-fold cross-validation on AgentDojo plus AgentDyn (arXiv 2603.22868 Tab. 6): utility 69.1%, attack block rate 91.2%. Against that setting our replay blocks 89.2% (published 91.2%) and keeps 94.8% of benign runs (published 69.1%), a 25.7-point gap.
+
+The §22.3 prediction "within 10 points" therefore fails. By af-man's debate ruling #1982 the post-hoc 10-point criterion is dropped entirely, and the paper reports the four numbers without a pass/fail verdict.
+
+### 22.8 Erratum to 22.3 and 22.6: CaMeL comparator (af4, 2026-10-11 SGT)
+§22.3 and §22.6 compared our CaMeL benign drop on o4-mini (34.0 points) against the authors' o3 headline (84 → 77, 7 points) and called it indicative because the models differ. That comparator was wrong. The authors report o4-mini directly (arXiv 2503.18813 Tab. 2): native 79.4% and CaMeL 76.3%.
+
+The same-model comparison:
+- Our CaMeL without security policies keeps 73.2% (`fidelity_camel_nosecpol.jsonl`), 3.1 points below their CaMeL in absolute utility.
+- Our CaMeL with policies enforced online keeps 53.6%.
+- Our undefended agent keeps 87.6%, against their native 79.4%.
+
+Relative to each side's undefended agent, our no-policy drop is 14.4 points against their 3.1. So "planner matches within 3.1" holds only in absolute utility. The relative drop is larger in our harness, and that remaining difference is not explained by the policy protocol.
+
+### 22.9 Benign utility under refusal: lower and upper bounds for every refusing defense (af4, 2026-10-11 SGT; post-hoc, triggered by af-man #2095/#2103/#2110 after the CaMeL same-model check showed that defenses count refusals differently; NOT part of the original pre-registration; written and committed BEFORE computing)
+
+Trigger: refusal semantics differ by defense (code read in af4 #2120).
+- AMLP, block-all, Progent, TripWire and Agent-Sentry return an error and let the agent continue.
+- The PI detector replaces the tool output and continues.
+- MELON stops the run.
+- CaMeL ends the run on a policy denial.
+
+Reporting their benign utilities in one column mixes two scales.
+
+Definitions. Per arm, model and benign holdout run (the paired benign runs of `rq34.paired_benign`; same tasks, reps and denominators as Table 5):
+- **M**: the measured utility, with native semantics (as now).
+- **L** (no recovery, no consent): a run in which the defense refused or intervened at least once counts as failed. Intervention evidence, from logs only:
+  - AMLP and block-all: a non-empty `amlp_flags` entry with blocked true.
+  - Progent, TripWire and Agent-Sentry: a step with an error that is not "Invalid tool".
+  - PI detector: a step output replaced by the detector message.
+  - MELON: its stop message.
+  - CaMeL: `camel_denied`.
+- **U** (every refusal approved):
+  - Call-level defenses and MELON: a run with an intervention takes the paired undefended run's utility on the same (suite, ut, rep). A run without an intervention keeps M. This is an estimate under the assumption that the agent would then behave like the undefended agent.
+  - CaMeL: U is measured directly by new runs of CaMeL without security policies (`camel_run.run_row(..., secpol=False)`) on gpt-4o-mini and gpt-4.1-mini, holdout part c, 3 reps (288 runs, hub, no GPU). This asymmetry is stated in every caption and sentence that uses an interval.
+- Benign cost is reported as an interval [cost(U), cost(L)] around cost(M), with the same task-cluster bootstrap for each end. Text comparisons switch to "between L and U". No separate headline point.
+
+Predictions (written before computing):
+- (a) The largest L−M gap is Progent. Its replay false-block rate is 18.5% while its online cost is about 0, so recovery after refusal is common. Gap 10–20 points.
+- (b) AMLP L−M ≤ 3 points. Its replay false-block rate on benign runs is 0.0%, so online refusals on benign runs are rare.
+- (c) TripWire and Agent-Sentry L−M 2–8 points, detector ≤ 5, block-all ≤ 5 (its refused tasks mostly fail anyway).
+- (d) MELON and CaMeL: L = M by definition.
+- (e) CaMeL U on gpt-4o-mini and gpt-4.1-mini: 55–65% benign utility, against M of 28.5–42.4%.
+- (f) Fidelity check on o4-mini: the authors' 76.3% lies OUTSIDE our CaMeL interval [53.6, 73.2], 3.1 points above U. Reported either way; if outside, the remaining difference is the harness-level gap of 22.8.
+
+Outputs: `analysis/refusal_bounds.py` → `analysis/out/<set>/refusal_bounds.json`, `analysis/run_camel_nosecpol.py` → `data/m3/online_<model>__camel_nosecpol.jsonl`.
+
+### 22.10 Chain order and tool breadth (af4, 2026-10-11 SGT; post-hoc, triggered by the codex round 1 verdicts R2 and C8 in review/codex_rounds.md; NOT part of the original pre-registration; written and committed BEFORE computing)
+
+**R2, alternative chain order.** Λ' coarsens the value level at the predicted tools first and widens the tool layer afterwards:
+
+(exact,0) → (email,0) → (class,0) → (class,1) → (class,2) → (class,4) → (class,8) → (class,all) → (any,all).
+
+- Every element allows every call of the previous one, so Λ' is nested like Λ.
+- Run it on the same 100 splits, seed and predictor as §22.1, at ε = 0.10.
+- Report per model: the kept share (λ̂ ≠ any) and the false-block and flag rate at λ̂.
+- Prediction: the kept share changes by less than 15 points for every security model. Value refusals dominate the calibration loss (96.6% of class-level blocks are value refusals), so the order of the two moves matters little.
+- Claim it can change, with threshold:
+  - main.tex Method, "We fixed this order before calibration. Every calibration result depends on it." and RQ2's re-split sentence.
+  - If any security model's kept share moves by ≥ 15 points, the text gives both kept shares and states the order dependence quantitatively.
+  - Otherwise one sentence states that Λ' gives kept shares within 15 points.
+
+**C8, tool breadth in kept splits.** Descriptive only: from `resplit.json`, split the kept splits at ε = 0.10 by λ̂'s r (r ≤ 4 against r ≥ 8 or all) and report the false-block and flag rate in each group.
+- Claim it can change: rq1.tex, "Most of these splits select the exact level with few mined tasks in the tool layer ...". That sentence gets the group shares and rates.
+- If the narrow-r group does not have the higher flag rate, the sentence is rewritten to drop the mechanism.
+
+Outputs: `analysis/resplit.py` with `CHAIN=alt`, writing `analysis/out/resplit_altchain.json`; `analysis/resplit_breadth.py`, writing `analysis/out/resplit_breadth.json`.
+
+### 22.11 Praetor close replication on ASB and MELON outcome fidelity (af4, 2026-10-11 SGT; post-hoc, triggered by the codex round 1 verdicts R1 and C15; approved by af-man #2827; written and committed BEFORE any run)
+
+**P, close replication of Praetor's seen setting.**
+- **Workload:** ASB (local `research/ISSTA26/ASB`, ICLR 2025), one agent persona, `financial_analyst_agent`: its 5 tasks and its 2 normal tools from `data/all_normal_tools.jsonl`. Tools are simulated as in ASB and return their "Expected Achievements" text.
+- **Deviation, stated up front:** we do not run ASB's aios framework. A minimal OpenAI tool-calling loop on the hub drives gpt-4o-mini at temperature 1.0 with ASB's agent description, tools and task text, max 10 steps. Praetor names neither its driver LLM nor its code, so no closer match is possible.
+- **Runs:** 500 benign runs, 100 per task. Praetor's split is 400/100 traces within one persona: a random 400/100 split stratified by task, seed 20261011.
+- **Measure:** our automaton (`analysis/seen_novel.py` PDFA, w=3, θ=3, ε=0.05, bge-m3) is mined on the 400. The benign failure rate is the share of the 100 held-out traces it blocks.
+- **Prediction (af-man):** 2–8%. Reference: Praetor reports 2.0%.
+- **Rule:**
+  - ≤ 8%: the Discussion states that our re-implementation reproduces a low benign failure rate in Praetor's seen setting, so the 35.0% seen rate of RQ1 reflects our workload.
+  - > 15%: the Discussion states that the fidelity gap is real and gives the number.
+  - In between: both numbers, no verdict.
+  - The result enters the fidelity paragraph of the Discussion either way.
+
+**M, MELON outcome fidelity.**
+- **Setup:** upstream MELON (github.com/kaijiezhu11/MELON, pinned commit recorded) with only the embedding endpoint swapped for bge-m3 on the hub (the same forced change as `paper-tripwire/melon_port.py`), against our port.
+- **Runs:** 24 holdout tasks (the first 6 per suite in sorted order) × gpt-4o-mini × {benign, one injection task}, rep 0, both pipelines (96 runs).
+- **Report:** the paired differences in benign utility and attack success rate, with task-cluster bootstrap intervals.
+- **Prediction:** both differences < 5 points.
+- **Rule:**
+  - Both < 5 points: the appendix MELON row cites the paired differences instead of the line-by-line assertion.
+  - Otherwise: the row states the gap.
+
+**Outputs:** `analysis/praetor_asb.py` → `analysis/out/praetor_asb.json`; `analysis/melon_fidelity.py` → `analysis/out/melon_fidelity.json`.
+
+### 22.12 CaMeL policy increment interval (af4, 2026-10-11 ~19:45 SGT; post-hoc, triggered by codex round 2 C3; descriptive only; written and committed BEFORE computing)
+
+- **Quantity:** per model (gpt-4o-mini, gpt-4.1-mini) and per task set (all48, clean27), the paired difference in benign utility between CaMeL without its policies and CaMeL with its policies online, i.e. cost_M − cost_U of `refusal_bounds.py`, on the runs where both arms exist.
+- **Interval:** the same task-cluster bootstrap as every other cost (`m3_common.cluster_bootstrap`).
+- **Use:** descriptive only. The text reports the point estimate with its interval and calls it the cost added by online policy enforcement. No test, no conclusion beyond the sign agreement rule of Setup.
+- **Prediction:** gpt-4.1-mini interval above zero on all48. gpt-4o-mini interval contains zero on clean27.
+
+## 23. A1: CRC selection rule against simpler calibration rules (af2 as af4 substitute, 2026-10-12 ~18:00 SGT; af-man #3802 approved review/EXP_SPECS_20261012.md A1; written and committed BEFORE computing)
+
+Trigger: codex R2 asks whether the CRC bound adds anything over plain empirical calibration. Offline, $0, no GPU.
+
+- Splits, pool, predictor and chain exactly as §22.1 (`analysis/resplit.py`: 100 re-splits, seed 20261010, split 0 = original, `m3_select.CHAIN`, each model's originally selected predictor).
+- Rules, each picking one chain element per split and model at ε in {0.05, 0.10, 0.15}:
+  - (i) CRC: first element with `crc_bound` on the calibration fold ≤ ε (current rule; end of chain if none).
+  - (ii) empirical: first element with mean calibration loss ≤ ε (end of chain if none).
+  - (iii) fixed: (exact, r = all), no calibration.
+  - (iv) seen-task tuning: first element with mean loss ≤ ε over selection ∪ calibration tasks of the split (all non-holdout tasks, leave-task-out envelope as for calibration).
+- Outputs per rule, model and ε: share of splits that keep the value layer (Wilson 95%); mean holdout false-block rate; share of splits whose holdout false-block rate exceeds ε (target violation); mean flag rate on holdout violations (§22.1 (d) overlap, n reported). Split 0 reported separately.
+- Predictions (ε = 0.10): (ii) keeps the value layer more often than (i) on every model except Llama, and its holdout false-block exceeds ε in a minority (< 50%) of splits but more often than (i); (iii) exceeds ε on Llama-3.1-8B in ≥ 90% of splits; (iv) behaves like (ii). The CRC rule's value is fewer target violations, not lower cost.
+- Use in the paper: one comparison sentence plus an appendix table; the rule that is reported does not change. If (i) violates ε as often as (ii), the paper says the bound adds no observed protection on this data. Output `analysis/calib_rules.py` → `analysis/out/calib_rules.json`.
+
+### 23.1 Results (af2, 2026-10-12 ~18:55 SGT; analysis/out/calib_rules.json)
+Reproduction: split 0 CRC picks (any, all) for all four models as published; CRC kept counts over 100 re-splits equal §22.6 (37/0/55/85).
+ε = 0.10, kept value layer / splits with holdout false-block > ε / mean holdout FB / mean flag on holdout violations:
+
+| model | (i) CRC | (ii) empirical | (iii) fixed exact r=all | (iv) seen-task |
+|---|---|---|---|---|
+| Qwen3-8B | 37 / 14 / 3.5 / 54.1 | 81 / 41 / 8.0 / 80.7 | 100 / 18 / 7.2 / 85.9 | 86 / 39 / 8.1 / 82.0 |
+| Llama-3.1-8B | 0 / 0 / 0.9 / – | 0 / 0 / 0.9 / – | 100 / 100 / 26.2 / – | 0 / 0 / 0.9 / – |
+| gpt-4o-mini | 55 / 22 / 5.0 / 60.2 | 82 / 38 / 7.9 / 81.5 | 100 / 17 / 6.1 / 79.2 | 93 / 42 / 8.3 / 88.4 |
+| gpt-4.1-mini | 85 / 5 / 4.3 / 85.4 | 100 / 5 / 5.0 / 96.4 | 100 / 1 / 1.9 / 79.2 | 100 / 5 / 5.3 / 97.4 |
+
+Prediction check: (ii) keeps the value layer more often than (i) on every model except Llama — HOLDS. (ii) exceeds ε in a minority of splits but more often than (i) — HOLDS on Qwen (41 vs 14) and gpt-4o-mini (38 vs 22), TIES on gpt-4.1-mini (5 vs 5). (iii) exceeds ε on Llama in ≥ 90% — HOLDS (100/100). (iv) behaves like (ii) — HOLDS. Not predicted: (iii) violates ε about as often as (i) on Qwen (18 vs 14) and less often on gpt-4o-mini (17 vs 22), yet it fails Llama in every split.
+Reading: the CRC rule trades value-layer retention and flag rate for fewer target violations on two of three security models; it does not remove violations (14–22% of splits on Qwen and gpt-4o-mini). Paper use per §23 awaits af-man ruling (AMLP frozen at 95d6ba9).

@@ -48,28 +48,33 @@ def main():
                 tw["amlp_stops_of_those"] += 1 - aa[k]
     out["tripwire_missed"] = dict(tw)
     json.dump(out, open(f"{HS.OUT}/per_suite.json", "w"), indent=1)
-    if not HS.PRIMARY:                                          # the paper figure shows the primary set only
+    if HS.NAME != "all48":                                      # the paper figure shows the pre-registered 48-task set (plan §21)
         return
 
+    o27 = json.load(open(f"{ROOT}/data/analysis_out/clean27/per_suite.json"))      # 27 untouched tasks, in parentheses
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     order = ["amlp", "progent", "agentsentry", "camel", "melon", "tripwire", "tool_filter", "sandwich", "spotlighting",
              "pi_detector", "block_all"]
-    names = {"amlp": "AMLP (ours)", "progent": "Progent", "agentsentry": "Agent-Sentry", "camel": "CaMeL", "melon": "MELON",
+    names = {"amlp": "calibrated allowlist (ours)", "progent": "Progent", "agentsentry": "Agent-Sentry", "camel": "CaMeL", "melon": "MELON",
              "tripwire": "TripWire", "tool_filter": "tool filter", "sandwich": "sandwich", "spotlighting": "spotlighting",
              "pi_detector": "PI detector", "block_all": "block-all"}
     fig, axes = plt.subplots(1, 2, figsize=(7.0, 3.4))
     for ax, key, title, cmap, vmin, vmax in ((axes[0], "block", "interception (%) ↑", "Greens", 0, 100),
                                               (axes[1], "cost", "benign cost (pp) ↓", "Reds", -10, 50)):
         M = [[100 * out[key][a].get(s, float("nan")) for s in SUITES] for a in order]
+        M27 = [[100 * o27[key].get(a, {}).get(s, float("nan")) for s in SUITES] for a in order]
         im = ax.imshow(M, cmap=cmap, vmin=vmin, vmax=vmax, aspect="auto")
         ax.set_xticks(range(len(SUITES))); ax.set_xticklabels(SUITES, fontsize=7)
         ax.set_yticks(range(len(order))); ax.set_yticklabels([names[a] for a in order], fontsize=7)
         for i, row in enumerate(M):
             for j, v in enumerate(row):
                 if v == v:
-                    ax.text(j, i, f"{v:.0f}", ha="center", va="center", fontsize=6)
+                    w = M27[i][j]
+                    fmt = lambda z: f"{round(z) + 0:.0f}"            # no "-0" (cold read 95d6ba9 L5)
+                    lab = fmt(v) + (f" ({fmt(w)})" if w == w and round(w) != round(v) else "")
+                    ax.text(j, i, lab, ha="center", va="center", fontsize=5)
         ax.set_title(title, fontsize=8)
     fig.tight_layout()
     fig.savefig(f"{ROOT}/outputs/figs/rq3_per_suite.pdf", bbox_inches="tight")

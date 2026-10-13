@@ -1,0 +1,500 @@
+{"task": 0, "rep": 7, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 5, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 3, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 1, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 4, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 0, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 8, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 10, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 11, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 2, "trace": [], "err": null}
+{"task": 0, "rep": 12, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 6, "trace": [], "err": null}
+{"task": 0, "rep": 13, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 14, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 9, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 16, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 15, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 17, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 18, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 19, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 20, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 21, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 25, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 24, "trace": [], "err": null}
+{"task": 0, "rep": 26, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 23, "trace": [], "err": null}
+{"task": 0, "rep": 29, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 28, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 30, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 31, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 27, "trace": [], "err": null}
+{"task": 0, "rep": 32, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 33, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 36, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 39, "trace": [], "err": null}
+{"task": 0, "rep": 22, "trace": [], "err": null}
+{"task": 0, "rep": 35, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 37, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 40, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 34, "trace": [], "err": null}
+{"task": 0, "rep": 42, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 44, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 38, "trace": [], "err": null}
+{"task": 0, "rep": 45, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 43, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 47, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 41, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 51, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 50, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 48, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 46, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 49, "trace": [], "err": null}
+{"task": 0, "rep": 53, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 52, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 54, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 58, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 55, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 57, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 56, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 60, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 63, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 62, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 59, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 61, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 64, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 66, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 67, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 68, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 65, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 71, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 70, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 69, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 72, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 73, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 75, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 79, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 77, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 74, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 76, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 78, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 81, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 82, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 80, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 84, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 85, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 83, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 88, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 86, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 87, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 89, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 91, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 90, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 0, "rep": 92, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 94, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 96, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 93, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 95, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 99, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 1, "trace": [], "err": null}
+{"task": 0, "rep": 98, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 1, "rep": 0, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 0, "rep": 97, "trace": [], "err": null}
+{"task": 1, "rep": 6, "trace": [], "err": null}
+{"task": 1, "rep": 2, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 1, "rep": 4, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 3, "trace": [], "err": null}
+{"task": 1, "rep": 5, "trace": [], "err": null}
+{"task": 1, "rep": 7, "trace": [], "err": null}
+{"task": 1, "rep": 9, "trace": [], "err": null}
+{"task": 1, "rep": 14, "trace": [], "err": null}
+{"task": 1, "rep": 11, "trace": [], "err": null}
+{"task": 1, "rep": 8, "trace": [], "err": null}
+{"task": 1, "rep": 10, "trace": [], "err": null}
+{"task": 1, "rep": 15, "trace": [], "err": null}
+{"task": 1, "rep": 16, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 13, "trace": [], "err": null}
+{"task": 1, "rep": 12, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 1, "rep": 17, "trace": [], "err": null}
+{"task": 1, "rep": 19, "trace": [], "err": null}
+{"task": 1, "rep": 20, "trace": [], "err": null}
+{"task": 1, "rep": 25, "trace": [], "err": null}
+{"task": 1, "rep": 22, "trace": [], "err": null}
+{"task": 1, "rep": 24, "trace": [], "err": null}
+{"task": 1, "rep": 21, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 23, "trace": [], "err": null}
+{"task": 1, "rep": 27, "trace": [], "err": null}
+{"task": 1, "rep": 26, "trace": [], "err": null}
+{"task": 1, "rep": 18, "trace": [], "err": null}
+{"task": 1, "rep": 32, "trace": [], "err": null}
+{"task": 1, "rep": 34, "trace": [], "err": null}
+{"task": 1, "rep": 30, "trace": [], "err": null}
+{"task": 1, "rep": 33, "trace": [], "err": null}
+{"task": 1, "rep": 28, "trace": [], "err": null}
+{"task": 1, "rep": 35, "trace": [], "err": null}
+{"task": 1, "rep": 36, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 29, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 37, "trace": [], "err": null}
+{"task": 1, "rep": 31, "trace": [], "err": null}
+{"task": 1, "rep": 39, "trace": [], "err": null}
+{"task": 1, "rep": 38, "trace": [], "err": null}
+{"task": 1, "rep": 41, "trace": [], "err": null}
+{"task": 1, "rep": 42, "trace": [], "err": null}
+{"task": 1, "rep": 43, "trace": [], "err": null}
+{"task": 1, "rep": 40, "trace": [], "err": null}
+{"task": 1, "rep": 47, "trace": [], "err": null}
+{"task": 1, "rep": 49, "trace": [], "err": null}
+{"task": 1, "rep": 44, "trace": [], "err": null}
+{"task": 1, "rep": 50, "trace": [], "err": null}
+{"task": 1, "rep": 45, "trace": [], "err": null}
+{"task": 1, "rep": 46, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 51, "trace": [], "err": null}
+{"task": 1, "rep": 48, "trace": [], "err": null}
+{"task": 1, "rep": 56, "trace": [], "err": null}
+{"task": 1, "rep": 52, "trace": [], "err": null}
+{"task": 1, "rep": 57, "trace": [], "err": null}
+{"task": 1, "rep": 54, "trace": [], "err": null}
+{"task": 1, "rep": 53, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 60, "trace": [], "err": null}
+{"task": 1, "rep": 61, "trace": [], "err": null}
+{"task": 1, "rep": 55, "trace": [], "err": null}
+{"task": 1, "rep": 59, "trace": [], "err": null}
+{"task": 1, "rep": 62, "trace": [], "err": null}
+{"task": 1, "rep": 64, "trace": [], "err": null}
+{"task": 1, "rep": 65, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 58, "trace": [], "err": null}
+{"task": 1, "rep": 69, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 68, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 66, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 70, "trace": [], "err": null}
+{"task": 1, "rep": 67, "trace": [], "err": null}
+{"task": 1, "rep": 63, "trace": [], "err": null}
+{"task": 1, "rep": 74, "trace": [], "err": null}
+{"task": 1, "rep": 71, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 73, "trace": [], "err": null}
+{"task": 1, "rep": 77, "trace": [], "err": null}
+{"task": 1, "rep": 76, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 72, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 78, "trace": [], "err": null}
+{"task": 1, "rep": 81, "trace": [], "err": null}
+{"task": 1, "rep": 79, "trace": [], "err": null}
+{"task": 1, "rep": 80, "trace": [], "err": null}
+{"task": 1, "rep": 75, "trace": [], "err": null}
+{"task": 1, "rep": 82, "trace": [], "err": null}
+{"task": 1, "rep": 83, "trace": [], "err": null}
+{"task": 1, "rep": 84, "trace": [], "err": null}
+{"task": 1, "rep": 86, "trace": [], "err": null}
+{"task": 1, "rep": 90, "trace": [], "err": null}
+{"task": 1, "rep": 88, "trace": [], "err": null}
+{"task": 1, "rep": 85, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 89, "trace": [], "err": null}
+{"task": 1, "rep": 93, "trace": [], "err": null}
+{"task": 1, "rep": 91, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 1, "rep": 96, "trace": [], "err": null}
+{"task": 1, "rep": 95, "trace": [], "err": null}
+{"task": 1, "rep": 92, "trace": [], "err": null}
+{"task": 2, "rep": 0, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 1, "rep": 98, "trace": [], "err": null}
+{"task": 1, "rep": 99, "trace": [], "err": null}
+{"task": 1, "rep": 94, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 1, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 1, "rep": 87, "trace": [], "err": null}
+{"task": 2, "rep": 2, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 3, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 4, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 1, "rep": 97, "trace": [], "err": null}
+{"task": 2, "rep": 7, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 8, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 9, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 11, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 10, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 6, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 5, "trace": [], "err": null}
+{"task": 2, "rep": 12, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 13, "trace": [], "err": null}
+{"task": 2, "rep": 17, "trace": [], "err": null}
+{"task": 2, "rep": 14, "trace": [{"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 19, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 20, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 18, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 15, "trace": [], "err": null}
+{"task": 2, "rep": 16, "trace": [], "err": null}
+{"task": 2, "rep": 21, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 22, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 24, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 25, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 23, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 26, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 27, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 28, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 29, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 30, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 31, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 33, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 36, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 32, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 34, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 38, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 35, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 41, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 39, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 42, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 43, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 37, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 40, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 45, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 47, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 48, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 44, "trace": [], "err": null}
+{"task": 2, "rep": 46, "trace": [{"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 49, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 51, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 50, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 57, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 56, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 53, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 54, "trace": [{"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 52, "trace": [], "err": null}
+{"task": 2, "rep": 58, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 55, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 59, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 61, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 60, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 62, "trace": [{"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 64, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 63, "trace": [], "err": null}
+{"task": 2, "rep": 65, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 66, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 67, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 68, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 69, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 70, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 71, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 75, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 74, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 73, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 77, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 72, "trace": [], "err": null}
+{"task": 2, "rep": 78, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 79, "trace": [{"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 81, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 76, "trace": [], "err": null}
+{"task": 2, "rep": 80, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 82, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 84, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 83, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 88, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 85, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 86, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 87, "trace": [{"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 91, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 90, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 89, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 2, "rep": 92, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 94, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 93, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 97, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 96, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 95, "trace": [{"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 98, "trace": [{"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 2, "rep": 99, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 0, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 2, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 4, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 1, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 3, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 6, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 5, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 7, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 9, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 10, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 8, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 12, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 11, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 15, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 14, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 13, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 16, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 19, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 17, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 18, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 21, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 23, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 22, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 20, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 24, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 27, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 28, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 25, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 30, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 26, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 31, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 29, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 32, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 33, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 34, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 35, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 38, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 36, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 37, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 39, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 40, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 41, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 44, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 42, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 46, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 43, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 45, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 47, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 49, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 48, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 51, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 50, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 53, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 52, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 54, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 55, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 56, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 3, "rep": 57, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 58, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 60, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 61, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 62, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 59, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 63, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 64, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 65, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 68, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 67, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 66, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 71, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 69, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 70, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 73, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 75, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 74, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 72, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 76, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 77, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 78, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 79, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 80, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 83, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 82, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 85, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 81, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 87, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 86, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 84, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 89, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 88, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 90, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 92, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 91, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 94, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 93, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 95, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 97, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 96, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 98, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 3, "rep": 99, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 1, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 0, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 2, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 3, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 5, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 6, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 11, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 4, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 8, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 10, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 7, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 14, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 9, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 12, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 13, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 15, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 20, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 16, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 19, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 18, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 22, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 23, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 26, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 21, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 17, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 25, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 27, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 24, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 28, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 30, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 31, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 29, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 33, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 34, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 35, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 32, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 40, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 37, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 38, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 36, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 39, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 41, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 42, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 43, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 46, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 44, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 47, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 48, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 49, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 45, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 50, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 51, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 52, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 53, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 56, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 54, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 58, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 55, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 57, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 59, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 60, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 63, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 62, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 65, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 61, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 66, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 67, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 68, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 64, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 69, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 71, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 72, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 73, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 74, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 77, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 70, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 76, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 75, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 78, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 81, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 79, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 84, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 82, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 80, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 86, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 83, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 85, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 88, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 87, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 91, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 89, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 93, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 94, "trace": [{"f": "market_data_api", "a": {}}], "err": null}
+{"task": 4, "rep": 95, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 92, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 96, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 97, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 90, "trace": [], "err": null}
+{"task": 4, "rep": 99, "trace": [{"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}
+{"task": 4, "rep": 98, "trace": [{"f": "market_data_api", "a": {}}, {"f": "market_data_api", "a": {}}, {"f": "portfolio_manager", "a": {}}], "err": null}

@@ -27,6 +27,8 @@ code/                 AMLP, the harness and the analysis scripts (flat Python mo
   pilot/              the two pilot scripts that produced the frozen snapshot caches
 data/
   m3/                 M3 rows: mine_*, monitor_*, online_*, judge_*, paraphrase_*, steps/, judge_tests.json, ...
+                      online_*__camel_nosecpol.jsonl (CaMeL without security policies), melon_fidelity_rows.jsonl (MELON fidelity runs)
+  praetor_asb_runs.jsonl   benign runs of the Praetor close replication on ASB (plan section 22.11)
   m3_selection_log.jsonl   calibration log (selection of the configuration per model)
   pilot_m2a.jsonl     pilot online rows
   pilot/              frozen pilot snapshot read by envbuild.py (tw_main_20261005.jsonl, embeddings, environment dumps)
@@ -36,7 +38,10 @@ data/
     all48/            all 48 holdout tasks, the pre-registered primary set of the paper
     clean27/          the 27 holdout tasks no pilot run touched, printed beside every main number
     seen_novel_emb.json.gz   embedding cache shared by both sets (gzipped)
-    resplit.json, flag_before_harm*.json, fidelity_benign.json, value_block_cause.json   plan section 22 outputs, not per set
+    resplit.json, resplit_altchain.json, resplit_breadth.json, flag_before_harm*.json, fidelity_benign.json,
+    value_block_cause.json, melon_fidelity.json, praetor_asb.json   plan section 22 outputs, not per set
+    calib_rules.json (+ .log)   plan section 23 output; table_marks.json   dagger marks written by make_figs.py, read by make_numbers.py
+    {all48,clean27}/refusal_bounds.json, amlp_cost_mcnemar.json   plan sections 22.9 and 22.12 outputs, per set
     _superseded_flat/ outputs of the earlier 48-task-only analysis, kept for the record, read by no script
 outputs/              created on demand: numbers.tex, figs/, tables/ (written by make_numbers.py, make_figs.py, ...)
 third_party/          licenses and provenance of upstream projects used by the baseline ports (see third_party/README.md)
@@ -123,16 +128,21 @@ Offline, from the frozen data in `data/` (no model access):
 | `python3 analysis/make_numbers.py` | Every number used in the prose as a LaTeX macro, computed from the frozen data and the JSON files of both sets. Primary macros come from `all48`, the same macro from `clean27` carries the suffix `Untouched`. Writes `outputs/numbers.tex`. |
 | `python3 analysis/make_figs.py` | Figures and tables of the paper from `data/analysis_out/*.json`. One run reads both sets. Figures `outputs/figs/*.pdf` show `all48`. Every main table in `outputs/tables/*.tex` prints the `clean27` value after each differing `all48` value as `\untouched{...}`. |
 | `python3 analysis/resplit.py` | Calibration-split robustness (plan section 22): the calibration and holdout roles of the tasks are swapped and redrawn, and the holdout false-block and flag rate at the calibrated configuration are recomputed. Writes `data/analysis_out/resplit.json`. |
-| `python3 analysis/flag_before_harm.py` | Flag-before-harm (plan section 22): for each successful attack, whether the envelope refuses a call before the first harmful call of the run, for the replayed holdout runs and the online AMLP and Progent arms. Writes `data/analysis_out/flag_before_harm.json` and `flag_before_harm_online_valueonly.json`. |
+| `python3 analysis/flag_before_harm.py` | Flag-before-harm (plan section 22): for each successful attack, whether the envelope refuses a call before the first harmful call of the run, for the replayed holdout runs and the online AMLP and Progent arms. Writes `data/analysis_out/flag_before_harm.json` and `flag_before_harm_online_valueonly.json`. `--replay-only` recomputes only the replay block and keeps the frozen online block of the existing file (plan section 22.6). A run without the flag recomputes the online block as well and gives different `interception_agentdojo` and `diff_pp` values there than the frozen file (this `online` block of the frozen file is not read by `make_numbers.py` or `make_figs.py`); use `--replay-only` to regenerate the file as shipped. |
 | `python3 analysis/fidelity_benign.py` | Benign-side utility of the Agent-Sentry and CaMeL fidelity runs, from `data/agentsentry_fidelity_results.json` and `data/fidelity_camel.jsonl` (plan section 22.3). Writes `data/analysis_out/fidelity_benign.json`. |
 | `python3 analysis/value_block_cause.py` | Which kind of value (user-request value versus mined value) causes the value-layer false blocks of `llama31-8b-local` (plan section 22). Writes `data/analysis_out/value_block_cause.json`. |
+| `HOLDOUT_SET=clean27\|all48 python3 analysis/refusal_bounds.py` | Benign utility under refusal, lower and upper bound for every refusing defense (plan section 22.9). Reads the online rows including `online_*__camel_nosecpol.jsonl`. Writes `data/analysis_out/<set>/refusal_bounds.json`. |
+| `HOLDOUT_SET=clean27\|all48 python3 analysis/amlp_cost_mcnemar.py` | McNemar test and bootstrap of the AMLP benign cost (plan section 22.12). Writes `data/analysis_out/<set>/amlp_cost_mcnemar.json`. |
+| `CHAIN=alt python3 analysis/resplit.py` | Same as `resplit.py` with the value level coarsened before the tool layer is widened (plan section 22.10). Writes `data/analysis_out/resplit_altchain.json`. |
+| `python3 analysis/resplit_breadth.py` | Tool breadth of the kept re-splits (plan section 22.10), from `resplit.json`. Writes `data/analysis_out/resplit_breadth.json`. |
+| `python3 analysis/calib_rules.py [n_splits]` | CRC selection rule against empirical, fixed and seen-task calibration rules on 100 re-splits (plan section 23). Writes `data/analysis_out/calib_rules.json`. |
+| `python3 analysis/praetor_asb.py`, `analysis/melon_fidelity.py`, `analysis/run_camel_nosecpol.py` | Model-calling scripts of plan sections 22.9 and 22.11 that produced `data/praetor_asb_runs.jsonl`, `data/m3/melon_fidelity_rows.jsonl` and `data/m3/online_*__camel_nosecpol.jsonl`. They need model access, and checkouts given by `ASB_DIR` (Praetor replication, also for its offline evaluation step, which reads the persona's tool list), `MELON_UPSTREAM` (upstream MELON) and `CAMEL_REPO`. Not needed to check the paper's numbers. |
 | `python3 analysis/make_example_fig.py` | The page-1 example: one logged undefended attack run replayed against the calibrated allowlist, the first refused call being the first harmful call. Reads the logs and the envelope (needs `harness.py` and the step logs, no model access). Writes `outputs/tables/example_replay.tex`. |
 | `python3 analysis/make_method_fig.py` | The method figure, drawn in code. Writes `outputs/figs/method.pdf` and a preview PNG in the current directory. |
 | `python3 m3_analyze.py` | C1 non-inferiority test and the per-arm table (stdout is the content of `data/results_m3_analyze.txt`). |
 | `python3 m3_judge.py --test` | The pre-registered judge tests (`data/m3/judge_tests.json`). |
 
-Run the `rq12`, `rq34`, `extra_checks`, `per_suite`, `clean_subset`, `seen_novel*`, `holdout_tests` scripts (once per set) and `resplit`, `flag_before_harm`, `fidelity_benign`, `value_block_cause` (once, they write to the top level of `data/analysis_out/`) before `make_numbers.py` and
-`make_figs.py`, since the latter read their JSON output. Frozen copies of those JSON files are in `data/analysis_out/clean27/` and `data/analysis_out/all48/`,
+Run the `rq12`, `rq34`, `extra_checks`, `per_suite`, `clean_subset`, `seen_novel*`, `holdout_tests`, `refusal_bounds`, `amlp_cost_mcnemar` scripts (once per set) and `resplit` (twice, with and without `CHAIN=alt`), `resplit_breadth`, `calib_rules`, `flag_before_harm`, `fidelity_benign`, `value_block_cause` (once, they write to the top level of `data/analysis_out/`) before `make_figs.py` and `make_numbers.py` (in this order, because `make_figs.py` writes `table_marks.json`, which `make_numbers.py` reads), since both read their JSON output. Frozen copies of those JSON files are in `data/analysis_out/clean27/` and `data/analysis_out/all48/`,
 so `make_numbers.py` and `make_figs.py` also run directly. Rerunning the analysis rewrites the JSON files in place.
 
 With model access (new agent runs, not needed to check the paper's numbers):
@@ -153,8 +163,8 @@ The `.sh` drivers launch the steps above for all four models in parallel and ass
 
 `PREREGISTRATION.md` holds the plan with its amendments in the order they were written (protocol rules R1 to R6, the
 chain of nested configurations, decision rules, and sections 14 to 19 for the RQ3/RQ4 analysis, the pilot-clean check,
-the seen-versus-novel test, its learning curve, the pure-mined ablation and the automaton split). Paths and script names inside it are those
-of the original development tree: `analysis/out/<set>/` is `data/analysis_out/<set>/` here (and `analysis/out/*.json` of the early sections is `data/analysis_out/_superseded_flat/`) and the `pilot/` snapshot is
+the seen-versus-novel test, its learning curve, the pure-mined ablation and the automaton split, section 20 and 21 on the choice of the primary set, section 22 on the split, flag-before-harm, refusal-bound, chain-order, ASB and MELON checks and the CaMeL policy interval, and section 23 on the calibration rule comparison). Paths and script names inside it are those
+of the original development tree: `analysis/out/<set>/` is `data/analysis_out/<set>/` here (and `analysis/out/*.json` of the early sections is `data/analysis_out/_superseded_flat/`, whereas the flat `analysis/out/*.json` of sections 22 and 23 are at the top level of `data/analysis_out/`) and the `pilot/` snapshot is
 `data/pilot/`.
 
 ## Known limits of this release

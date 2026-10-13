@@ -35,6 +35,33 @@
    "flag": 0.9510703363914373,
    "flag_before_harm": 0.9418960244648318,
    "diff_pp": 0.9174311926605505
+  },
+  "clean27": {
+   "calibrated": {
+    "n": 179,
+    "flag": 0.2681564245810056,
+    "flag_before_harm": 0.2011173184357542
+   },
+   "exact_all": {
+    "n": 179,
+    "flag": 0.7877094972067039,
+    "flag_before_harm": 0.7821229050279329
+   },
+   "mined_tools_only": {
+    "n": 179,
+    "flag": 0.3463687150837989,
+    "flag_before_harm": 0.22905027932960895
+   },
+   "predicted_tools_only": {
+    "n": 179,
+    "flag": 0.88268156424581,
+    "flag_before_harm": 0.88268156424581
+   },
+   "progent": {
+    "n": 179,
+    "flag": 0.9385474860335196,
+    "flag_before_harm": 0.9385474860335196
+   }
   }
  },
  "online": {

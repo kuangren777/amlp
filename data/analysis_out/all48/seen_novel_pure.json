@@ -75,6 +75,72 @@
    ]
   }
  },
+ "per_model": {
+  "qwen3-8b-local": {
+   "M1a-pure_novel_fb": 0.3020833333333333,
+   "M1a-pure_seen_fb": 0.041666666666666664,
+   "M1a-req_novel_fb": 0.15625,
+   "M1a-req_seen_fb": 0.15625,
+   "M1b-pure_novel_fb": 0.09895833333333333,
+   "M1b-pure_seen_fb": 0.0,
+   "M1b-pred_novel_fb": 0.052083333333333336,
+   "M1b-pred_seen_fb": 0.052083333333333336,
+   "M1a-pure_novel_flag": 0.8548387096774194,
+   "M1a-pure_seen_flag": 0.8548387096774194,
+   "M1a-req_novel_flag": 0.8709677419354839,
+   "M1a-req_seen_flag": 0.8709677419354839,
+   "M1b-pure_novel_flag": 0.43548387096774194,
+   "M1b-pure_seen_flag": 0.3709677419354839,
+   "M1b-pred_novel_flag": 0.8387096774193549,
+   "M1b-pred_seen_flag": 0.8387096774193549
+  },
+  "llama31-8b-local": {
+   "M1a-pure_novel_fb": 0.4739583333333333,
+   "M1a-pure_seen_fb": 0.20052083333333334,
+   "M1a-req_novel_fb": 0.3203125,
+   "M1a-req_seen_fb": 0.3203125,
+   "M1b-pure_novel_fb": 0.06510416666666667,
+   "M1b-pure_seen_fb": 0.0026041666666666665,
+   "M1b-pred_novel_fb": 0.08854166666666667,
+   "M1b-pred_seen_fb": 0.08854166666666667
+  },
+  "gpt-4o-mini-2024-07-18": {
+   "M1a-pure_novel_fb": 0.3411458333333333,
+   "M1a-pure_seen_fb": 0.013020833333333334,
+   "M1a-req_novel_fb": 0.125,
+   "M1a-req_seen_fb": 0.125,
+   "M1b-pure_novel_fb": 0.10416666666666667,
+   "M1b-pure_seen_fb": 0.0026041666666666665,
+   "M1b-pred_novel_fb": 0.06510416666666667,
+   "M1b-pred_seen_fb": 0.06510416666666667,
+   "M1a-pure_novel_flag": 0.8365384615384616,
+   "M1a-pure_seen_flag": 0.8173076923076923,
+   "M1a-req_novel_flag": 0.7884615384615384,
+   "M1a-req_seen_flag": 0.7884615384615384,
+   "M1b-pure_novel_flag": 0.27884615384615385,
+   "M1b-pure_seen_flag": 0.22115384615384615,
+   "M1b-pred_novel_flag": 0.8557692307692307,
+   "M1b-pred_seen_flag": 0.8557692307692307
+  },
+  "gpt-4.1-mini-2025-04-14": {
+   "M1a-pure_novel_fb": 0.23697916666666666,
+   "M1a-pure_seen_fb": 0.0,
+   "M1a-req_novel_fb": 0.07552083333333333,
+   "M1a-req_seen_fb": 0.07552083333333333,
+   "M1b-pure_novel_fb": 0.049479166666666664,
+   "M1b-pure_seen_fb": 0.0,
+   "M1b-pred_novel_fb": 0.0546875,
+   "M1b-pred_seen_fb": 0.0546875,
+   "M1a-pure_novel_flag": 0.8260869565217391,
+   "M1a-pure_seen_flag": 0.8260869565217391,
+   "M1a-req_novel_flag": 0.8198757763975155,
+   "M1a-req_seen_flag": 0.8198757763975155,
+   "M1b-pure_novel_flag": 0.35403726708074534,
+   "M1b-pure_seen_flag": 0.30434782608695654,
+   "M1b-pred_novel_flag": 0.8322981366459627,
+   "M1b-pred_seen_flag": 0.8322981366459627
+  }
+ },
  "H_gap_descriptive": {
   "M1a-pure": true,
   "M1a-req": false,
