@@ -43,7 +43,20 @@ from agentdojo.task_suite.task_suite import (  # noqa: E402
 # Hosted gateway (any OpenAI-compatible chat endpoint): LLM_API_BASE is the full base URL including the /v1 suffix,
 # LLM_API_KEY the key. Both are only needed for runs that call a hosted model; offline analysis never uses them.
 BASE_URL = os.environ.get("LLM_API_BASE", "").rstrip("/") or None
-CLIENT = openai.OpenAI(base_url=BASE_URL, api_key=os.environ.get("LLM_API_KEY", "unset"), timeout=120, max_retries=4)
+
+
+class _LazyClient:
+    """Builds the hosted-gateway client on first use, so LLM_API_KEY is read at call time and never at import."""
+    _c = None
+
+    def __getattr__(self, name):
+        if _LazyClient._c is None:
+            _LazyClient._c = openai.OpenAI(base_url=os.environ.get("LLM_API_BASE", "").rstrip("/") or None,
+                                           api_key=os.environ.get("LLM_API_KEY", "unset"), timeout=120, max_retries=4)
+        return getattr(_LazyClient._c, name)
+
+
+CLIENT = _LazyClient()
 
 # locally self-hosted models (vLLM, OpenAI-compatible server). The hosted gateway may silently
 # drops the `tools` parameter for its open-weight channels, so small models must be served here.

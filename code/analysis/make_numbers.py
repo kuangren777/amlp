@@ -7,6 +7,10 @@ import json
 import math
 import os
 import re
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))   # fmt1 under python3 -I
+from fmt1 import F  # one rounding rule: ROUND_HALF_UP on exact values (af-man #4875)
 
 D = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(D)   # release root (code/ and data/ are siblings)
@@ -16,7 +20,7 @@ ALIAS = {"qwen3-8b-local": "Qwen", "llama31-8b-local": "Llama", "gpt-4o-mini-202
 
 
 def pct(x, nd=1):
-    return f"{100 * x:.{nd}f}"
+    return F(100 * x, f".{nd}f")
 
 
 def build(S):
@@ -67,7 +71,7 @@ def build(S):
     m["CThreeRecDiffLo"] = pct(rec["recall_diff_ci95"][0]); m["CThreeRecDiffHi"] = pct(rec["recall_diff_ci95"][1])
     m["CThreeRecMargin"] = "5"                      # plan.md §11.3(b): lower bound >= -0.05
     m["COneTarget"] = "80"                          # ROADMAP C1 premise: >= 80% of violations blocked
-    m["CThreeP"] = r"p < 0.001" if fb["mcnemar_p"] < 0.001 else f"p = {fb['mcnemar_p']:.3f}"
+    m["CThreeP"] = r"p < 0.001" if fb["mcnemar_p"] < 0.001 else f"p = {F(fb['mcnemar_p'], '.3f')}"
     c1 = t["C1"]
     m["COneDrop"] = pct(c1["drop_pooled"]); m["COneUpper"] = pct(c1["upper95"])
     m["CTwoEps"] = "0.10"
@@ -88,7 +92,7 @@ def build(S):
     m["NPilotOverlap"] = str(over)
     m["NModels"] = str(len(C.MODELS)); m["NFamilies"] = "3"           # Qwen, Llama, OpenAI GPT
     m["NTemp"] = "1.0"
-    m["NEps"] = f"{MS.PRIMARY_EPS:.2f}"; m["NEpsLow"] = f"{MS.EPS_GRID[0]:.2f}"; m["NEpsHigh"] = f"{MS.EPS_GRID[-1]:.2f}"
+    m["NEps"] = f"{F(MS.PRIMARY_EPS, '.2f')}"; m["NEpsLow"] = f"{F(MS.EPS_GRID[0], '.2f')}"; m["NEpsHigh"] = f"{F(MS.EPS_GRID[-1], '.2f')}"
     m["NRepsBase"] = "3"; m["NRepsBenign"] = "8"
     m["NBoot"] = f"{C.BOOT_N:,}"; m["NPairs"] = m["CThreeNPairs"]; m["NDefenses"] = "10"
     # ---- abstract / conclusion aliases of the pre-registered numbers
@@ -99,7 +103,7 @@ def build(S):
     m["ClassValueShare"] = pct(x["class_level_blocks"]["value_share"])
     # §15 Cs* macros removed (G1 triage 03bea17): superseded by the Untouched macros of the clean27 set
     m["NCal"] = str(len(C.CALIBRATION)); m["NSel"] = str(len(C.SELECTION))
-    m["CorrPct"] = f"{100 / (len(C.CALIBRATION) + 1):.1f}"   # conformal correction 1/(n+1)
+    m["CorrPct"] = f"{F(100 / (len(C.CALIBRATION) + 1), '.1f')}"   # conformal correction 1/(n+1)
     # ---- plan.md §16 seen vs novel (analysis/seen_novel.py) and §17 learning curve (analysis/seen_novel_curve.py)
     sn = json.load(open(f"{OD}/seen_novel.json"))
     for meth, nm in (("M1a", "Val"), ("M1b", "Tool"), ("M2", "Seq")):
@@ -189,7 +193,7 @@ def build(S):
     asf = json.load(open(f"{ROOT}/data/agentsentry_fidelity_results.json"))
     import statistics as st
     tr = [v for k, v in asf["runs"].items() if k.startswith("main|gbm|trace5|") and k.endswith("|L123")]
-    m["FidSentryBlocked"] = f"{st.mean(x['abr'] for x in tr):.1f}"          # abr is already in percent
+    m["FidSentryBlocked"] = f"{F(st.mean(x['abr'] for x in tr), '.1f')}"          # abr is already in percent
     tf = lastok(f"{ROOT}/data/fidelity_toolfence.jsonl"); tn = lastok(f"{ROOT}/data/fidelity_toolfence_nocache.jsonl")
     none = [r for k, r in tf.items() if k[0] == "none"]
     m["FidTfNoneUtil"] = pct(u(none))
@@ -203,7 +207,7 @@ def build(S):
     SEC = ["qwen3-8b-local", "gpt-4o-mini-2024-07-18", "gpt-4.1-mini-2025-04-14"]
     def rng(arm, key, models=SEC, scale=100):
         v = [r3[mm][arm][key] for mm in models if arm in r3[mm] and r3[mm][arm].get(key) is not None]
-        return f"{scale * min(v):.1f}", f"{scale * max(v):.1f}"
+        return f"{F(scale * min(v), '.1f')}", f"{F(scale * max(v), '.1f')}"
     for arm, tag in (("progent", "Progent"), ("camel", "Camel"), ("pi_detector", "Pi"), ("melon", "Melon"),
                      ("agentsentry", "Sentry"), ("amlp", "Amlp"), ("tripwire", "Tripwire"), ("sandwich", "Sandwich"),
                      ("tool_filter", "ToolFilter"), ("spotlighting", "Spot"), ("block_all", "BlockAll")):
@@ -212,11 +216,11 @@ def build(S):
         m[f"RqThree{tag}CostMin"], m[f"RqThree{tag}CostMax"] = lo, hi
     ga = r3["gpt-4.1-mini-2025-04-14"]["amlp"]                      # AMLP online benign cost, gpt-4.1-mini (Result 3)
     mc = json.load(open(f"{OD}/amlp_cost_mcnemar.json"))["gpt-4.1-mini-2025-04-14"]   # cold read 95d6ba9 M3
-    m["AmlpCostPFourOneMini"] = f"{mc['p']:.2f}"
+    m["AmlpCostPFourOneMini"] = f"{F(mc['p'], '.2f')}"
     m["AmlpCostFourOneMini"] = pct(ga["benign_cost"])
     m["AmlpCostLoFourOneMini"], m["AmlpCostHiFourOneMini"] = pct(ga["benign_cost_ci"][0]), pct(ga["benign_cost_ci"][1])
     # largest upper CI end of Progent benign cost across models (Result 3), same source as tables/rq3_ci.tex
-    m["RqThreeProgentCostHiMax"] = f"{100 * max(r3[mm]['progent']['benign_cost_ci'][1] for mm in r3 if r3[mm].get('progent', {}).get('benign_cost_ci')):.1f}"
+    m["RqThreeProgentCostHiMax"] = f"{F(100 * max(r3[mm]['progent']['benign_cost_ci'][1] for mm in r3 if r3[mm].get('progent', {}).get('benign_cost_ci')), '.1f')}"
     cu = [r3[mm]["camel"]["benign_utility"] for mm in r3 if "camel" in r3[mm]]
     m["CamelUtilLow"], m["CamelUtilHigh"] = pct(min(cu)), pct(max(cu))
     nu = [r3[mm]["camel"]["benign_utility_none"] for mm in r3 if "camel" in r3[mm]]
@@ -228,9 +232,9 @@ def build(S):
     m["TwOnlyAmlp"] = str(tw.get("amlp0_tripwire1", 0)); m["TwOnlyTripwire"] = str(tw.get("amlp1_tripwire0", 0))
     m["TwNeither"] = str(tw.get("amlp1_tripwire1", 0)); m["TwPairs"] = str(sum(tw.values()))
     para = r4["paraphrase"]
-    m["ParaShiftAmlpMax"] = f"{100 * max(abs(para[mm]['amlp']['shift']) for mm in para):.1f}"
-    m["ParaShiftProgentQwen"] = f"{100 * para['qwen3-8b-local']['progent']['shift']:.1f}"
-    m["ParaShiftProgentFourOneMini"] = f"{100 * para['gpt-4.1-mini-2025-04-14']['progent']['shift']:.1f}"
+    m["ParaShiftAmlpMax"] = f"{F(100 * max(abs(para[mm]['amlp']['shift']) for mm in para), '.1f')}"
+    m["ParaShiftProgentQwen"] = f"{F(100 * para['qwen3-8b-local']['progent']['shift'], '.1f')}"
+    m["ParaShiftProgentFourOneMini"] = f"{F(100 * para['gpt-4.1-mini-2025-04-14']['progent']['shift'], '.1f')}"
     tr = r4["transfer"]
     m["TransferFbMax"] = pct(max(v["fb"] for v in tr.values()))
     m["TransferRecMin"] = pct(min(v["recall"] for v in tr.values() if v.get("recall") is not None))   # codex r3: flag-rate counterpart
@@ -240,8 +244,7 @@ def build(S):
     po = r4["poisoning"]
     for mm in SEC:
         a = ALIAS[mm]
-        m[f"PoisonRecZero{a}"] = pct(po[mm]["0.0"]["recall"]); m[f"PoisonRecOne{a}"] = pct(po[mm]["0.01"]["recall"])
-        m[f"PoisonRecFive{a}"] = pct(po[mm]["0.05"]["recall"]); m[f"PoisonRecTen{a}"] = pct(po[mm]["0.1"]["recall"])
+        m[f"PoisonRecZero{a}"] = pct(po[mm]["0.0"]["recall"])     # One/Five/Ten removed: unused, other source than the table (af-man #4842)
     for mm in SEC:
         a = ALIAS[mm]
         for rho, tag in (("0.05", "Five"), ("0.1", "Ten")):
@@ -250,15 +253,10 @@ def build(S):
     m["PoisonSeeds"] = str(len(po["qwen3-8b-local"]["0.05"]["per_seed"]))
     for mm, a in (("qwen3-8b-local", "Qwen"), ("gpt-4.1-mini-2025-04-14", "FourOneMini")):
         x = para[mm]
-        m[f"ParaShiftAmlp{a}"] = f"{100 * x['amlp']['shift_paired']:.1f}"
-        m[f"ParaShiftAmlpLo{a}"] = f"{100 * x['amlp']['shift_ci'][0]:.1f}"; m[f"ParaShiftAmlpHi{a}"] = f"{100 * x['amlp']['shift_ci'][1]:.1f}"
-        m[f"ParaShiftProgentLo{a}"] = f"{100 * x['progent']['shift_ci'][0]:.1f}"; m[f"ParaShiftProgentHi{a}"] = f"{100 * x['progent']['shift_ci'][1]:.1f}"
+        m[f"ParaShiftAmlp{a}"] = f"{F(100 * x['amlp']['shift_paired'], '.1f')}"
+        m[f"ParaShiftAmlpLo{a}"] = f"{F(100 * x['amlp']['shift_ci'][0], '.1f')}"; m[f"ParaShiftAmlpHi{a}"] = f"{F(100 * x['amlp']['shift_ci'][1], '.1f')}"
+        m[f"ParaShiftProgentLo{a}"] = f"{F(100 * x['progent']['shift_ci'][0], '.1f')}"; m[f"ParaShiftProgentHi{a}"] = f"{F(100 * x['progent']['shift_ci'][1], '.1f')}"
         m[f"ParaReplayFb{a}"] = pct(x["amlp_replay_fb_on_paraphrase"])
-    # plan §14 headline: max absolute shift over (a) and (b); its condition is the Llama -> Qwen transfer
-    shifts = [abs(para[mm][arm]["shift"]) for mm in para for arm in ("amlp", "progent")]
-    base = {k.split("->")[1]: po[k.split("->")[1]]["0.0"]["recall"] for k in tr}
-    shifts += [abs(v["recall"] - po[k.split("->")[1]]["0.0"]["recall"]) for k, v in tr.items() if v["recall"] is not None]
-    m["RQFourMaxShift"] = f"{100 * max(shifts):.1f}"
     m["PoisonFbMax"] = pct(max(v["fb"] for mm in po for v in po[mm].values()))
     m["PoisonRunsFive"] = str(po["qwen3-8b-local"]["0.05"]["poisoned_runs"])
     # ---- per-suite breakdown and stacking with TripWire (analysis/per_suite.py)
@@ -286,7 +284,7 @@ def section22():
     kept_fb, kept_flag, drop_flag = [], [], []
     for model, x in rs["models"].items():
         s = x["summary"]["0.1"]
-        m[f"RsKept{ALIAS[model]}"] = f"{100 * s['kept_share']:.0f}"
+        m[f"RsKept{ALIAS[model]}"] = f"{F(100 * s['kept_share'], '.0f')}"
         m[f"RsKeptCount{ALIAS[model]}"] = str(s["kept"])
         if s["fb_mean_kept"] is not None:
             kept_fb.append(s["fb_mean_kept"])
@@ -314,21 +312,21 @@ def section22():
     m["RecAMLPUntouched"], m["RecProgentUntouched"] = pct(f27["calibrated"]["flag_before_harm"]), pct(f27["progent"]["flag_before_harm"])
     m["FbhToolPureUntouched"] = pct(f27["mined_tools_only"]["flag_before_harm"])
     m["FbhToolPure"], m["FbhToolPred"] = pct(fb["mined_tools_only"]["flag_before_harm"]), pct(fb["predicted_tools_only"]["flag_before_harm"])
-    m["FbhAmlpDrop"] = f"{fb['calibrated']['diff_pp']:.1f}"
+    m["FbhAmlpDrop"] = f"{F(fb['calibrated']['diff_pp'], '.1f')}"
     ad = json.load(open(f"{OD}/all48/rq34_agentdojo.json"))["rq3"]          # AgentDojo oracle (appendix)
     ex48 = json.load(open(f"{OD}/all48/rq34.json"))["rq3"]
     sec_models = [mm for mm in ad if ad[mm].get("amlp", {}).get("block_rate") is not None]
     for arm, tag in (("amlp", "Amlp"), ("progent", "Progent"), ("block_all", "BlockAll")):
         v = [100 * ad[mm][arm]["block_rate"] for mm in sec_models]
-        m[f"Ad{tag}Min"], m[f"Ad{tag}Max"] = f"{min(v):.1f}", f"{max(v):.1f}"
-    m["ExecMaxShift"] = f"{max(abs(100 * (ex48[mm][a]['block_rate'] - ad[mm][a]['block_rate'])) for mm in sec_models for a in ('amlp', 'progent')):.1f}"
+        m[f"Ad{tag}Min"], m[f"Ad{tag}Max"] = f"{F(min(v), '.1f')}", f"{F(max(v), '.1f')}"
+    m["ExecMaxShift"] = f"{F(max(abs(100 * (ex48[mm][a]['block_rate'] - ad[mm][a]['block_rate'])) for mm in sec_models for a in ('amlp', 'progent')), '.1f')}"
     vbs = json.load(open(f"{OD}/value_block_cause.json"))["llama31-8b-local"]
     for scope, suf in (("all48", ""), ("clean27", "Untouched")):
         vb = vbs[scope]
         m["LlamaBenignUtil" + suf] = pct(vb["benign_utility"]); m["LlamaBlockedUtil" + suf] = pct(vb["utility_of_blocked"])
         m["LlamaValueBlocks" + suf] = str(vb["blocked_value"]); m["LlamaToolBlocks" + suf] = str(vb["blocked_tool"])
         m["LlamaRuns" + suf] = str(vb["runs"])
-    r1 = lambda x: round(100 * x, 1)                         # gaps from the rounded table values (cold read A2)
+    r1 = lambda x: float(F(100 * x, '.1f'))                         # printed table values; differences use full precision (af-man #4842)
     tags = {"amlp": "Amlp", "block_all": "BlockAll", "progent": "Progent", "tripwire": "Tripwire",
             "agentsentry": "Sentry", "pi_detector": "Pi", "melon": "Melon", "camel": "Camel"}
     for scope, suf in (("all48", ""), ("clean27", "Untouched")):      # plan.md §22.9 L/M/U
@@ -337,18 +335,18 @@ def section22():
             es = [x[arm] for x in rb.values() if arm in x]
             # range over all three values per model (substitution U, measured M, worst case L): the substitution
             # estimate is no bound, so a measured cost can fall below it (af-man #3635 item 3)
-            m[f"Bnd{tg}Lo{suf}"] = f"{min(min(r1(e['cost_U']), r1(e['cost_M']), r1(e['cost_L'])) for e in es):.1f}"
-            m[f"Bnd{tg}Hi{suf}"] = f"{max(max(r1(e['cost_U']), r1(e['cost_M']), r1(e['cost_L'])) for e in es):.1f}"
+            m[f"Bnd{tg}Lo{suf}"] = f"{F(min(min(r1(e['cost_U']), r1(e['cost_M']), r1(e['cost_L'])) for e in es), '.1f')}"
+            m[f"Bnd{tg}Hi{suf}"] = f"{F(max(max(r1(e['cost_U']), r1(e['cost_M']), r1(e['cost_L'])) for e in es), '.1f')}"
             m[f"Bnd{tg}Intervened{suf}"] = str(sum(e["n_intervened"] for e in es)); m[f"Bnd{tg}Runs{suf}"] = str(sum(e["n"] for e in es))
-            m[f"Bnd{tg}GapMin{suf}"] = f"{min(r1(e['cost_L']) - r1(e['cost_M']) for e in es):.1f}"
-            m[f"Bnd{tg}GapMax{suf}"] = f"{max(r1(e['cost_L']) - r1(e['cost_M']) for e in es):.1f}"
+            m[f"Bnd{tg}GapMin{suf}"] = f"{F(min(100 * (e['cost_L'] - e['cost_M']) for e in es), '.1f')}"
+            m[f"Bnd{tg}GapMax{suf}"] = f"{F(max(100 * (e['cost_L'] - e['cost_M']) for e in es), '.1f')}"
         for mm, al in (("gpt-4o-mini-2024-07-18", "FourOMini"), ("gpt-4.1-mini-2025-04-14", "FourOneMini")):
             e = rb[mm]["camel"]
-            m[f"CamelNoPolCost{al}{suf}"] = f"{r1(e['cost_U']):.1f}"; m[f"CamelPolAdds{al}{suf}"] = f"{r1(e['cost_M']) - r1(e['cost_U']):.1f}"
-            m[f"CamelCostM{al}{suf}"] = f"{r1(e['cost_M']):.1f}"
-            m[f"CamelPolAddsLo{al}{suf}"], m[f"CamelPolAddsHi{al}{suf}"] = (f"{100 * v:.1f}" for v in e["policy_add_ci"])  # §22.12
+            m[f"CamelNoPolCost{al}{suf}"] = f"{F(r1(e['cost_U']), '.1f')}"; m[f"CamelPolAdds{al}{suf}"] = f"{F(100 * e['policy_add'], '.1f')}"   # §22.12, same field as its interval
+            m[f"CamelCostM{al}{suf}"] = f"{F(r1(e['cost_M']), '.1f')}"
+            m[f"CamelPolAddsLo{al}{suf}"], m[f"CamelPolAddsHi{al}{suf}"] = (f"{F(100 * v, '.1f')}" for v in e["policy_add_ci"])  # §22.12
     alt = json.load(open(f"{OD}/resplit_altchain.json"))["models"]          # §22.10 R2: coarsen values before widening tools
-    m["AltMaxShift"] = f"{max(abs(100 * (alt[mm]['summary']['0.1'][k] - rs['models'][mm]['summary']['0.1'][k])) for mm in alt for k in ('fb_mean_kept', 'flag_mean_kept', 'flag_bh_mean_kept', 'fb_mean_all') if alt[mm]['summary']['0.1'][k] is not None):.1f}"
+    m["AltMaxShift"] = f"{F(max(abs(100 * (alt[mm]['summary']['0.1'][k] - rs['models'][mm]['summary']['0.1'][k])) for mm in alt for k in ('fb_mean_kept', 'flag_mean_kept', 'flag_bh_mean_kept', 'fb_mean_all') if alt[mm]['summary']['0.1'][k] is not None), '.1f')}"
     br = {mm: v for mm, v in json.load(open(f"{OD}/resplit_breadth.json")).items() if v["narrow_r_le4"]["n"]}  # §22.10 C8
     for part, tg in (("narrow_r_le4", "Narrow"), ("wide_r_ge8", "Wide")):
         m[f"Br{tg}N"] = str(sum(br[mm][part]["n"] for mm in br))
@@ -361,23 +359,23 @@ def section22():
     m["PraetorAsbSeqs"] = str(pa["distinct_name_sequences"])
     tm = [x for x in json.load(open(f"{OD}/table_marks.json")) if x["table"] == "rq3_main"]   # codex r2 C2 (make_figs first)
     m["MarkMainN"] = str(len(tm)); m["MarkMainFlips"] = str(sum(x["flip"] for x in tm))
-    m["MarkMainFlipMax"] = f"{max(max(abs(x['all48']), abs(x['clean27'])) for x in tm if x['flip']):.1f}"
+    m["MarkMainFlipMax"] = f"{F(max(max(abs(x['all48']), abs(x['clean27'])) for x in tm if x['flip']), '.1f')}"
     mf = json.load(open(f"{OD}/melon_fidelity.json"))                       # §22.11 M: upstream MELON vs our port
     m["FidMelonPairs"] = str(mf["utility_diff_upstream_minus_port"]["n_pairs"])
-    m["FidMelonUtilDiff"] = f"{mf['utility_diff_upstream_minus_port']['point_pp']:.1f}"
-    m["FidMelonUtilDiffLo"], m["FidMelonUtilDiffHi"] = (f"{x:.1f}" for x in mf["utility_diff_upstream_minus_port"]["ci95_pp"])
+    m["FidMelonUtilDiff"] = f"{F(mf['utility_diff_upstream_minus_port']['point_pp'], '.1f')}"
+    m["FidMelonUtilDiffLo"], m["FidMelonUtilDiffHi"] = (f"{F(x, '.1f')}" for x in mf["utility_diff_upstream_minus_port"]["ci95_pp"])
     m["FidMelonExcl"] = str(math.ceil(max(abs(x) for x in mf["utility_diff_upstream_minus_port"]["ci95_pp"])))
     m["FidMelonAtk"] = str(mf["per_pipeline"]["melon_upstream"]["n_attack"])
     m["FidMelonAtkSucc"] = str(round(mf["per_pipeline"]["melon_upstream"]["asr"] * mf["per_pipeline"]["melon_upstream"]["n_attack"]))
     m["FidMelonUtilUp"], m["FidMelonUtilPort"] = pct(mf["per_pipeline"]["melon_upstream"]["utility"]), pct(mf["per_pipeline"]["melon_port"]["utility"])
     fi = json.load(open(f"{OD}/fidelity_benign.json"))
-    m["FidSentryUtil"], m["FidSentryUtilPub"] = f"{fi['agentsentry']['util_ours']:.1f}", f"{fi['agentsentry']['util_published']:.1f}"
-    m["FidSentryBlockedPub"] = f"{fi['agentsentry']['blocked_published']:.1f}"
-    m["FidCamelUtilNone"], m["FidCamelUtilCamel"] = f"{fi['camel']['util_none']:.1f}", f"{fi['camel']['util_camel']:.1f}"
-    m["FidCamelUtilNoPol"] = f"{fi['camel']['util_nopolicy']:.1f}"
-    m["FidCamelUtilL"] = f"{fi['camel']['util_camel_L']:.1f}"
-    m["FidCamelPubCamel"], m["FidCamelPubNone"] = f"{fi['camel']['published_camel']:.1f}", f"{fi['camel']['published_none']:.1f}"
-    m["FidCamelPubGap"] = f"{fi['camel']['published_camel'] - fi['camel']['util_nopolicy']:.1f}"
+    m["FidSentryUtil"], m["FidSentryUtilPub"] = f"{F(fi['agentsentry']['util_ours'], '.1f')}", f"{F(fi['agentsentry']['util_published'], '.1f')}"
+    m["FidSentryBlockedPub"] = f"{F(fi['agentsentry']['blocked_published'], '.1f')}"
+    m["FidCamelUtilNone"], m["FidCamelUtilCamel"] = f"{F(fi['camel']['util_none'], '.1f')}", f"{F(fi['camel']['util_camel'], '.1f')}"
+    m["FidCamelUtilNoPol"] = f"{F(fi['camel']['util_nopolicy'], '.1f')}"
+    m["FidCamelUtilL"] = f"{F(fi['camel']['util_camel_L'], '.1f')}"
+    m["FidCamelPubCamel"], m["FidCamelPubNone"] = f"{F(fi['camel']['published_camel'], '.1f')}", f"{F(fi['camel']['published_none'], '.1f')}"
+    m["FidCamelPubGap"] = f"{F(fi['camel']['published_camel'] - fi['camel']['util_nopolicy'], '.1f')}"
     return m
 
 
@@ -399,10 +397,10 @@ def section23():
             x = s[r]
             m[f"CrKept{RT[r]}{ALIAS[model]}"] = str(x["kept"])
             m[f"CrOver{RT[r]}{ALIAS[model]}"] = str(x["fb_over_eps"])
-            m[f"CrFlag{RT[r]}{ALIAS[model]}"] = "--" if x["flag_mean"] is None else f"{100 * x['flag_mean']:.1f}"
-            fl = "--" if x["flag_mean"] is None else f"{100 * x['flag_mean']:.1f}"
+            m[f"CrFlag{RT[r]}{ALIAS[model]}"] = "--" if x["flag_mean"] is None else f"{F(100 * x['flag_mean'], '.1f')}"
+            fl = "--" if x["flag_mean"] is None else f"{F(100 * x['flag_mean'], '.1f')}"
             name = ("\\textbf{" + RL[r] + "}") if r == "crc" else RL[r]
-            L.append(f"{ML[model] if j == 0 else ''} & {name} & {x['kept']} & {x['fb_over_eps']} & {100 * x['fb_mean']:.1f} & {fl} \\\\")
+            L.append(f"{ML[model] if j == 0 else ''} & {name} & {x['kept']} & {x['fb_over_eps']} & {F(100 * x['fb_mean'], '.1f')} & {fl} \\\\")
         L.append("\\midrule" if i < len(models) - 1 else "\\bottomrule")
     L.append("\\end{tabular}")
     open(f"{ROOT}/outputs/tables/rq1_rules.tex", "w").write("\n".join(L) + "\n")
@@ -421,7 +419,7 @@ def main():
     m.update({k + "Untouched": v for k, v in sec.items()})
     m.update(section22())
     m.update(section23())
-    m["ParaShiftAmlpMaxBoth"] = f"{max(float(prim['ParaShiftAmlpMax']), float(sec['ParaShiftAmlpMax'])):.1f}"   # cold read 49cd6f5 item 5
+    m["ParaShiftAmlpMaxBoth"] = f"{F(max(float(prim['ParaShiftAmlpMax']), float(sec['ParaShiftAmlpMax'])), '.1f')}"   # cold read 49cd6f5 item 5
     lines = ["% generated by analysis/make_numbers.py; do not edit by hand",
              "% primary macros: all 48 holdout tasks (pre-registered); suffix Untouched: the 27 holdout tasks no pilot run touched"]
     for k, val in m.items():

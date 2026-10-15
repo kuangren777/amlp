@@ -662,6 +662,7 @@ Outputs: `analysis/resplit.py` with `CHAIN=alt`, writing `analysis/out/resplit_a
 - **Interval:** the same task-cluster bootstrap as every other cost (`m3_common.cluster_bootstrap`).
 - **Use:** descriptive only. The text reports the point estimate with its interval and calls it the cost added by online policy enforcement. No test, no conclusion beyond the sign agreement rule of Setup.
 - **Prediction:** gpt-4.1-mini interval above zero on all48. gpt-4o-mini interval contains zero on clean27.
+- **Errata (af4, 2026-10-14, af-man #4842):** the point estimate was printed as r1(cost_M) − r1(cost_U), a difference of rounded values. From the full-precision `policy_add` (the field its interval uses) gpt-4o-mini is 6.9 not 7.0 on all48 and −2.5 not −2.4 on clean27. gpt-4.1-mini (17.4, 13.6) and every interval are unchanged. Cause: double rounding.
 
 ## 23. A1: CRC selection rule against simpler calibration rules (af2 as af4 substitute, 2026-10-12 ~18:00 SGT; af-man #3802 approved review/EXP_SPECS_20261012.md A1; written and committed BEFORE computing)
 
