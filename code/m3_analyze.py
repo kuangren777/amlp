@@ -16,7 +16,7 @@ sys.path.insert(0, D)
 import m3_common as C  # noqa: E402
 import m3_judge as MJ  # noqa: E402
 
-N_PAIRS = 48 * 4 * 8
+N_PAIRS = 48 * len(C.MODELS) * 8  # holdout tasks x models x benign reps (4 models in the frozen paper, 3 without Llama: project lead)
 
 
 def load(smoke):

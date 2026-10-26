@@ -1,5 +1,13 @@
-"""Page-1 example (ra-01 #1784): one logged undefended attack run, replayed against the calibrated allowlist, whose
+"""Page-1 example (project lead): one logged undefended attack run, replayed against the calibrated allowlist, whose
 first refused call is the first harmful call. Row and refusal are read from the logs and the envelope, not typed.
+
+Selection rule (internal review, project lead; fixed before any candidate was looked at). Candidates are the violations of
+RQ2 (rq12.holdout_violations, replay-oracle set, plan.md §26) of the three security models on all 48 holdout tasks.
+A candidate qualifies when the calibrated allowlist of its model refuses a call, the first refusal is at the tool
+layer (violations == ["<tool>"]) and it falls on the harm step of plan.md §26.5 (flag_before_harm.harm_step). The
+example is the first qualifying run in the order (model, suite, user_task, injection_task, rep), comparing the ids
+as strings. The earlier hand-picked run (Qwen3-8B, slack, user_task_1, injection_task_4, rep 0) came from the Qwen3-8B
+runs voided by the developer-role fix and is no longer a violation.
 Writes outputs/tables/example_replay.tex."""
 import json
 import os
@@ -14,20 +22,36 @@ import m3_common as C          # noqa: E402
 import m3_envelope as ME       # noqa: E402
 import m3_select as MS         # noqa: E402
 import harness                 # noqa: E402
-from rq12 import sel_entry, holdout_violations  # noqa: E402
-
-MODEL, SUITE, UT, IT, REP = "qwen3-8b-local", "slack", "user_task_1", "injection_task_4", 0
+from rq12 import sel_entry, holdout_violations, SECURITY  # noqa: E402
+import flag_before_harm as FB  # noqa: E402
 
 
 def tt(s):
     return "\\texttt{" + s.replace("_", "\\_").replace("{", "\\{").replace("}", "\\}") + "}"
 
 
-e = sel_entry(MODEL, MS.PRIMARY_EPS)
-v = next(r for r in holdout_violations(MODEL) if (r["suite"], r["ut"], r["it"], r["rep"]) == (SUITE, UT, IT, REP))
-env = ME.build(ME.Pool(MODEL, False, k=e["k"]), SUITE, UT, exclude_tasks=C.HOLDOUT, **e["chosen"])
-fb = ME.first_block(env, v["trace"])
-assert fb is not None and env.violations(v["trace"][fb]["f"], dict(v["trace"][fb]["a"])) == ["<tool>"]
+def pick():
+    gt = FB.ground_truth()
+    for m in sorted(SECURITY):
+        e = sel_entry(m, MS.PRIMARY_EPS)
+        pool = ME.Pool(m, False, k=e["k"])
+        viol = sorted(holdout_violations(m), key=lambda r: (r["suite"], r["ut"], r["it"], str(r["rep"])))
+        harm = FB.harm_steps(m, viol, gt)
+        envs = {}
+        for v in viol:
+            t = (v["suite"], v["ut"])
+            if t not in envs:
+                envs[t] = ME.build(pool, *t, exclude_tasks=C.HOLDOUT, **e["chosen"])
+            fb = ME.first_block(envs[t], v["trace"])
+            if fb is not None and fb == harm[v["row_id"]] and \
+                    envs[t].violations(v["trace"][fb]["f"], dict(v["trace"][fb]["a"])) == ["<tool>"]:
+                return m, v, fb
+    raise SystemExit("no run satisfies the selection rule")
+
+
+MODEL, v, fb = pick()
+SUITE, UT = v["suite"], v["ut"]
+print(f"selected {v['row_id']} (first refusal at step {fb + 1})")
 prompt = harness.suite(SUITE).user_tasks[UT].PROMPT
 rows = []
 for i, c in enumerate(v["trace"][: fb + 1], 1):

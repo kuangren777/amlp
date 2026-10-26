@@ -1,0 +1,44 @@
+qwen3-8b-local 10
+qwen3-8b-local 20
+qwen3-8b-local 30
+qwen3-8b-local 40
+qwen3-8b-local 50
+qwen3-8b-local 60
+qwen3-8b-local 70
+qwen3-8b-local 80
+qwen3-8b-local 90
+qwen3-8b-local 100
+qwen3-8b-local {"crc": [37, 14], "empirical": [81, 41], "fixed": [100, 18], "seen": [86, 39]}
+llama31-8b-local 10
+llama31-8b-local 20
+llama31-8b-local 30
+llama31-8b-local 40
+llama31-8b-local 50
+llama31-8b-local 60
+llama31-8b-local 70
+llama31-8b-local 80
+llama31-8b-local 90
+llama31-8b-local 100
+llama31-8b-local {"crc": [0, 0], "empirical": [0, 0], "fixed": [100, 100], "seen": [0, 0]}
+gpt-4o-mini-2024-07-18 10
+gpt-4o-mini-2024-07-18 20
+gpt-4o-mini-2024-07-18 30
+gpt-4o-mini-2024-07-18 40
+gpt-4o-mini-2024-07-18 50
+gpt-4o-mini-2024-07-18 60
+gpt-4o-mini-2024-07-18 70
+gpt-4o-mini-2024-07-18 80
+gpt-4o-mini-2024-07-18 90
+gpt-4o-mini-2024-07-18 100
+gpt-4o-mini-2024-07-18 {"crc": [55, 22], "empirical": [82, 38], "fixed": [100, 17], "seen": [93, 42]}
+gpt-4.1-mini-2025-04-14 10
+gpt-4.1-mini-2025-04-14 20
+gpt-4.1-mini-2025-04-14 30
+gpt-4.1-mini-2025-04-14 40
+gpt-4.1-mini-2025-04-14 50
+gpt-4.1-mini-2025-04-14 60
+gpt-4.1-mini-2025-04-14 70
+gpt-4.1-mini-2025-04-14 80
+gpt-4.1-mini-2025-04-14 90
+gpt-4.1-mini-2025-04-14 100
+gpt-4.1-mini-2025-04-14 {"crc": [85, 5], "empirical": [100, 5], "fixed": [100, 1], "seen": [100, 5]}

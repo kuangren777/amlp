@@ -1,0 +1,47 @@
+{
+ "method": [
+  "calls of a run. Expected prompt tokens of call k = tiktoken(system + user request) + history before k (tool-call",
+  "names and JSON arguments, tool outputs from the step log). Per (model, suite) the unknown constant (tool schemas,",
+  "message framing) is the median of (billed - expected) / calls. A row is flagged when its mean per-call residual",
+  "exceeds that median by more than 200 tokens, which a prefix of more than 200 tokens on every call would cause.",
+  "usage: python3 review/injection_residual_a2.py"
+ ],
+ "files": {
+  "monitor_gpt-4o-mini-2024-07-18": {
+   "rows": 480,
+   "calls": 3056,
+   "rows_flagged": 0,
+   "excess_p50": 0.0,
+   "excess_p99": 137.9451923076922,
+   "excess_max": 172.0,
+   "excess_min": -56.36250000000018
+  },
+  "attack_gpt-4o-mini-2024-07-18": {
+   "rows": 360,
+   "calls": 2830,
+   "rows_flagged": 0,
+   "excess_p50": 0.0749999999998181,
+   "excess_p99": 143.875,
+   "excess_max": 169.3295454545455,
+   "excess_min": -68.125
+  },
+  "monitor_gpt-4.1-mini-2025-04-14": {
+   "rows": 480,
+   "calls": 2871,
+   "rows_flagged": 0,
+   "excess_p50": 0.0,
+   "excess_p99": 140.25,
+   "excess_max": 163.09415584415592,
+   "excess_min": -47.70833333333303
+  },
+  "attack_gpt-4.1-mini-2025-04-14": {
+   "rows": 360,
+   "calls": 2568,
+   "rows_flagged": 1,
+   "excess_p50": 0.0,
+   "excess_p99": 149.4000000000001,
+   "excess_max": 208.71818181818207,
+   "excess_min": -65.00714285714275
+  }
+ }
+}

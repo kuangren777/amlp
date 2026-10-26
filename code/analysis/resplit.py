@@ -142,8 +142,7 @@ def main():
         viol = holdout_violations(m) if m in SECURITY else []
         import flag_before_harm as FB
         gt = FB.ground_truth()
-        for v in viol:
-            HARM[v["row_id"]] = FB.harm_index([(c["f"], c["a"]) for c in v["trace"]], gt[(v["suite"], v["it"])])[0]
+        HARM.update(FB.harm_steps(m, viol, gt))          # plan.md §26.5
         orig = run_split(full, *splits[0][:1], splits[0][2], pred, viol)
         rows = []
         for i, (H, _, Cal) in enumerate(splits[1:], 1):

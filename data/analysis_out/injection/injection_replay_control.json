@@ -1,0 +1,29 @@
+{
+ "ts": "2026-10-17 11:56:03 SGT",
+ "rows": [
+  {
+   "model": "gpt-4o-mini-2024-07-18",
+   "suite": "shopping",
+   "ut": "user_task_0",
+   "billed_run": 3404,
+   "billed_today": 3404,
+   "served_today": "gpt-4o-mini"
+  },
+  {
+   "model": "gpt-4.1-mini-2025-04-14",
+   "suite": "shopping",
+   "ut": "user_task_0",
+   "billed_run": 3404,
+   "billed_today": 3404,
+   "served_today": "gpt-4.1-mini"
+  },
+  {
+   "model": "gpt-4.1-mini-2025-04-14",
+   "suite": "dailylife",
+   "ut": "user_task_0",
+   "billed_run": 2450,
+   "billed_today": 2450,
+   "served_today": "gpt-4.1-mini"
+  }
+ ]
+}

@@ -1,7 +1,16 @@
 """pytest for camel_run (no network). Run: camel_env/bin/python -m pytest camel_test.py -q"""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import importlib.util
+
 import pytest
+
+# these tests import the upstream CaMeL package (camel), installed only in the CaMeL environment (see README)
+_skip_without_camel = pytest.mark.skipif(importlib.util.find_spec("camel") is None, reason="upstream CaMeL package not installed")
+
+
+def needs_camel(f):
+    return pytest.mark.optional(_skip_without_camel(f))
 import camel_run as C
 
 HUB = "https://gateway.example.invalid/v1"   # dummy URL, no request is sent
@@ -29,6 +38,7 @@ def test_row_from_log_maps_fake_camel_result():
     assert C.row_from_log(fake, "m")["security"] is None  # benign rows carry no security value
 
 
+@needs_camel
 def test_hub_routing_p_and_q_llm(monkeypatch):
     monkeypatch.delenv("OPENAI_BASE_URL", raising=False)
     C.configure_hub(HUB, key="sk-fake")
@@ -48,7 +58,7 @@ def test_hub_routing_p_and_q_llm(monkeypatch):
 
 def test_register_models_arbitrary_id_and_attack_name():
     from agentdojo.models import MODEL_NAMES
-    C.register_models(["gpt-4o-2024-08-06", "my-new-model-1"])
+    C.register_models(["gpt-4o-2024-08-06", "gpt-4o-mini-2024-07-18", "my-new-model-1"])   # self-contained: no earlier test registers it
     assert MODEL_NAMES["gpt-4o-mini-2024-07-18+camel"] == "GPT-4"
     assert MODEL_NAMES["my-new-model-1+camel+secpol"] == "AI model"
     t = C.injection_text("important_instructions", "banking", "user_task_0", "injection_task_0", "gpt-4o-mini-2024-07-18")
@@ -56,11 +66,13 @@ def test_register_models_arbitrary_id_and_attack_name():
     assert "to you, GPT-4." in t and "to you, AI assistant." in j and t.replace("GPT-4", "AI assistant") == j
 
 
+@needs_camel
 def test_pllm_denial_hook_installed():
     p = C.make_camel_pipeline("m", None, "banking", client=C.make_hub_client(HUB, key="k"))
     assert type(p.camel).__name__ == "_PLLM" and p.camel.denied is None
 
 
+@needs_camel
 def test_format_spec_error_returns_to_interpreter():
     import ast
     import camel_run as C
@@ -74,6 +86,7 @@ def test_format_spec_error_returns_to_interpreter():
         assert "format specifier" in str(e)
 
 
+@needs_camel
 def test_reasoning_model_routing_matches_upstream():
     import camel_run as C
     assert C.is_oai_reasoning_model("o4-mini-2025-04-16") and not C.is_oai_reasoning_model("gpt-4o-2024-08-06")

@@ -9,7 +9,7 @@ the frozen file and refuses to regenerate it.
 Prompt override: the paraphrase is passed as `harness.run_pair(..., user_prompt=...)`, i.e. through the pipeline's
 InitQuery. No AgentDojo task object is mutated, so threads cannot see each other's prompt (tested).
 
-AMLP arm (af4 review 2026-10-06): the M3 selected config at the primary eps (m3_select.load_selected) on the M3
+AMLP arm (analyst review 2026-10-06): the M3 selected config at the primary eps (m3_select.load_selected) on the M3
 mining pool, exclude_tasks=C.HOLDOUT. A deployed AMLP sees only the paraphrased request, so every per-request input is
 computed on the PARAPHRASE: the LLM tool prediction (predictor of the selected config, the exact prompt template of
 pilot/p1b_llm_envelope.py that produced envbuild.PRED, temperature 0, fail-open to all side tools on a parse failure),
@@ -444,6 +444,7 @@ def main(argv=None):
     os.makedirs(os.path.dirname(R.rows), exist_ok=True)
     arms = Arms(a.model, arms=arm_list, pred_cache=f"{SMOKE_DIR}/paraphrase_pred_cache.json" if a.smoke else PRED_CACHE)
     C.install_capture()
+    C.install_hublog(f"{C.data_dir(a.smoke, a.model)}/hubcalls_{a.model}.jsonl")
     w = C.effective_workers(a.model, a.workers)
     C.start_guard(a.model, w)
     todo = R.todo(J)

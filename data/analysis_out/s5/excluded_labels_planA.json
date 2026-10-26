@@ -1,0 +1,15 @@
+{
+ "reason": "labels on rows whose step log the plan-A rerun replaced (same row_id, different trajectory); compared against data at 12eacf8a8 (project lead)",
+ "label_ids": [
+  "online|qwen3-8b-local|amlp|slack|user_task_12|injection_task_3|1",
+  "online|qwen3-8b-local|block_all|banking|user_task_10|injection_task_1|0",
+  "online|qwen3-8b-local|melon|banking|user_task_2|injection_task_2|0",
+  "online|qwen3-8b-local|melon|slack|user_task_10|injection_task_1|0",
+  "online|qwen3-8b-local|none|slack|user_task_12|injection_task_3|0",
+  "online|qwen3-8b-local|none|slack|user_task_16|injection_task_2|2",
+  "online|qwen3-8b-local|none|slack|user_task_4|injection_task_2|1",
+  "online|qwen3-8b-local|none|travel|user_task_6|injection_task_2|0",
+  "online|qwen3-8b-local|pi_detector|banking|user_task_4|injection_task_4|0",
+  "online|qwen3-8b-local|pi_detector|travel|user_task_4|injection_task_0|0"
+ ]
+}

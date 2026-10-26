@@ -76,8 +76,7 @@ def main():
         pred = R.sel_entry(m, MS.PRIMARY_EPS)["chosen"]["predictor"]
         full = R.pool_for(m)
         viol = R.holdout_violations(m) if m in R.SECURITY else []
-        for v in viol:
-            R.HARM[v["row_id"]] = FB.harm_index([(c["f"], c["a"]) for c in v["trace"]], gt[(v["suite"], v["it"])])[0]
+        R.HARM.update(FB.harm_steps(m, viol, gt))        # plan.md §26.5
         orig = element_stats(full, *[set(x) for x in splits[0]], pred, viol)
         rows = []
         for i, (H, S, Cal) in enumerate(splits[1:], 1):

@@ -1,0 +1,104 @@
+{
+ "thresholds": {
+  "call_rate_min": 0.9,
+  "unparsed_rate_max": 0.02
+ },
+ "files": {
+  "data/a2/steps/attack_qwen3-8b-local.jsonl.gz": {
+   "runs": 360,
+   "with_call": 301,
+   "unparsed_text_call": 37,
+   "call_rate": 0.8361111111111111,
+   "unparsed_rate": 0.10277777777777777,
+   "pass": false
+  },
+  "data/a2/steps/monitor_qwen3-8b-local.jsonl.gz": {
+   "runs": 480,
+   "with_call": 422,
+   "unparsed_text_call": 39,
+   "call_rate": 0.8791666666666667,
+   "unparsed_rate": 0.08125,
+   "pass": false
+  },
+  "data/m3/steps/mine_qwen3-8b-local.jsonl.gz": {
+   "runs": 392,
+   "with_call": 390,
+   "unparsed_text_call": 0,
+   "call_rate": 0.9948979591836735,
+   "unparsed_rate": 0.0,
+   "pass": true
+  },
+  "data/m3/steps/monitor_qwen3-8b-local.jsonl.gz": {
+   "runs": 384,
+   "with_call": 359,
+   "unparsed_text_call": 0,
+   "call_rate": 0.9348958333333334,
+   "unparsed_rate": 0.0,
+   "pass": true
+  },
+  "data/m3/steps/online_qwen3-8b-local__agentsentry.jsonl.gz": {
+   "runs": 432,
+   "with_call": 405,
+   "unparsed_text_call": 0,
+   "call_rate": 0.9375,
+   "unparsed_rate": 0.0,
+   "pass": true
+  },
+  "data/m3/steps/online_qwen3-8b-local__main.jsonl.gz": {
+   "runs": 4416,
+   "with_call": 4042,
+   "unparsed_text_call": 86,
+   "call_rate": 0.9153079710144928,
+   "unparsed_rate": 0.01947463768115942,
+   "pass": true
+  },
+  "data/m3/steps/paraphrase_qwen3-8b-local.jsonl.gz": {
+   "runs": 432,
+   "with_call": 376,
+   "unparsed_text_call": 24,
+   "call_rate": 0.8703703703703703,
+   "unparsed_rate": 0.05555555555555555,
+   "pass": false
+  },
+  "data/a2/steps/monitor_llama31-8b-local.jsonl.gz": {
+   "runs": 480,
+   "with_call": 473,
+   "unparsed_text_call": 87,
+   "call_rate": 0.9854166666666667,
+   "unparsed_rate": 0.18125,
+   "pass": false
+  },
+  "data/m3/steps/mine_llama31-8b-local.jsonl.gz": {
+   "runs": 392,
+   "with_call": 383,
+   "unparsed_text_call": 65,
+   "call_rate": 0.9770408163265306,
+   "unparsed_rate": 0.16581632653061223,
+   "pass": false
+  },
+  "data/m3/steps/monitor_llama31-8b-local.jsonl.gz": {
+   "runs": 384,
+   "with_call": 379,
+   "unparsed_text_call": 69,
+   "call_rate": 0.9869791666666666,
+   "unparsed_rate": 0.1796875,
+   "pass": false
+  },
+  "data/m3/steps/online_llama31-8b-local__agentsentry.jsonl.gz": {
+   "runs": 240,
+   "with_call": 235,
+   "unparsed_text_call": 44,
+   "call_rate": 0.9791666666666666,
+   "unparsed_rate": 0.18333333333333332,
+   "pass": false
+  },
+  "data/m3/steps/online_llama31-8b-local__main.jsonl.gz": {
+   "runs": 2880,
+   "with_call": 2783,
+   "unparsed_text_call": 508,
+   "call_rate": 0.9663194444444444,
+   "unparsed_rate": 0.1763888888888889,
+   "pass": false
+  }
+ }
+}

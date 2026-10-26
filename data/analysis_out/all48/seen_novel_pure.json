@@ -1,28 +1,28 @@
 {
  "pooled": {
-  "M1a-pure_novel_fb": 0.3385416666666667,
-  "M1a-pure_seen_fb": 0.06380208333333333,
-  "M1a-req_novel_fb": 0.16927083333333334,
-  "M1a-req_seen_fb": 0.16927083333333334,
-  "M1b-pure_novel_fb": 0.07942708333333333,
-  "M1b-pure_seen_fb": 0.0013020833333333333,
-  "M1b-pred_novel_fb": 0.06510416666666667,
-  "M1b-pred_seen_fb": 0.06510416666666667,
-  "M1a-pure_novel_flag": 0.8348623853211009,
-  "M1a-pure_seen_flag": 0.8287461773700305,
-  "M1a-req_novel_flag": 0.8195718654434251,
-  "M1a-req_seen_flag": 0.8195718654434251,
-  "M1b-pure_novel_flag": 0.345565749235474,
-  "M1b-pure_seen_flag": 0.290519877675841,
-  "M1b-pred_novel_flag": 0.8409785932721713,
-  "M1b-pred_seen_flag": 0.8409785932721713
+  "M1a-pure_novel_fb": 0.3055555555555556,
+  "M1a-pure_seen_fb": 0.013020833333333334,
+  "M1a-req_novel_fb": 0.11197916666666667,
+  "M1a-req_seen_fb": 0.11197916666666667,
+  "M1b-pure_novel_fb": 0.09027777777777778,
+  "M1b-pure_seen_fb": 0.001736111111111111,
+  "M1b-pred_novel_fb": 0.06336805555555555,
+  "M1b-pred_seen_fb": 0.06336805555555555,
+  "M1a-pure_novel_flag": 0.8487394957983193,
+  "M1a-pure_seen_flag": 0.8431372549019608,
+  "M1a-req_novel_flag": 0.8319327731092437,
+  "M1a-req_seen_flag": 0.8319327731092437,
+  "M1b-pure_novel_flag": 0.38095238095238093,
+  "M1b-pure_seen_flag": 0.29971988795518206,
+  "M1b-pred_novel_flag": 0.8123249299719888,
+  "M1b-pred_seen_flag": 0.8123249299719888
  },
  "delta": {
   "M1a-pure_fb": {
-   "point": 0.2747395833333333,
+   "point": 0.2925347222222222,
    "ci95": [
-    0.177734375,
-    0.376953125
+    0.1909722222222222,
+    0.3984375
    ]
   },
   "M1a-req_fb": {
@@ -33,10 +33,10 @@
    ]
   },
   "M1b-pure_fb": {
-   "point": 0.078125,
+   "point": 0.08854166666666667,
    "ci95": [
-    0.020833333333333332,
-    0.142578125
+    0.027777777777777776,
+    0.1605902777777778
    ]
   },
   "M1b-pred_fb": {
@@ -47,9 +47,9 @@
    ]
   },
   "M1a-pure_flag": {
-   "point": -0.0061162079510703364,
+   "point": -0.0056022408963585435,
    "ci95": [
-    -0.01948051948051948,
+    -0.01775147928994083,
     0.0
    ]
   },
@@ -61,10 +61,10 @@
    ]
   },
   "M1b-pure_flag": {
-   "point": -0.05504587155963303,
+   "point": -0.08123249299719888,
    "ci95": [
-    -0.14006514657980457,
-    -0.0057306590257879654
+    -0.17027027027027028,
+    -0.01592356687898089
    ]
   },
   "M1b-pred_flag": {
@@ -77,32 +77,22 @@
  },
  "per_model": {
   "qwen3-8b-local": {
-   "M1a-pure_novel_fb": 0.3020833333333333,
-   "M1a-pure_seen_fb": 0.041666666666666664,
-   "M1a-req_novel_fb": 0.15625,
-   "M1a-req_seen_fb": 0.15625,
-   "M1b-pure_novel_fb": 0.09895833333333333,
-   "M1b-pure_seen_fb": 0.0,
-   "M1b-pred_novel_fb": 0.052083333333333336,
-   "M1b-pred_seen_fb": 0.052083333333333336,
-   "M1a-pure_novel_flag": 0.8548387096774194,
-   "M1a-pure_seen_flag": 0.8548387096774194,
-   "M1a-req_novel_flag": 0.8709677419354839,
-   "M1a-req_seen_flag": 0.8709677419354839,
-   "M1b-pure_novel_flag": 0.43548387096774194,
-   "M1b-pure_seen_flag": 0.3709677419354839,
-   "M1b-pred_novel_flag": 0.8387096774193549,
-   "M1b-pred_seen_flag": 0.8387096774193549
-  },
-  "llama31-8b-local": {
-   "M1a-pure_novel_fb": 0.4739583333333333,
-   "M1a-pure_seen_fb": 0.20052083333333334,
-   "M1a-req_novel_fb": 0.3203125,
-   "M1a-req_seen_fb": 0.3203125,
-   "M1b-pure_novel_fb": 0.06510416666666667,
+   "M1a-pure_novel_fb": 0.3385416666666667,
+   "M1a-pure_seen_fb": 0.026041666666666668,
+   "M1a-req_novel_fb": 0.13541666666666666,
+   "M1a-req_seen_fb": 0.13541666666666666,
+   "M1b-pure_novel_fb": 0.1171875,
    "M1b-pure_seen_fb": 0.0026041666666666665,
-   "M1b-pred_novel_fb": 0.08854166666666667,
-   "M1b-pred_seen_fb": 0.08854166666666667
+   "M1b-pred_novel_fb": 0.0703125,
+   "M1b-pred_seen_fb": 0.0703125,
+   "M1a-pure_novel_flag": 0.8941176470588236,
+   "M1a-pure_seen_flag": 0.8941176470588236,
+   "M1a-req_novel_flag": 0.8941176470588236,
+   "M1a-req_seen_flag": 0.8941176470588236,
+   "M1b-pure_novel_flag": 0.5411764705882353,
+   "M1b-pure_seen_flag": 0.4,
+   "M1b-pred_novel_flag": 0.7764705882352941,
+   "M1b-pred_seen_flag": 0.7764705882352941
   },
   "gpt-4o-mini-2024-07-18": {
    "M1a-pure_novel_fb": 0.3411458333333333,
@@ -113,14 +103,14 @@
    "M1b-pure_seen_fb": 0.0026041666666666665,
    "M1b-pred_novel_fb": 0.06510416666666667,
    "M1b-pred_seen_fb": 0.06510416666666667,
-   "M1a-pure_novel_flag": 0.8365384615384616,
-   "M1a-pure_seen_flag": 0.8173076923076923,
-   "M1a-req_novel_flag": 0.7884615384615384,
-   "M1a-req_seen_flag": 0.7884615384615384,
-   "M1b-pure_novel_flag": 0.27884615384615385,
-   "M1b-pure_seen_flag": 0.22115384615384615,
-   "M1b-pred_novel_flag": 0.8557692307692307,
-   "M1b-pred_seen_flag": 0.8557692307692307
+   "M1a-pure_novel_flag": 0.8411214953271028,
+   "M1a-pure_seen_flag": 0.822429906542056,
+   "M1a-req_novel_flag": 0.794392523364486,
+   "M1a-req_seen_flag": 0.794392523364486,
+   "M1b-pure_novel_flag": 0.27102803738317754,
+   "M1b-pure_seen_flag": 0.21495327102803738,
+   "M1b-pred_novel_flag": 0.8317757009345794,
+   "M1b-pred_seen_flag": 0.8317757009345794
   },
   "gpt-4.1-mini-2025-04-14": {
    "M1a-pure_novel_fb": 0.23697916666666666,
@@ -131,14 +121,14 @@
    "M1b-pure_seen_fb": 0.0,
    "M1b-pred_novel_fb": 0.0546875,
    "M1b-pred_seen_fb": 0.0546875,
-   "M1a-pure_novel_flag": 0.8260869565217391,
-   "M1a-pure_seen_flag": 0.8260869565217391,
-   "M1a-req_novel_flag": 0.8198757763975155,
-   "M1a-req_seen_flag": 0.8198757763975155,
-   "M1b-pure_novel_flag": 0.35403726708074534,
-   "M1b-pure_seen_flag": 0.30434782608695654,
-   "M1b-pred_novel_flag": 0.8322981366459627,
-   "M1b-pred_seen_flag": 0.8322981366459627
+   "M1a-pure_novel_flag": 0.8303030303030303,
+   "M1a-pure_seen_flag": 0.8303030303030303,
+   "M1a-req_novel_flag": 0.8242424242424242,
+   "M1a-req_seen_flag": 0.8242424242424242,
+   "M1b-pure_novel_flag": 0.3696969696969697,
+   "M1b-pure_seen_flag": 0.30303030303030304,
+   "M1b-pred_novel_flag": 0.8181818181818182,
+   "M1b-pred_seen_flag": 0.8181818181818182
   }
  },
  "H_gap_descriptive": {

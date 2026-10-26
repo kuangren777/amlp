@@ -1,0 +1,429 @@
+{
+ "n": 60,
+ "diff_min": 0,
+ "diff_median": 0,
+ "diff_max": 0,
+ "n_diff_gt_200": 0,
+ "rows": [
+  {
+   "k": "shopping|user_task_0",
+   "est": 501,
+   "billed": 501,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_1",
+   "est": 502,
+   "billed": 502,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_2",
+   "est": 510,
+   "billed": 510,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_3",
+   "est": 513,
+   "billed": 513,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_4",
+   "est": 515,
+   "billed": 515,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_5",
+   "est": 530,
+   "billed": 530,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_6",
+   "est": 513,
+   "billed": 513,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_7",
+   "est": 527,
+   "billed": 527,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_8",
+   "est": 536,
+   "billed": 536,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_9",
+   "est": 522,
+   "billed": 522,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_10",
+   "est": 520,
+   "billed": 520,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_11",
+   "est": 525,
+   "billed": 525,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_12",
+   "est": 519,
+   "billed": 519,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_13",
+   "est": 502,
+   "billed": 502,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_14",
+   "est": 532,
+   "billed": 532,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_15",
+   "est": 520,
+   "billed": 520,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_16",
+   "est": 527,
+   "billed": 527,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_17",
+   "est": 532,
+   "billed": 532,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_18",
+   "est": 557,
+   "billed": 557,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "shopping|user_task_19",
+   "est": 514,
+   "billed": 514,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_0",
+   "est": 510,
+   "billed": 510,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_1",
+   "est": 482,
+   "billed": 482,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_2",
+   "est": 479,
+   "billed": 479,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_3",
+   "est": 491,
+   "billed": 491,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_4",
+   "est": 498,
+   "billed": 498,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_5",
+   "est": 504,
+   "billed": 504,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_6",
+   "est": 492,
+   "billed": 492,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_7",
+   "est": 510,
+   "billed": 510,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_8",
+   "est": 488,
+   "billed": 488,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_9",
+   "est": 492,
+   "billed": 492,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_10",
+   "est": 484,
+   "billed": 484,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_11",
+   "est": 494,
+   "billed": 494,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_12",
+   "est": 489,
+   "billed": 489,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_13",
+   "est": 487,
+   "billed": 487,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_14",
+   "est": 477,
+   "billed": 477,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_15",
+   "est": 483,
+   "billed": 483,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_16",
+   "est": 487,
+   "billed": 487,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_17",
+   "est": 484,
+   "billed": 484,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_18",
+   "est": 474,
+   "billed": 474,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "github|user_task_19",
+   "est": 481,
+   "billed": 481,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_0",
+   "est": 394,
+   "billed": 394,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_1",
+   "est": 411,
+   "billed": 411,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_2",
+   "est": 402,
+   "billed": 402,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_3",
+   "est": 426,
+   "billed": 426,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_4",
+   "est": 401,
+   "billed": 401,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_5",
+   "est": 434,
+   "billed": 434,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_6",
+   "est": 425,
+   "billed": 425,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_7",
+   "est": 428,
+   "billed": 428,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_8",
+   "est": 424,
+   "billed": 424,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_9",
+   "est": 433,
+   "billed": 433,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_10",
+   "est": 421,
+   "billed": 421,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_11",
+   "est": 428,
+   "billed": 428,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_12",
+   "est": 440,
+   "billed": 440,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_13",
+   "est": 433,
+   "billed": 433,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_14",
+   "est": 434,
+   "billed": 434,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_15",
+   "est": 425,
+   "billed": 425,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_16",
+   "est": 426,
+   "billed": 426,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_17",
+   "est": 431,
+   "billed": 431,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_18",
+   "est": 430,
+   "billed": 430,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  },
+  {
+   "k": "dailylife|user_task_19",
+   "est": 454,
+   "billed": 454,
+   "diff": 0,
+   "served": "gpt-4.1-mini"
+  }
+ ]
+}

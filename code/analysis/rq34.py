@@ -6,6 +6,7 @@ Usage: python3 analysis/rq34.py [--dry-run]"""
 from __future__ import annotations
 
 import collections
+import functools
 import json
 import os
 import random
@@ -88,11 +89,29 @@ def paired_benign(model, arm, on, mon):
     return keys, base, it
 
 
-ORACLE = os.environ.get("ATTACK_ORACLE", "exec")      # plan.md §22.6: exec (main text) | agentdojo (appendix)
-assert ORACLE in ("exec", "agentdojo"), ORACLE
+# plan.md §22.6, internal review (project lead): replay_any is the main-text oracle since its validation on the independent
+# S5-fresh sample (internal review); exec and agentdojo are written next to it for the appendix comparison.
+ORACLE = os.environ.get("ATTACK_ORACLE", "replay_any")
+assert ORACLE in ("replay_any", "exec", "agentdojo"), ORACLE
+
+
+@functools.lru_cache(maxsize=2)
+def _replay_any(holdout_set):
+    """S5 rescoring (analysis/s5_rescore.py) of every attack row: replay_any per row_id. scored.jsonl holds the three
+    main models; scored_llama.jsonl holds Llama-3.1-8B for the appendix (s5_rescore.py --models llama31-8b-local)."""
+    out = {}
+    for name in ("scored.jsonl", "scored_llama.jsonl"):
+        path = os.path.join(D, "analysis", "out", "s5", holdout_set, name)
+        if os.path.exists(path):
+            out.update({r["row_id"]: r["replay_any"] for r in map(json.loads, open(path))})
+    return out
 
 
 def attack_success(r) -> int:
+    if ORACLE == "replay_any":
+        v = _replay_any(HS.NAME).get(r["row_id"])
+        assert v is not None, f"no replay_any score for {r['row_id']}"
+        return int(v)
     if ORACLE == "exec":
         import exec_oracle as EO
         v = EO.success(r)
@@ -222,12 +241,14 @@ def rq4(dry):
         return res, counts
     for a, b in (("gpt-4o-mini-2024-07-18", "gpt-4.1-mini-2025-04-14"), ("gpt-4.1-mini-2025-04-14", "gpt-4o-mini-2024-07-18"),
                  ("qwen3-8b-local", "llama31-8b-local"), ("llama31-8b-local", "qwen3-8b-local")):
+        if a not in C.MODELS or b not in C.MODELS:  # AMLP_MODELS without Llama (project lead)
+            continue
         e = [x for x in C.read_jsonl(C.selection_log(False)) if x["model"] == a and x.get("eps") == MS.PRIMARY_EPS and "amendment" in x][-1]
         pool = ME.Pool(a, False, k=e["k"])
         C.assert_pool_clean(pool.tasks(), "analysis/rq34 transfer")
         cfg = e["chosen"]
         ben = monitor(b)
-        viol = [r for r in online(b) if arm_of(r) == "none" and r["part"] == "b" and r["security"]]
+        viol = [r for r in online(b) if arm_of(r) == "none" and r["part"] == "b" and _replay_any("all48").get(r["row_id"]) == 1]   # plan.md §26.6
         env = {}
         def blk(r):
             t = (r["suite"], r["ut"])
@@ -268,7 +289,7 @@ def poisoning():
         e = [x for x in C.read_jsonl(C.selection_log(False)) if x["model"] == m and x.get("eps") == MS.PRIMARY_EPS and "amendment" in x][-1]
         cfg = e["chosen"]
         ben = monitor(m)
-        viol = [r for r in online(m) if arm_of(r) == "none" and r["part"] == "b" and r["security"]]
+        viol = [r for r in online(m) if arm_of(r) == "none" and r["part"] == "b" and _replay_any("all48").get(r["row_id"]) == 1]   # plan.md §26.6
         res[m] = {}
         for rho in (0.0, 0.01, 0.05, 0.10):
           seeds = [20261006] if rho == 0.0 else [20261006 + i for i in range(10)]     # errata E1

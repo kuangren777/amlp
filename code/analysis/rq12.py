@@ -5,8 +5,8 @@ RQ1: for every model and every element of the nested chain (plan.md §12), the c
 the interception (recall) of the undefended successful attacks, so the cost of reaching eps is visible.
 RQ2: at the calibrated configuration (primary eps), interception of the tool layer per attacker side-effect tool and
 the share of violations whose side-effecting calls all stay inside the tool layer (structurally invisible to it).
-Definitions: A2-rev denominators; holdout benign runs = A3 monitor runs; violations = online `none` attack runs with
-security True. Writes data/analysis_out/<HOLDOUT_SET>/rq12.json; numbers are turned into macros by analysis/make_numbers.py."""
+Definitions: A2-rev denominators; holdout benign runs = A3 monitor runs; violations = online `none` attack runs that the
+replay oracle judges successful (plan.md §26). Writes data/analysis_out/<HOLDOUT_SET>/rq12.json; numbers are turned into macros by analysis/make_numbers.py."""
 from __future__ import annotations
 
 import collections
@@ -38,10 +38,30 @@ def holdout_benign(model):
     return [r for r in C.read_jsonl(C.rows_path(False, "monitor", model)) if r.get("err") is None]
 
 
+# plan.md §26 (internal review): the violation set uses the replay oracle (replay_any of analysis/s5_rescore.py, scored on
+# all48; clean27 rows are a subset with the same row ids); "agentdojo" keeps the recorded security flag for the appendix.
+VIOLATION_ORACLE = os.environ.get("VIOLATION_ORACLE", "replay_any")
+assert VIOLATION_ORACLE in ("replay_any", "agentdojo"), VIOLATION_ORACLE
+_RA = {}
+
+
+def _replay_any():
+    if not _RA:
+        for name in ("scored.jsonl", "scored_llama.jsonl"):
+            with open(f"{ROOT}/data/analysis_out/s5/all48/{name}") as f:
+                _RA.update({x["row_id"]: x["replay_any"] for x in map(json.loads, f)})
+    return _RA
+
+
 def holdout_violations(model):
     rows = [r for r in C.read_jsonl(C.rows_path(False, "online", model, "main"))
-            if (r.get("defense") in (None, "none")) and r.get("part") == "b" and r.get("err") is None]
-    return [r for r in rows if r["security"] and (r["suite"], r["it"]) not in C.TEXT_ONLY]
+            if (r.get("defense") in (None, "none")) and r.get("part") == "b" and r.get("err") is None
+            and (r["suite"], r["it"]) not in C.TEXT_ONLY]
+    if VIOLATION_ORACLE == "agentdojo":
+        return [r for r in rows if r["security"]]
+    ra = _replay_any()
+    assert all(r["row_id"] in ra for r in rows), f"rows without a replay_any score for {model}"
+    return [r for r in rows if ra[r["row_id"]] == 1]
 
 
 def attacker_tool():

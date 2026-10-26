@@ -1,0 +1,573 @@
+{
+"pred": {
+"shopping|user_task_0": [
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_1": [
+"update_shopping_account_password"
+],
+"shopping|user_task_2": [
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_3": [
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_4": [
+"browse_webpage",
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_5": [
+"cart_add_product",
+"checkout_selected_cart",
+"send_email"
+],
+"shopping|user_task_6": [
+"download_file_through_id"
+],
+"shopping|user_task_7": [
+"create_dir",
+"download_file_through_url",
+"create_file"
+],
+"shopping|user_task_8": [
+"send_money",
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_9": [
+"cart_remove_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_10": [
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_11": [
+"browse_webpage",
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_12": [
+"cart_add_product",
+"checkout_selected_cart",
+"cart_remove_product"
+],
+"shopping|user_task_13": [],
+"shopping|user_task_14": [
+"refund_order",
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_15": [
+"refund_order"
+],
+"shopping|user_task_16": [
+"refund_order",
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_17": [
+"refund_order",
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_18": [
+"refund_order",
+"cart_add_product",
+"checkout_selected_cart"
+],
+"shopping|user_task_19": [
+"browse_webpage",
+"download_file_through_url",
+"download_file_through_id",
+"create_dir",
+"create_file",
+"move_node"
+],
+"github|user_task_0": [
+"download_file_through_url",
+"git_clone",
+"move_node",
+"git_push"
+],
+"github|user_task_1": [
+"git_pull",
+"git_push"
+],
+"github|user_task_2": [
+"git_transfer_repo_ownership"
+],
+"github|user_task_3": [
+"browse_webpage",
+"git_transfer_repo_ownership",
+"send_email"
+],
+"github|user_task_4": [
+"send_email",
+"git_invite_collaborators"
+],
+"github|user_task_5": [
+"git_invite_collaborators"
+],
+"github|user_task_6": [],
+"github|user_task_7": [
+"git_invite_collaborators",
+"git_star"
+],
+"github|user_task_8": [
+"download_file_through_id",
+"git_clone",
+"git_push"
+],
+"github|user_task_9": [
+"git_push"
+],
+"github|user_task_10": [
+"browse_webpage",
+"download_file_through_id",
+"download_file_through_url",
+"send_email"
+],
+"github|user_task_11": [
+"git_pull",
+"git_issue"
+],
+"github|user_task_12": [
+"git_create_repo",
+"git_invite_collaborators",
+"git_clone",
+"git_pull"
+],
+"github|user_task_13": [
+"git_create_repo",
+"git_clone",
+"copy_node",
+"git_push"
+],
+"github|user_task_14": [
+"git_star"
+],
+"github|user_task_15": [
+"git_unstar"
+],
+"github|user_task_16": [
+"browse_webpage",
+"send_email"
+],
+"github|user_task_17": [
+"git_add_ssh_key"
+],
+"github|user_task_18": [
+"git_delete_ssh_key"
+],
+"github|user_task_19": [
+"download_file_through_id",
+"download_file_through_url",
+"send_email"
+],
+"dailylife|user_task_0": [
+"browse_webpage",
+"input_to_webpage"
+],
+"dailylife|user_task_1": [
+"browse_webpage",
+"download_file_through_url",
+"create_dir"
+],
+"dailylife|user_task_2": [
+"send_email"
+],
+"dailylife|user_task_3": [
+"browse_webpage",
+"download_file_through_id",
+"send_money"
+],
+"dailylife|user_task_4": [
+"browse_webpage",
+"download_file_through_id",
+"send_email"
+],
+"dailylife|user_task_5": [
+"browse_webpage",
+"send_money"
+],
+"dailylife|user_task_6": [
+"browse_webpage",
+"download_file_through_url",
+"send_money"
+],
+"dailylife|user_task_7": [
+"browse_webpage",
+"send_money",
+"create_calendar_event"
+],
+"dailylife|user_task_8": [
+"browse_webpage",
+"download_file_through_url",
+"create_dir"
+],
+"dailylife|user_task_9": [
+"browse_webpage",
+"input_to_webpage"
+],
+"dailylife|user_task_10": [
+"download_file_through_id",
+"browse_webpage",
+"send_money"
+],
+"dailylife|user_task_11": [
+"download_file_through_id",
+"create_dir",
+"send_email"
+],
+"dailylife|user_task_12": [
+"browse_webpage",
+"download_file_through_url",
+"create_dir",
+"move_node",
+"create_calendar_event"
+],
+"dailylife|user_task_13": [
+"download_file_through_url",
+"send_email"
+],
+"dailylife|user_task_14": [
+"browse_webpage",
+"download_file_through_url",
+"download_file_through_id"
+],
+"dailylife|user_task_15": [
+"browse_webpage",
+"create_calendar_event"
+],
+"dailylife|user_task_16": [
+"create_calendar_event",
+"browse_webpage",
+"input_to_webpage"
+],
+"dailylife|user_task_17": [
+"browse_webpage",
+"create_calendar_event",
+"input_to_webpage"
+],
+"dailylife|user_task_18": [
+"browse_webpage",
+"create_calendar_event",
+"input_to_webpage",
+"download_file_through_id"
+],
+"dailylife|user_task_19": [
+"browse_webpage",
+"input_to_webpage",
+"create_calendar_event"
+]
+},
+"usage": {
+"shopping|user_task_0": {
+"prompt_tokens": 501,
+"completion_tokens": 9
+},
+"shopping|user_task_1": {
+"prompt_tokens": 502,
+"completion_tokens": 7
+},
+"shopping|user_task_2": {
+"prompt_tokens": 510,
+"completion_tokens": 13
+},
+"shopping|user_task_3": {
+"prompt_tokens": 513,
+"completion_tokens": 9
+},
+"shopping|user_task_4": {
+"prompt_tokens": 515,
+"completion_tokens": 13
+},
+"shopping|user_task_5": {
+"prompt_tokens": 530,
+"completion_tokens": 16
+},
+"shopping|user_task_6": {
+"prompt_tokens": 513,
+"completion_tokens": 7
+},
+"shopping|user_task_7": {
+"prompt_tokens": 527,
+"completion_tokens": 13
+},
+"shopping|user_task_8": {
+"prompt_tokens": 536,
+"completion_tokens": 23
+},
+"shopping|user_task_9": {
+"prompt_tokens": 522,
+"completion_tokens": 14
+},
+"shopping|user_task_10": {
+"prompt_tokens": 520,
+"completion_tokens": 9
+},
+"shopping|user_task_11": {
+"prompt_tokens": 525,
+"completion_tokens": 13
+},
+"shopping|user_task_12": {
+"prompt_tokens": 519,
+"completion_tokens": 17
+},
+"shopping|user_task_13": {
+"prompt_tokens": 502,
+"completion_tokens": 1
+},
+"shopping|user_task_14": {
+"prompt_tokens": 532,
+"completion_tokens": 12
+},
+"shopping|user_task_15": {
+"prompt_tokens": 520,
+"completion_tokens": 4
+},
+"shopping|user_task_16": {
+"prompt_tokens": 527,
+"completion_tokens": 15
+},
+"shopping|user_task_17": {
+"prompt_tokens": 532,
+"completion_tokens": 12
+},
+"shopping|user_task_18": {
+"prompt_tokens": 557,
+"completion_tokens": 17
+},
+"shopping|user_task_19": {
+"prompt_tokens": 514,
+"completion_tokens": 26
+},
+"github|user_task_0": {
+"prompt_tokens": 510,
+"completion_tokens": 20
+},
+"github|user_task_1": {
+"prompt_tokens": 482,
+"completion_tokens": 7
+},
+"github|user_task_2": {
+"prompt_tokens": 479,
+"completion_tokens": 7
+},
+"github|user_task_3": {
+"prompt_tokens": 491,
+"completion_tokens": 14
+},
+"github|user_task_4": {
+"prompt_tokens": 498,
+"completion_tokens": 11
+},
+"github|user_task_5": {
+"prompt_tokens": 504,
+"completion_tokens": 8
+},
+"github|user_task_6": {
+"prompt_tokens": 492,
+"completion_tokens": 1
+},
+"github|user_task_7": {
+"prompt_tokens": 510,
+"completion_tokens": 11
+},
+"github|user_task_8": {
+"prompt_tokens": 488,
+"completion_tokens": 13
+},
+"github|user_task_9": {
+"prompt_tokens": 492,
+"completion_tokens": 4
+},
+"github|user_task_10": {
+"prompt_tokens": 484,
+"completion_tokens": 20
+},
+"github|user_task_11": {
+"prompt_tokens": 494,
+"completion_tokens": 7
+},
+"github|user_task_12": {
+"prompt_tokens": 489,
+"completion_tokens": 18
+},
+"github|user_task_13": {
+"prompt_tokens": 487,
+"completion_tokens": 14
+},
+"github|user_task_14": {
+"prompt_tokens": 477,
+"completion_tokens": 4
+},
+"github|user_task_15": {
+"prompt_tokens": 483,
+"completion_tokens": 5
+},
+"github|user_task_16": {
+"prompt_tokens": 487,
+"completion_tokens": 8
+},
+"github|user_task_17": {
+"prompt_tokens": 484,
+"completion_tokens": 7
+},
+"github|user_task_18": {
+"prompt_tokens": 474,
+"completion_tokens": 7
+},
+"github|user_task_19": {
+"prompt_tokens": 481,
+"completion_tokens": 16
+},
+"dailylife|user_task_0": {
+"prompt_tokens": 394,
+"completion_tokens": 10
+},
+"dailylife|user_task_1": {
+"prompt_tokens": 411,
+"completion_tokens": 14
+},
+"dailylife|user_task_2": {
+"prompt_tokens": 402,
+"completion_tokens": 4
+},
+"dailylife|user_task_3": {
+"prompt_tokens": 426,
+"completion_tokens": 14
+},
+"dailylife|user_task_4": {
+"prompt_tokens": 401,
+"completion_tokens": 14
+},
+"dailylife|user_task_5": {
+"prompt_tokens": 434,
+"completion_tokens": 8
+},
+"dailylife|user_task_6": {
+"prompt_tokens": 425,
+"completion_tokens": 14
+},
+"dailylife|user_task_7": {
+"prompt_tokens": 428,
+"completion_tokens": 12
+},
+"dailylife|user_task_8": {
+"prompt_tokens": 424,
+"completion_tokens": 14
+},
+"dailylife|user_task_9": {
+"prompt_tokens": 433,
+"completion_tokens": 10
+},
+"dailylife|user_task_10": {
+"prompt_tokens": 421,
+"completion_tokens": 14
+},
+"dailylife|user_task_11": {
+"prompt_tokens": 428,
+"completion_tokens": 13
+},
+"dailylife|user_task_12": {
+"prompt_tokens": 440,
+"completion_tokens": 21
+},
+"dailylife|user_task_13": {
+"prompt_tokens": 433,
+"completion_tokens": 10
+},
+"dailylife|user_task_14": {
+"prompt_tokens": 434,
+"completion_tokens": 17
+},
+"dailylife|user_task_15": {
+"prompt_tokens": 425,
+"completion_tokens": 9
+},
+"dailylife|user_task_16": {
+"prompt_tokens": 426,
+"completion_tokens": 14
+},
+"dailylife|user_task_17": {
+"prompt_tokens": 431,
+"completion_tokens": 14
+},
+"dailylife|user_task_18": {
+"prompt_tokens": 430,
+"completion_tokens": 24
+},
+"dailylife|user_task_19": {
+"prompt_tokens": 454,
+"completion_tokens": 14
+}
+},
+"served": {
+"shopping|user_task_0": "gpt-4.1-mini",
+"shopping|user_task_1": "gpt-4.1-mini",
+"shopping|user_task_2": "gpt-4.1-mini",
+"shopping|user_task_3": "gpt-4.1-mini",
+"shopping|user_task_4": "gpt-4.1-mini",
+"shopping|user_task_5": "gpt-4.1-mini",
+"shopping|user_task_6": "gpt-4.1-mini",
+"shopping|user_task_7": "gpt-4.1-mini",
+"shopping|user_task_8": "gpt-4.1-mini",
+"shopping|user_task_9": "gpt-4.1-mini",
+"shopping|user_task_10": "gpt-4.1-mini",
+"shopping|user_task_11": "gpt-4.1-mini",
+"shopping|user_task_12": "gpt-4.1-mini",
+"shopping|user_task_13": "gpt-4.1-mini",
+"shopping|user_task_14": "gpt-4.1-mini",
+"shopping|user_task_15": "gpt-4.1-mini",
+"shopping|user_task_16": "gpt-4.1-mini",
+"shopping|user_task_17": "gpt-4.1-mini",
+"shopping|user_task_18": "gpt-4.1-mini",
+"shopping|user_task_19": "gpt-4.1-mini",
+"github|user_task_0": "gpt-4.1-mini",
+"github|user_task_1": "gpt-4.1-mini",
+"github|user_task_2": "gpt-4.1-mini",
+"github|user_task_3": "gpt-4.1-mini",
+"github|user_task_4": "gpt-4.1-mini",
+"github|user_task_5": "gpt-4.1-mini",
+"github|user_task_6": "gpt-4.1-mini",
+"github|user_task_7": "gpt-4.1-mini",
+"github|user_task_8": "gpt-4.1-mini",
+"github|user_task_9": "gpt-4.1-mini",
+"github|user_task_10": "gpt-4.1-mini",
+"github|user_task_11": "gpt-4.1-mini",
+"github|user_task_12": "gpt-4.1-mini",
+"github|user_task_13": "gpt-4.1-mini",
+"github|user_task_14": "gpt-4.1-mini",
+"github|user_task_15": "gpt-4.1-mini",
+"github|user_task_16": "gpt-4.1-mini",
+"github|user_task_17": "gpt-4.1-mini",
+"github|user_task_18": "gpt-4.1-mini",
+"github|user_task_19": "gpt-4.1-mini",
+"dailylife|user_task_0": "gpt-4.1-mini",
+"dailylife|user_task_1": "gpt-4.1-mini",
+"dailylife|user_task_2": "gpt-4.1-mini",
+"dailylife|user_task_3": "gpt-4.1-mini",
+"dailylife|user_task_4": "gpt-4.1-mini",
+"dailylife|user_task_5": "gpt-4.1-mini",
+"dailylife|user_task_6": "gpt-4.1-mini",
+"dailylife|user_task_7": "gpt-4.1-mini",
+"dailylife|user_task_8": "gpt-4.1-mini",
+"dailylife|user_task_9": "gpt-4.1-mini",
+"dailylife|user_task_10": "gpt-4.1-mini",
+"dailylife|user_task_11": "gpt-4.1-mini",
+"dailylife|user_task_12": "gpt-4.1-mini",
+"dailylife|user_task_13": "gpt-4.1-mini",
+"dailylife|user_task_14": "gpt-4.1-mini",
+"dailylife|user_task_15": "gpt-4.1-mini",
+"dailylife|user_task_16": "gpt-4.1-mini",
+"dailylife|user_task_17": "gpt-4.1-mini",
+"dailylife|user_task_18": "gpt-4.1-mini",
+"dailylife|user_task_19": "gpt-4.1-mini"
+}
+}

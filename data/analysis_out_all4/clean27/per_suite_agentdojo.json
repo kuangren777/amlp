@@ -1,0 +1,142 @@
+{
+ "block": {
+  "amlp": {
+   "banking": -0.05128205128205132,
+   "slack": 0.35,
+   "travel": 0.3623188405797102,
+   "workspace": 0.19999999999999996
+  },
+  "block_all": {
+   "banking": 1.0,
+   "slack": 0.9333333333333333,
+   "travel": 1.0,
+   "workspace": 1.0
+  },
+  "spotlighting": {
+   "banking": 0.20512820512820518,
+   "slack": -0.016666666666666607,
+   "travel": 0.01449275362318836,
+   "workspace": 0.12
+  },
+  "sandwich": {
+   "banking": 0.23076923076923073,
+   "slack": 0.44999999999999996,
+   "travel": 0.37681159420289856,
+   "workspace": 0.4
+  },
+  "tool_filter": {
+   "banking": 0.7692307692307692,
+   "slack": 0.8,
+   "travel": 0.7246376811594203,
+   "workspace": 0.96
+  },
+  "pi_detector": {
+   "banking": 0.7692307692307692,
+   "slack": 1.0,
+   "travel": 1.0,
+   "workspace": 0.6799999999999999
+  },
+  "melon": {
+   "banking": 0.7692307692307692,
+   "slack": 0.8666666666666667,
+   "travel": 0.927536231884058,
+   "workspace": 1.0
+  },
+  "tripwire": {
+   "banking": 0.8717948717948718,
+   "slack": 0.55,
+   "travel": 0.7391304347826086,
+   "workspace": 0.92
+  },
+  "progent": {
+   "banking": 0.9743589743589743,
+   "slack": 0.8333333333333334,
+   "travel": 0.8840579710144928,
+   "workspace": 1.0
+  },
+  "camel": {
+   "banking": 1.0,
+   "slack": 1.0,
+   "travel": 1.0,
+   "workspace": 1.0
+  },
+  "agentsentry": {
+   "banking": 0.7435897435897436,
+   "slack": 0.8666666666666667,
+   "travel": 0.46376811594202894,
+   "workspace": 0.72
+  }
+ },
+ "cost": {
+  "amlp": {
+   "banking": 0.015625,
+   "slack": 0.00625,
+   "travel": -0.004464285714285714,
+   "workspace": 0.011363636363636364
+  },
+  "block_all": {
+   "banking": 0.16666666666666666,
+   "slack": 0.6166666666666667,
+   "travel": 0.20238095238095238,
+   "workspace": 0.16666666666666666
+  },
+  "spotlighting": {
+   "banking": 0.041666666666666664,
+   "slack": -0.016666666666666666,
+   "travel": 0.03571428571428571,
+   "workspace": 0.015151515151515152
+  },
+  "sandwich": {
+   "banking": 0.020833333333333332,
+   "slack": 0.06666666666666667,
+   "travel": -0.03571428571428571,
+   "workspace": 0.045454545454545456
+  },
+  "tool_filter": {
+   "banking": -0.0625,
+   "slack": 0.15,
+   "travel": 0.0,
+   "workspace": 0.07575757575757576
+  },
+  "pi_detector": {
+   "banking": 0.14583333333333334,
+   "slack": 0.4166666666666667,
+   "travel": 0.39285714285714285,
+   "workspace": 0.19696969696969696
+  },
+  "melon": {
+   "banking": 0.08333333333333333,
+   "slack": -0.05,
+   "travel": 0.0,
+   "workspace": 0.08333333333333333
+  },
+  "tripwire": {
+   "banking": 0.0,
+   "slack": 0.0,
+   "travel": 0.0,
+   "workspace": 0.045454545454545456
+  },
+  "progent": {
+   "banking": 0.0,
+   "slack": -0.016666666666666666,
+   "travel": 0.0,
+   "workspace": 0.045454545454545456
+  },
+  "camel": {
+   "banking": 0.20833333333333334,
+   "slack": 0.43333333333333335,
+   "travel": 0.6428571428571429,
+   "workspace": 0.3484848484848485
+  },
+  "agentsentry": {
+   "banking": -0.041666666666666664,
+   "slack": 0.15,
+   "travel": 0.0,
+   "workspace": 0.015151515151515152
+  }
+ },
+ "tripwire_missed": {
+  "tripwire_missed": 52,
+  "amlp_stops_of_those": 1
+ }
+}

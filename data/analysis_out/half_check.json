@@ -1,0 +1,239 @@
+{
+ "boundary_values": 18,
+ "changed": [
+  {
+   "where": "make_figs.py:401",
+   "value": 31.25,
+   "exact": "125/4",
+   "printed": "+31.2",
+   "half_up": "+31.3",
+   "changes": true
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "+6.2",
+   "half_up": "+6.3",
+   "changes": true
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": -6.25,
+   "exact": "-25/4",
+   "printed": "-6.2",
+   "half_up": "-6.3",
+   "changes": true
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": 91.25,
+   "exact": "365/4",
+   "printed": "91.2",
+   "half_up": "91.3",
+   "changes": true
+  },
+  {
+   "where": "make_numbers.py:205",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  },
+  {
+   "where": "r1:333",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  },
+  {
+   "where": "r1:334",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  },
+  {
+   "where": "r1:333",
+   "value": 31.25,
+   "exact": "125/4",
+   "printed": "31.2",
+   "half_up": "31.3",
+   "changes": true
+  },
+  {
+   "where": "r1:334",
+   "value": 31.25,
+   "exact": "125/4",
+   "printed": "31.2",
+   "half_up": "31.3",
+   "changes": true
+  },
+  {
+   "where": "make_numbers.py:342",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  }
+ ],
+ "all": [
+  {
+   "where": "make_figs.py:401",
+   "value": 43.75,
+   "exact": "175/4",
+   "printed": "+43.8",
+   "half_up": "+43.8",
+   "changes": false
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": 31.25,
+   "exact": "125/4",
+   "printed": "+31.2",
+   "half_up": "+31.3",
+   "changes": true
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "+6.2",
+   "half_up": "+6.3",
+   "changes": true
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": -6.25,
+   "exact": "-25/4",
+   "printed": "-6.2",
+   "half_up": "-6.3",
+   "changes": true
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": 91.25,
+   "exact": "365/4",
+   "printed": "91.2",
+   "half_up": "91.3",
+   "changes": true
+  },
+  {
+   "where": "make_figs.py:401",
+   "value": 68.75,
+   "exact": "275/4",
+   "printed": "68.8",
+   "half_up": "68.8",
+   "changes": false
+  },
+  {
+   "where": "make_numbers.py:205",
+   "value": 43.75,
+   "exact": "175/4",
+   "printed": "43.8",
+   "half_up": "43.8",
+   "changes": false
+  },
+  {
+   "where": "make_numbers.py:205",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  },
+  {
+   "where": "r1:333",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  },
+  {
+   "where": "r1:334",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  },
+  {
+   "where": "r1:333",
+   "value": 31.25,
+   "exact": "125/4",
+   "printed": "31.2",
+   "half_up": "31.3",
+   "changes": true
+  },
+  {
+   "where": "r1:334",
+   "value": 31.25,
+   "exact": "125/4",
+   "printed": "31.2",
+   "half_up": "31.3",
+   "changes": true
+  },
+  {
+   "where": "r1:333",
+   "value": 43.75,
+   "exact": "175/4",
+   "printed": "43.8",
+   "half_up": "43.8",
+   "changes": false
+  },
+  {
+   "where": "r1:334",
+   "value": 43.75,
+   "exact": "175/4",
+   "printed": "43.8",
+   "half_up": "43.8",
+   "changes": false
+  },
+  {
+   "where": "r1:341",
+   "value": 43.75,
+   "exact": "175/4",
+   "printed": "43.8",
+   "half_up": "43.8",
+   "changes": false
+  },
+  {
+   "where": "make_numbers.py:342",
+   "value": 18.75,
+   "exact": "75/4",
+   "printed": "18.8",
+   "half_up": "18.8",
+   "changes": false
+  },
+  {
+   "where": "make_numbers.py:342",
+   "value": 6.25,
+   "exact": "25/4",
+   "printed": "6.2",
+   "half_up": "6.3",
+   "changes": true
+  }
+ ]
+}

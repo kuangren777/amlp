@@ -2,292 +2,190 @@
  "rq3": {
   "qwen3-8b-local": {
    "amlp": {
-    "benign_utility": 0.6666666666666666,
-    "benign_utility_none": 0.6536458333333334,
-    "benign_cost": -0.013020833333333334,
+    "benign_utility": 0.4635416666666667,
+    "benign_utility_none": 0.4635416666666667,
+    "benign_cost": 0.0,
     "benign_cost_ci": [
-     -0.0625,
-     0.036458333333333336
+     -0.03125,
+     0.03125
     ],
     "n_benign": 384,
-    "asr": 0.16129032258064516,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 0.27419354838709675,
+    "asr": 0.23655913978494625,
+    "asr_none": 0.2903225806451613,
+    "block_rate": 0.18518518518518523,
     "block_rate_ci": [
-     0.01851851851851849,
-     0.5094339622641509
+     0.0,
+     0.4
     ],
     "n_attack": 279
    },
    "block_all": {
-    "benign_utility": 0.3125,
-    "benign_utility_none": 0.6319444444444444,
-    "benign_cost": 0.3194444444444444,
+    "benign_utility": 0.2361111111111111,
+    "benign_utility_none": 0.4513888888888889,
+    "benign_cost": 0.2152777777777778,
     "benign_cost_ci": [
-     0.16666666666666666,
-     0.4722222222222222
+     0.09027777777777778,
+     0.3472222222222222
     ],
     "n_benign": 144,
-    "asr": 0.0,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 1.0,
+    "asr": 0.010752688172043012,
+    "asr_none": 0.2903225806451613,
+    "block_rate": 0.962962962962963,
     "block_rate_ci": [
-     1.0,
+     0.875,
      1.0
     ],
     "n_attack": 279
    },
    "spotlighting": {
-    "benign_utility": 0.7222222222222222,
-    "benign_utility_none": 0.6319444444444444,
-    "benign_cost": -0.09027777777777778,
-    "benign_cost_ci": [
-     -0.16666666666666666,
-     -0.020833333333333332
-    ],
-    "n_benign": 144,
-    "asr": 0.2114695340501792,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 0.048387096774193505,
-    "block_rate_ci": [
-     -0.17999999999999994,
-     0.24390243902439024
-    ],
-    "n_attack": 279
-   },
-   "sandwich": {
-    "benign_utility": 0.625,
-    "benign_utility_none": 0.6319444444444444,
-    "benign_cost": 0.006944444444444444,
-    "benign_cost_ci": [
-     -0.09027777777777778,
-     0.09722222222222222
-    ],
-    "n_benign": 144,
-    "asr": 0.05734767025089606,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 0.7419354838709677,
-    "block_rate_ci": [
-     0.6290322580645161,
-     0.8536585365853658
-    ],
-    "n_attack": 279
-   },
-   "tool_filter": {
-    "benign_utility": 0.6319444444444444,
-    "benign_utility_none": 0.6319444444444444,
+    "benign_utility": 0.4513888888888889,
+    "benign_utility_none": 0.4513888888888889,
     "benign_cost": 0.0,
     "benign_cost_ci": [
      -0.05555555555555555,
      0.05555555555555555
     ],
     "n_benign": 144,
-    "asr": 0.1971326164874552,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 0.11290322580645162,
+    "asr": 0.35842293906810035,
+    "asr_none": 0.2903225806451613,
+    "block_rate": -0.23456790123456783,
     "block_rate_ci": [
-     -0.13207547169811318,
-     0.33999999999999997
+     -0.46031746031746024,
+     -0.02970297029702973
+    ],
+    "n_attack": 279
+   },
+   "sandwich": {
+    "benign_utility": 0.4791666666666667,
+    "benign_utility_none": 0.4513888888888889,
+    "benign_cost": -0.027777777777777776,
+    "benign_cost_ci": [
+     -0.11805555555555555,
+     0.0625
+    ],
+    "n_benign": 144,
+    "asr": 0.21863799283154123,
+    "asr_none": 0.2903225806451613,
+    "block_rate": 0.24691358024691357,
+    "block_rate_ci": [
+     0.0898876404494382,
+     0.4177215189873418
+    ],
+    "n_attack": 279
+   },
+   "tool_filter": {
+    "benign_utility": 0.4097222222222222,
+    "benign_utility_none": 0.4513888888888889,
+    "benign_cost": 0.041666666666666664,
+    "benign_cost_ci": [
+     -0.027777777777777776,
+     0.11805555555555555
+    ],
+    "n_benign": 144,
+    "asr": 0.2114695340501792,
+    "asr_none": 0.2903225806451613,
+    "block_rate": 0.2716049382716049,
+    "block_rate_ci": [
+     0.04225352112676062,
+     0.4810126582278481
     ],
     "n_attack": 279
    },
    "pi_detector": {
-    "benign_utility": 0.3472222222222222,
-    "benign_utility_none": 0.6319444444444444,
-    "benign_cost": 0.2847222222222222,
+    "benign_utility": 0.25,
+    "benign_utility_none": 0.4513888888888889,
+    "benign_cost": 0.2013888888888889,
     "benign_cost_ci": [
-     0.16666666666666666,
-     0.4097222222222222
+     0.08333333333333333,
+     0.3263888888888889
     ],
     "n_benign": 144,
-    "asr": 0.0035842293906810036,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 0.9838709677419355,
+    "asr": 0.010752688172043012,
+    "asr_none": 0.2903225806451613,
+    "block_rate": 0.962962962962963,
     "block_rate_ci": [
-     0.9473684210526316,
+     0.875,
      1.0
     ],
     "n_attack": 279
    },
    "melon": {
-    "benign_utility": 0.6458333333333334,
-    "benign_utility_none": 0.6319444444444444,
-    "benign_cost": -0.013888888888888888,
+    "benign_utility": 0.4861111111111111,
+    "benign_utility_none": 0.4513888888888889,
+    "benign_cost": -0.034722222222222224,
     "benign_cost_ci": [
-     -0.09027777777777778,
-     0.0625
+     -0.10416666666666667,
+     0.034722222222222224
     ],
     "n_benign": 144,
-    "asr": 0.0035842293906810036,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 0.9838709677419355,
+    "asr": 0.12544802867383512,
+    "asr_none": 0.2903225806451613,
+    "block_rate": 0.5679012345679013,
     "block_rate_ci": [
-     0.948051948051948,
-     1.0
+     0.4444444444444444,
+     0.7
     ],
     "n_attack": 279
    },
    "tripwire": {
-    "benign_utility": 0.6458333333333334,
-    "benign_utility_none": 0.6319444444444444,
-    "benign_cost": -0.013888888888888888,
+    "benign_utility": 0.4444444444444444,
+    "benign_utility_none": 0.4513888888888889,
+    "benign_cost": 0.006944444444444444,
     "benign_cost_ci": [
-     -0.08333333333333333,
-     0.05555555555555555
+     -0.041666666666666664,
+     0.0625
     ],
     "n_benign": 144,
-    "asr": 0.04659498207885305,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 0.7903225806451613,
+    "asr": 0.10752688172043011,
+    "asr_none": 0.2903225806451613,
+    "block_rate": 0.6296296296296297,
     "block_rate_ci": [
-     0.6153846153846154,
-     0.9259259259259259
+     0.45783132530120485,
+     0.8
     ],
     "n_attack": 279
    },
    "progent": {
-    "benign_utility": 0.7083333333333334,
-    "benign_utility_none": 0.6319444444444444,
-    "benign_cost": -0.0763888888888889,
+    "benign_utility": 0.5,
+    "benign_utility_none": 0.4513888888888889,
+    "benign_cost": -0.04861111111111111,
     "benign_cost_ci": [
-     -0.1736111111111111,
-     0.020833333333333332
+     -0.11805555555555555,
+     0.013888888888888888
     ],
     "n_benign": 144,
-    "asr": 0.014336917562724014,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 0.935483870967742,
+    "asr": 0.043010752688172046,
+    "asr_none": 0.2903225806451613,
+    "block_rate": 0.8518518518518519,
     "block_rate_ci": [
-     0.8301886792452831,
-     1.0
+     0.7380952380952381,
+     0.9558823529411765
     ],
     "n_attack": 279
    },
    "agentsentry": {
-    "benign_utility": 0.6111111111111112,
-    "benign_utility_none": 0.6319444444444444,
-    "benign_cost": 0.020833333333333332,
+    "benign_utility": 0.3958333333333333,
+    "benign_utility_none": 0.4513888888888889,
+    "benign_cost": 0.05555555555555555,
     "benign_cost_ci": [
-     -0.08333333333333333,
-     0.125
+     -0.027777777777777776,
+     0.1527777777777778
     ],
     "n_benign": 144,
-    "asr": 0.014336917562724014,
-    "asr_none": 0.2222222222222222,
-    "block_rate": 0.935483870967742,
+    "asr": 0.08602150537634409,
+    "asr_none": 0.2903225806451613,
+    "block_rate": 0.7037037037037037,
     "block_rate_ci": [
-     0.8666666666666667,
-     0.9857142857142858
+     0.5205479452054795,
+     0.8631578947368421
     ],
     "n_attack": 279
    },
    "amlp_vs_tripwire": {
-    "amlp1_tripwire0": 35,
-    "amlp0_tripwire0": 231,
-    "amlp0_tripwire1": 3,
-    "amlp1_tripwire1": 10
-   }
-  },
-  "llama31-8b-local": {
-   "amlp": {
-    "benign_utility": 0.19791666666666666,
-    "benign_utility_none": 0.203125,
-    "benign_cost": 0.005208333333333333,
-    "benign_cost_ci": [
-     -0.020833333333333332,
-     0.028645833333333332
-    ],
-    "n_benign": 384
-   },
-   "block_all": {
-    "benign_utility": 0.1388888888888889,
-    "benign_utility_none": 0.2013888888888889,
-    "benign_cost": 0.0625,
-    "benign_cost_ci": [
-     -0.034722222222222224,
-     0.16666666666666666
-    ],
-    "n_benign": 144
-   },
-   "spotlighting": {
-    "benign_utility": 0.16666666666666666,
-    "benign_utility_none": 0.2013888888888889,
-    "benign_cost": 0.034722222222222224,
-    "benign_cost_ci": [
-     -0.020833333333333332,
-     0.09722222222222222
-    ],
-    "n_benign": 144
-   },
-   "sandwich": {
-    "benign_utility": 0.1736111111111111,
-    "benign_utility_none": 0.2013888888888889,
-    "benign_cost": 0.027777777777777776,
-    "benign_cost_ci": [
-     -0.041666666666666664,
-     0.10416666666666667
-    ],
-    "n_benign": 144
-   },
-   "tool_filter": {
-    "benign_utility": 0.20833333333333334,
-    "benign_utility_none": 0.2013888888888889,
-    "benign_cost": -0.006944444444444444,
-    "benign_cost_ci": [
-     -0.0763888888888889,
-     0.05555555555555555
-    ],
-    "n_benign": 144
-   },
-   "pi_detector": {
-    "benign_utility": 0.18055555555555555,
-    "benign_utility_none": 0.2013888888888889,
-    "benign_cost": 0.020833333333333332,
-    "benign_cost_ci": [
-     -0.034722222222222224,
-     0.0763888888888889
-    ],
-    "n_benign": 144
-   },
-   "melon": {
-    "benign_utility": 0.18055555555555555,
-    "benign_utility_none": 0.2013888888888889,
-    "benign_cost": 0.020833333333333332,
-    "benign_cost_ci": [
-     -0.034722222222222224,
-     0.0763888888888889
-    ],
-    "n_benign": 144
-   },
-   "tripwire": {
-    "benign_utility": 0.19444444444444445,
-    "benign_utility_none": 0.2013888888888889,
-    "benign_cost": 0.006944444444444444,
-    "benign_cost_ci": [
-     -0.04861111111111111,
-     0.0625
-    ],
-    "n_benign": 144
-   },
-   "progent": {
-    "benign_utility": 0.2222222222222222,
-    "benign_utility_none": 0.2013888888888889,
-    "benign_cost": -0.020833333333333332,
-    "benign_cost_ci": [
-     -0.08333333333333333,
-     0.027777777777777776
-    ],
-    "n_benign": 144
-   },
-   "agentsentry": {
-    "benign_utility": 0.2222222222222222,
-    "benign_utility_none": 0.2013888888888889,
-    "benign_cost": -0.020833333333333332,
-    "benign_cost_ci": [
-     -0.08333333333333333,
-     0.034722222222222224
-    ],
-    "n_benign": 144
+    "amlp1_tripwire0": 38,
+    "amlp0_tripwire0": 211,
+    "amlp1_tripwire1": 28,
+    "amlp0_tripwire1": 2
    }
   },
   "gpt-4o-mini-2024-07-18": {
@@ -707,42 +605,42 @@
   "paraphrase": {
    "qwen3-8b-local": {
     "none": {
-     "utility_para": 0.6388888888888888,
-     "utility_orig": 0.6319444444444444,
+     "utility_para": 0.3611111111111111,
+     "utility_orig": 0.4513888888888889,
      "n_para": 144,
      "n_orig": 144
     },
     "amlp": {
-     "utility_para": 0.6319444444444444,
-     "utility_orig": 0.6458333333333334,
+     "utility_para": 0.4305555555555556,
+     "utility_orig": 0.4444444444444444,
      "n_para": 144,
      "n_orig": 144,
-     "cost_para": 0.00694444444444442,
-     "cost_orig": -0.01388888888888895,
-     "shift": 0.02083333333333337,
-     "shift_paired": 0.020833333333333332,
+     "cost_para": -0.06944444444444448,
+     "cost_orig": 0.006944444444444475,
+     "shift": -0.07638888888888895,
+     "shift_paired": -0.0763888888888889,
      "shift_ci": [
-      -0.10416666666666667,
-      0.1527777777777778
+      -0.1527777777777778,
+      0.0
      ],
      "shift_n": 144
     },
     "progent": {
-     "utility_para": 0.5902777777777778,
-     "utility_orig": 0.7083333333333334,
+     "utility_para": 0.4722222222222222,
+     "utility_orig": 0.5,
      "n_para": 144,
      "n_orig": 144,
-     "cost_para": 0.04861111111111105,
-     "cost_orig": -0.07638888888888895,
-     "shift": 0.125,
-     "shift_paired": 0.125,
+     "cost_para": -0.1111111111111111,
+     "cost_orig": -0.048611111111111105,
+     "shift": -0.0625,
+     "shift_paired": -0.0625,
      "shift_ci": [
-      0.0,
-      0.2569444444444444
+      -0.1527777777777778,
+      0.027777777777777776
      ],
      "shift_n": 144
     },
-    "amlp_replay_fb_on_paraphrase": 0.0,
+    "amlp_replay_fb_on_paraphrase": 0.013888888888888888,
     "amlp_replay_fb_n": 144
    },
    "gpt-4.1-mini-2025-04-14": {
@@ -789,212 +687,200 @@
   "transfer": {
    "gpt-4o-mini-2024-07-18->gpt-4.1-mini-2025-04-14": {
     "fb": 0.0,
-    "recall": 0.19875776397515527,
+    "recall": 0.2,
     "n_benign": 384,
-    "n_viol": 161
+    "n_viol": 165
    },
    "gpt-4.1-mini-2025-04-14->gpt-4o-mini-2024-07-18": {
     "fb": 0.0026041666666666665,
-    "recall": 0.3173076923076923,
+    "recall": 0.308411214953271,
     "n_benign": 384,
-    "n_viol": 104
-   },
-   "qwen3-8b-local->llama31-8b-local": {
-    "fb": 0.013020833333333334,
-    "recall": null,
-    "n_benign": 384,
-    "n_viol": 0
-   },
-   "llama31-8b-local->qwen3-8b-local": {
-    "fb": 0.0,
-    "recall": 0.0,
-    "n_benign": 384,
-    "n_viol": 62
+    "n_viol": 107
    }
   },
   "poisoning": {
    "qwen3-8b-local": {
     "0.0": {
      "poisoned_runs": 0,
-     "fb": 0.0,
-     "recall": 0.3709677419354839,
-     "recall_mean": 0.3709677419354839,
-     "recall_min": 0.3709677419354839,
-     "recall_max": 0.3709677419354839,
+     "fb": 0.010416666666666666,
+     "recall": 0.38823529411764707,
+     "recall_mean": 0.38823529411764707,
+     "recall_min": 0.38823529411764707,
+     "recall_max": 0.38823529411764707,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 0,
-       "fb": 0.0,
-       "recall": 0.3709677419354839
+       "fb": 0.010416666666666666,
+       "recall": 0.38823529411764707
       }
      ]
     },
     "0.01": {
      "poisoned_runs": 4,
-     "fb": 0.0,
-     "recall": 0.22580645161290322,
-     "recall_mean": 0.31129032258064515,
-     "recall_min": 0.14516129032258066,
-     "recall_max": 0.3709677419354839,
+     "fb": 0.010416666666666666,
+     "recall": 0.24705882352941178,
+     "recall_mean": 0.31058823529411766,
+     "recall_min": 0.23529411764705882,
+     "recall_max": 0.38823529411764707,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": 0.22580645161290322
+       "fb": 0.010416666666666666,
+       "recall": 0.24705882352941178
       },
       {
        "seed": 20261007,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.14516129032258066
+       "recall": 0.23529411764705882
       },
       {
        "seed": 20261008,
        "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": 0.3709677419354839
+       "fb": 0.010416666666666666,
+       "recall": 0.3058823529411765
       },
       {
        "seed": 20261009,
        "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": 0.3709677419354839
+       "fb": 0.010416666666666666,
+       "recall": 0.38823529411764707
       },
       {
        "seed": 20261010,
        "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": 0.3709677419354839
+       "fb": 0.010416666666666666,
+       "recall": 0.3058823529411765
       },
       {
        "seed": 20261011,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.3709677419354839
+       "recall": 0.32941176470588235
       },
       {
        "seed": 20261012,
        "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": 0.3709677419354839
+       "fb": 0.010416666666666666,
+       "recall": 0.3058823529411765
       },
       {
        "seed": 20261013,
        "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": 0.3709677419354839
+       "fb": 0.010416666666666666,
+       "recall": 0.38823529411764707
       },
       {
        "seed": 20261014,
        "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": 0.14516129032258066
+       "fb": 0.010416666666666666,
+       "recall": 0.2823529411764706
       },
       {
        "seed": 20261015,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.3709677419354839
+       "recall": 0.3176470588235294
       }
      ]
     },
     "0.05": {
      "poisoned_runs": 20,
-     "fb": 0.0,
-     "recall": 0.14516129032258066,
-     "recall_mean": 0.09516129032258065,
-     "recall_min": 0.0,
-     "recall_max": 0.22580645161290322,
+     "fb": 0.010416666666666666,
+     "recall": 0.29411764705882354,
+     "recall_mean": 0.12941176470588237,
+     "recall_min": 0.011764705882352941,
+     "recall_max": 0.29411764705882354,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": 0.14516129032258066
+       "fb": 0.010416666666666666,
+       "recall": 0.29411764705882354
       },
       {
        "seed": 20261007,
        "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": 0.0
+       "fb": 0.010416666666666666,
+       "recall": 0.058823529411764705
       },
       {
        "seed": 20261008,
        "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": 0.0
+       "fb": 0.010416666666666666,
+       "recall": 0.07058823529411765
       },
       {
        "seed": 20261009,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.0
+       "recall": 0.011764705882352941
       },
       {
        "seed": 20261010,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.0
+       "recall": 0.011764705882352941
       },
       {
        "seed": 20261011,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.14516129032258066
+       "recall": 0.15294117647058825
       },
       {
        "seed": 20261012,
        "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": 0.22580645161290322
+       "fb": 0.010416666666666666,
+       "recall": 0.15294117647058825
       },
       {
        "seed": 20261013,
        "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": 0.14516129032258066
+       "fb": 0.010416666666666666,
+       "recall": 0.2
       },
       {
        "seed": 20261014,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.14516129032258066
+       "recall": 0.1411764705882353
       },
       {
        "seed": 20261015,
        "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": 0.14516129032258066
+       "fb": 0.010416666666666666,
+       "recall": 0.2
       }
      ]
     },
     "0.1": {
      "poisoned_runs": 39,
-     "fb": 0.0,
-     "recall": 0.0,
-     "recall_mean": 0.05806451612903226,
+     "fb": 0.010416666666666666,
+     "recall": 0.08235294117647059,
+     "recall_mean": 0.07764705882352942,
      "recall_min": 0.0,
-     "recall_max": 0.14516129032258066,
+     "recall_max": 0.15294117647058825,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.0
+       "recall": 0.08235294117647059
       },
       {
        "seed": 20261007,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.0
+       "recall": 0.011764705882352941
       },
       {
        "seed": 20261008,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.14516129032258066
+       "recall": 0.15294117647058825
       },
       {
        "seed": 20261009,
@@ -1006,265 +892,37 @@
        "seed": 20261010,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.0
+       "recall": 0.011764705882352941
       },
       {
        "seed": 20261011,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.14516129032258066
+       "recall": 0.1411764705882353
       },
       {
        "seed": 20261012,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.0
+       "recall": 0.011764705882352941
       },
       {
        "seed": 20261013,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.14516129032258066
+       "recall": 0.15294117647058825
       },
       {
        "seed": 20261014,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.14516129032258066
+       "recall": 0.15294117647058825
       },
       {
        "seed": 20261015,
        "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": 0.0
-      }
-     ]
-    }
-   },
-   "llama31-8b-local": {
-    "0.0": {
-     "poisoned_runs": 0,
-     "fb": 0.0,
-     "recall": null,
-     "recall_mean": null,
-     "recall_min": null,
-     "recall_max": null,
-     "per_seed": [
-      {
-       "seed": 20261006,
-       "poisoned_runs": 0,
-       "fb": 0.0,
-       "recall": null
-      }
-     ]
-    },
-    "0.01": {
-     "poisoned_runs": 4,
-     "fb": 0.0,
-     "recall": null,
-     "recall_mean": null,
-     "recall_min": null,
-     "recall_max": null,
-     "per_seed": [
-      {
-       "seed": 20261006,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261007,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261008,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261009,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261010,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261011,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261012,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261013,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261014,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261015,
-       "poisoned_runs": 4,
-       "fb": 0.0,
-       "recall": null
-      }
-     ]
-    },
-    "0.05": {
-     "poisoned_runs": 20,
-     "fb": 0.0,
-     "recall": null,
-     "recall_mean": null,
-     "recall_min": null,
-     "recall_max": null,
-     "per_seed": [
-      {
-       "seed": 20261006,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261007,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261008,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261009,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261010,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261011,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261012,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261013,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261014,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261015,
-       "poisoned_runs": 20,
-       "fb": 0.0,
-       "recall": null
-      }
-     ]
-    },
-    "0.1": {
-     "poisoned_runs": 39,
-     "fb": 0.0,
-     "recall": null,
-     "recall_mean": null,
-     "recall_min": null,
-     "recall_max": null,
-     "per_seed": [
-      {
-       "seed": 20261006,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261007,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261008,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261009,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261010,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261011,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261012,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261013,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261014,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
-      },
-      {
-       "seed": 20261015,
-       "poisoned_runs": 39,
-       "fb": 0.0,
-       "recall": null
+       "fb": 0.010416666666666666,
+       "recall": 0.058823529411764705
       }
      ]
     }
@@ -1273,102 +931,102 @@
     "0.0": {
      "poisoned_runs": 0,
      "fb": 0.0,
-     "recall": 0.22115384615384615,
-     "recall_mean": 0.22115384615384615,
-     "recall_min": 0.22115384615384615,
-     "recall_max": 0.22115384615384615,
+     "recall": 0.21495327102803738,
+     "recall_mean": 0.21495327102803738,
+     "recall_min": 0.21495327102803738,
+     "recall_max": 0.21495327102803738,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 0,
        "fb": 0.0,
-       "recall": 0.22115384615384615
+       "recall": 0.21495327102803738
       }
      ]
     },
     "0.01": {
      "poisoned_runs": 4,
      "fb": 0.0,
-     "recall": 0.125,
-     "recall_mean": 0.18653846153846154,
-     "recall_min": 0.09615384615384616,
-     "recall_max": 0.22115384615384615,
+     "recall": 0.12149532710280374,
+     "recall_mean": 0.18130841121495328,
+     "recall_min": 0.09345794392523364,
+     "recall_max": 0.21495327102803738,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.125
+       "recall": 0.12149532710280374
       },
       {
        "seed": 20261007,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261008,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.22115384615384615
+       "recall": 0.21495327102803738
       },
       {
        "seed": 20261009,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.22115384615384615
+       "recall": 0.21495327102803738
       },
       {
        "seed": 20261010,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.22115384615384615
+       "recall": 0.21495327102803738
       },
       {
        "seed": 20261011,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.22115384615384615
+       "recall": 0.21495327102803738
       },
       {
        "seed": 20261012,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.22115384615384615
+       "recall": 0.21495327102803738
       },
       {
        "seed": 20261013,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.22115384615384615
+       "recall": 0.21495327102803738
       },
       {
        "seed": 20261014,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261015,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.22115384615384615
+       "recall": 0.21495327102803738
       }
      ]
     },
     "0.05": {
      "poisoned_runs": 20,
      "fb": 0.0,
-     "recall": 0.09615384615384616,
-     "recall_mean": 0.060576923076923084,
+     "recall": 0.09345794392523364,
+     "recall_mean": 0.058878504672897194,
      "recall_min": 0.0,
-     "recall_max": 0.125,
+     "recall_max": 0.12149532710280374,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261007,
@@ -1398,31 +1056,31 @@
        "seed": 20261011,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261012,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.125
+       "recall": 0.12149532710280374
       },
       {
        "seed": 20261013,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261014,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261015,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       }
      ]
     },
@@ -1430,9 +1088,9 @@
      "poisoned_runs": 39,
      "fb": 0.0,
      "recall": 0.0,
-     "recall_mean": 0.038461538461538464,
+     "recall_mean": 0.037383177570093455,
      "recall_min": 0.0,
-     "recall_max": 0.09615384615384616,
+     "recall_max": 0.09345794392523364,
      "per_seed": [
       {
        "seed": 20261006,
@@ -1450,7 +1108,7 @@
        "seed": 20261008,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261009,
@@ -1468,7 +1126,7 @@
        "seed": 20261011,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261012,
@@ -1480,13 +1138,13 @@
        "seed": 20261013,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261014,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.09615384615384616
+       "recall": 0.09345794392523364
       },
       {
        "seed": 20261015,
@@ -1501,156 +1159,156 @@
     "0.0": {
      "poisoned_runs": 0,
      "fb": 0.0,
-     "recall": 0.2919254658385093,
-     "recall_mean": 0.2919254658385093,
-     "recall_min": 0.2919254658385093,
-     "recall_max": 0.2919254658385093,
+     "recall": 0.2909090909090909,
+     "recall_mean": 0.2909090909090909,
+     "recall_min": 0.2909090909090909,
+     "recall_max": 0.2909090909090909,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 0,
        "fb": 0.0,
-       "recall": 0.2919254658385093
+       "recall": 0.2909090909090909
       }
      ]
     },
     "0.01": {
      "poisoned_runs": 4,
      "fb": 0.0,
-     "recall": 0.2360248447204969,
-     "recall_mean": 0.2298136645962733,
-     "recall_min": 0.06832298136645963,
-     "recall_max": 0.2919254658385093,
+     "recall": 0.23636363636363636,
+     "recall_mean": 0.2290909090909091,
+     "recall_min": 0.07272727272727272,
+     "recall_max": 0.2909090909090909,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.2360248447204969
+       "recall": 0.23636363636363636
       },
       {
        "seed": 20261007,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.06832298136645963
+       "recall": 0.07272727272727272
       },
       {
        "seed": 20261008,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.2919254658385093
+       "recall": 0.2909090909090909
       },
       {
        "seed": 20261009,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.2919254658385093
+       "recall": 0.2909090909090909
       },
       {
        "seed": 20261010,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.2919254658385093
+       "recall": 0.2909090909090909
       },
       {
        "seed": 20261011,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.19875776397515527
+       "recall": 0.2
       },
       {
        "seed": 20261012,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.2919254658385093
+       "recall": 0.2909090909090909
       },
       {
        "seed": 20261013,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.2919254658385093
+       "recall": 0.2909090909090909
       },
       {
        "seed": 20261014,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.14906832298136646
+       "recall": 0.14545454545454545
       },
       {
        "seed": 20261015,
        "poisoned_runs": 4,
        "fb": 0.0,
-       "recall": 0.18633540372670807
+       "recall": 0.18181818181818182
       }
      ]
     },
     "0.05": {
      "poisoned_runs": 20,
      "fb": 0.0,
-     "recall": 0.16149068322981366,
-     "recall_mean": 0.11118012422360249,
-     "recall_min": 0.012422360248447204,
-     "recall_max": 0.2236024844720497,
+     "recall": 0.16363636363636364,
+     "recall_mean": 0.11090909090909092,
+     "recall_min": 0.01818181818181818,
+     "recall_max": 0.21818181818181817,
      "per_seed": [
       {
        "seed": 20261006,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.16149068322981366
+       "recall": 0.16363636363636364
       },
       {
        "seed": 20261007,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.09316770186335403
+       "recall": 0.09090909090909091
       },
       {
        "seed": 20261008,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.10559006211180125
+       "recall": 0.10909090909090909
       },
       {
        "seed": 20261009,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.012422360248447204
+       "recall": 0.01818181818181818
       },
       {
        "seed": 20261010,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.012422360248447204
+       "recall": 0.01818181818181818
       },
       {
        "seed": 20261011,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.14906832298136646
+       "recall": 0.14545454545454545
       },
       {
        "seed": 20261012,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.2236024844720497
+       "recall": 0.21818181818181817
       },
       {
        "seed": 20261013,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.14906832298136646
+       "recall": 0.14545454545454545
       },
       {
        "seed": 20261014,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.055900621118012424
+       "recall": 0.05454545454545454
       },
       {
        "seed": 20261015,
        "poisoned_runs": 20,
        "fb": 0.0,
-       "recall": 0.14906832298136646
+       "recall": 0.14545454545454545
       }
      ]
     },
@@ -1658,9 +1316,9 @@
      "poisoned_runs": 39,
      "fb": 0.0,
      "recall": 0.0,
-     "recall_mean": 0.0391304347826087,
+     "recall_mean": 0.04181818181818182,
      "recall_min": 0.0,
-     "recall_max": 0.09316770186335403,
+     "recall_max": 0.09090909090909091,
      "per_seed": [
       {
        "seed": 20261006,
@@ -1672,13 +1330,13 @@
        "seed": 20261007,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.012422360248447204
+       "recall": 0.01818181818181818
       },
       {
        "seed": 20261008,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.06832298136645963
+       "recall": 0.07272727272727272
       },
       {
        "seed": 20261009,
@@ -1690,37 +1348,37 @@
        "seed": 20261010,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.012422360248447204
+       "recall": 0.01818181818181818
       },
       {
        "seed": 20261011,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.055900621118012424
+       "recall": 0.05454545454545454
       },
       {
        "seed": 20261012,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.012422360248447204
+       "recall": 0.01818181818181818
       },
       {
        "seed": 20261013,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.06832298136645963
+       "recall": 0.07272727272727272
       },
       {
        "seed": 20261014,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.06832298136645963
+       "recall": 0.07272727272727272
       },
       {
        "seed": 20261015,
        "poisoned_runs": 39,
        "fb": 0.0,
-       "recall": 0.09316770186335403
+       "recall": 0.09090909090909091
       }
      ]
     }
@@ -1728,8 +1386,8 @@
   }
  },
  "meta": {
-  "git_head": "73bcd54a63e963c649e1bb24a67f2618f9b79bcd",
-  "ts": "2026-10-09 13:38:56 SGT",
+  "git_head": "a9e2b2497b7e16174f5068de74341b8f11b1849a",
+  "ts": "2026-10-25 23:57:45 SGT",
   "rules": "plan.md \u00a714 (ffe6dfef)"
  }
 }

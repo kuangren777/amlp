@@ -74,6 +74,9 @@ MODELS = {   # model -> (endpoint, hard client cap)
     "gpt-4o-mini-2024-07-18": ("hosted-gateway", None),
     "gpt-4.1-mini-2025-04-14": ("hosted-gateway", None),
 }
+# AMLP_MODELS=a,b,...: restrict to these models (the three main models: Qwen3-8B, gpt-4o-mini, gpt-4.1-mini)
+if os.environ.get("AMLP_MODELS"):
+    MODELS = {m: MODELS[m] for m in os.environ["AMLP_MODELS"].split(",")}
 HUB_MODELS = {m for m, (e, _) in MODELS.items() if e == "hosted-gateway"}
 VLLM_A_BASE = harness.LOCAL_BASE   # env LLM_API_BASE_QWEN3_8B_LOCAL; its /metrics endpoint feeds vllm_ok16
 
@@ -183,6 +186,120 @@ def port_commit() -> str:
     return c
 
 
+INJECT_RESIDUAL = 3000   # project lead: prompt_tokens minus local o200k count >= this marks an injected call
+
+
+def o200k_count(messages, tools=None) -> int:
+    """Local o200k_base token count of the chat payload: content of every message plus 4 per message, plus tools."""
+    import tiktoken
+    enc = tiktoken.get_encoding("o200k_base")
+    n = 0
+    for m in messages or []:
+        c = m.get("content") if isinstance(m, dict) else getattr(m, "content", None)
+        if isinstance(c, list):
+            c = " ".join(x.get("text", "") for x in c if isinstance(x, dict))
+        n += len(enc.encode(c or "")) + 4
+    if tools:
+        n += len(enc.encode(json.dumps(tools)))
+    return n
+
+
+# USD per 1M input / output tokens, list prices; an unknown model stops the call (no silent zero cost)
+PRICES = {"gpt-4o-2024-08-06": (2.5, 10.0), "gpt-4o-mini-2024-07-18": (0.15, 0.6), "gpt-4.1-mini-2025-04-14": (0.4, 1.6),
+          "claude-haiku-4-5": (1.0, 5.0), "gemini-2.5-flash": (0.3, 2.5), "qwen3.5-35b-a3b": (0.3, 1.2)}
+# served names the gateway reports for each requested model (probed 2026-10-19); anything else is served_ok False
+SERVED_OK = {"gpt-4o-2024-08-06": {"gpt-4o-2024-08-06", "gpt-4o"}, "claude-haiku-4-5": {"claude-haiku-4-5", "claude-haiku-4-5-20251001"},
+             "gemini-2.5-flash": {"gemini-2.5-flash"}, "qwen3.5-35b-a3b": {"qwen3.5-35b-a3b"},
+             "gpt-4o-mini-2024-07-18": {"gpt-4o-mini-2024-07-18", "gpt-4o-mini"},
+             "gpt-4.1-mini-2025-04-14": {"gpt-4.1-mini-2025-04-14", "gpt-4.1-mini"}}
+# two separate books (project lead): E0 rerun $40 in data/m3, exp-ss $300 total with a stop at $280
+BUDGETS = {"e0": (f"{ROOT}/data/m3", 40.0), "ss": (f"{ROOT}/data/exp-ss", 280.0)}
+
+
+class BudgetExceeded(RuntimeError):
+    pass
+
+
+def call_cost(model: str, pt, ct) -> float:
+    if model not in PRICES:
+        raise BudgetExceeded(f"no price for {model}")
+    pi, po = PRICES[model]
+    return (pt or 0) * pi / 1e6 + (ct or 0) * po / 1e6
+
+
+def budget_spent(budget: str) -> float:
+    """Sum of logged call costs over every hubcalls_*.jsonl under the budget's root (all processes)."""
+    import glob
+    root = BUDGETS[budget][0]
+    tot = 0.0
+    for f in glob.glob(f"{root}/**/hubcalls_*.jsonl", recursive=True):
+        for line in open(f):
+            r = json.loads(line)
+            tot += r["cost"] if "cost" in r else call_cost(r["requested"], r.get("prompt_tokens"), r.get("completion_tokens"))
+    return tot
+
+
+class HubLogClient:
+    """OpenAI client proxy for hub calls: one jsonl line per chat completion with requested and served model, usage,
+    cost, the current row and served_ok (served == requested; a mismatch makes the row invalid, project lead).
+    Before each call the budget's spent total is checked; at or above its limit the call raises BudgetExceeded.
+    prefix_check adds the o200k residual of the E0 rerun (project lead); exp-ss runs leave it off."""
+
+    def __init__(self, client, path: str, tag=None, budget: str = "e0", prefix_check: bool = True, recheck: int = 20):
+        self._c, self._path, self._lk = client, path, threading.Lock()
+        self._tag = tag or (lambda: getattr(_tl, "rid", None))
+        self.budget, self.limit, self.prefix_check = budget, BUDGETS[budget][1], prefix_check
+        self._spent, self._since, self._recheck = None, 0, recheck
+        outer = self
+
+        class _Comp:
+            def create(self, *a, **k):
+                return outer._create(*a, **k)
+
+        class _Chat:
+            completions = _Comp()
+        self.chat = _Chat()
+
+    def _check(self):
+        with self._lk:
+            if self._spent is None or self._since >= self._recheck:
+                self._spent, self._since = budget_spent(self.budget), 0
+            if self._spent >= self.limit:
+                raise BudgetExceeded(f"{self.budget} spent ${self._spent:.2f} >= ${self.limit:.0f}")
+
+    def _create(self, *a, **k):
+        self._check()
+        r = self._c.chat.completions.create(*a, **k)
+        u = getattr(r, "usage", None)
+        pt = getattr(u, "prompt_tokens", None) if u is not None else None
+        ct = getattr(u, "completion_tokens", None) if u is not None else None
+        req, served = k.get("model"), getattr(r, "model", None)
+        rec = {"ts_sgt": now_sgt(), "budget": self.budget, "requested": req, "served": served,
+               "served_ok": served in SERVED_OK.get(req, {req}), "prompt_tokens": pt, "completion_tokens": ct,
+               "cost": call_cost(req, pt, ct), "row": self._tag()}
+        if self.prefix_check:
+            exp = o200k_count(k.get("messages"), k.get("tools"))
+            rec.update(o200k=exp, residual=None if pt is None else pt - exp)
+            rec["injected"] = rec["residual"] is not None and rec["residual"] >= INJECT_RESIDUAL
+        with self._lk:
+            with open(self._path, "a") as f:
+                f.write(json.dumps(rec) + "\n")
+            self._spent = (self._spent or 0.0) + rec["cost"]
+            self._since += 1
+        return r
+
+    def __getattr__(self, n):
+        return getattr(self._c, n)
+
+
+def install_hublog(path: str, tag=None) -> None:
+    """Route every harness.CLIENT hub call (hub agents, Progent policy, Agent-Sentry judge) through HubLogClient.
+    Logs under exp-ss/ book to the $300 budget without the prefix check; others to the E0 budget."""
+    if not isinstance(harness.CLIENT, HubLogClient):
+        ss = os.path.abspath(path).startswith(f"{ROOT}/data/exp-ss/")
+        harness.CLIENT = HubLogClient(harness.CLIENT, path, tag, budget="ss" if ss else "e0", prefix_check=not ss)
+
+
 def now_sgt() -> str:
     return _dt.datetime.now(SGT).strftime("%Y-%m-%d %H:%M:%S SGT")
 
@@ -197,7 +314,7 @@ def seed_of(rid: str) -> int:
 
 
 # ---------------------------------------------------------------- paths
-def data_dir(smoke: bool) -> str:
+def data_dir(smoke: bool, model: str | None = None) -> str:   # model kept for the source signature
     return f"{ROOT}/data/m3_smoke" if smoke else f"{ROOT}/data/m3"
 
 
@@ -206,12 +323,12 @@ def selection_log(smoke: bool) -> str:
 
 
 def rows_path(smoke: bool, runner: str, model: str, group: str = "") -> str:
-    return f"{data_dir(smoke)}/{runner}_{model}{'__' + group if group else ''}.jsonl"
+    return f"{data_dir(smoke, model)}/{runner}_{model}{'__' + group if group else ''}.jsonl"
 
 
 def steps_path(smoke: bool, runner: str, model: str, group: str = "") -> str:
     """R4: data/m3/steps/<runner>_<model>.jsonl.gz (one file per interpreter group for the online runner)."""
-    return f"{data_dir(smoke)}/steps/{runner}_{model}{'__' + group if group else ''}.jsonl.gz"
+    return f"{data_dir(smoke, model)}/steps/{runner}_{model}{'__' + group if group else ''}.jsonl.gz"
 
 
 def read_jsonl(path: str) -> list[dict]:
@@ -363,6 +480,7 @@ class Runner:
 
     def one(self, j: dict, run_fn) -> dict:
         rid = self.rid(j)
+        _tl.rid = rid                                   # hub-call log tag (HubLogClient)
         history, ctx_runs, api_tries = [], 0, 0
         while True:
             _tl.msgs = None

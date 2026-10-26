@@ -1,0 +1,1233 @@
+{
+ "tables": {
+  "example_replay": {
+   "cells": 10,
+   "numeric_cells": 5,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq1_chain": {
+   "cells": 296,
+   "numeric_cells": 197,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq1_eps_grid": {
+   "cells": 20,
+   "numeric_cells": 8,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq1_rules": {
+   "cells": 102,
+   "numeric_cells": 64,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq1_sens": {
+   "cells": 63,
+   "numeric_cells": 41,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq2_models": {
+   "cells": 16,
+   "numeric_cells": 12,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_bounds": {
+   "cells": 45,
+   "numeric_cells": 34,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_ci": {
+   "cells": 101,
+   "numeric_cells": 78,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_main": {
+   "cells": 101,
+   "numeric_cells": 78,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_oracle": {
+   "cells": 88,
+   "numeric_cells": 67,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_replay": {
+   "cells": 20,
+   "numeric_cells": 12,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq4_poison": {
+   "cells": 20,
+   "numeric_cells": 19,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq4_shift": {
+   "cells": 45,
+   "numeric_cells": 36,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq4_transfer_flag": {
+   "cells": 20,
+   "numeric_cells": 14,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq_transfer": {
+   "cells": 61,
+   "numeric_cells": 49,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "setup": {
+   "cells": 14,
+   "numeric_cells": 7,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "tests_utility": {
+   "cells": 24,
+   "numeric_cells": 20,
+   "mismatches": [],
+   "byte_identical": true
+  }
+ },
+ "numbers_tex_identical": true,
+ "floats": {
+  "tab:baselines": {
+   "file": "sec/appendix.tex",
+   "table_tex": null
+  },
+  "tab:tests": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/tests_utility.tex"
+  },
+  "tab:rq3ci": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq3_ci.tex"
+  },
+  "tab:rq1rules": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq1_rules.tex"
+  },
+  "tab:transferflag": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq4_transfer_flag.tex"
+  },
+  "tab:sens": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq1_sens.tex"
+  },
+  "tab:rq4": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq4_shift.tex"
+  },
+  "tab:rq4poison": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq4_poison.tex"
+  },
+  "tab:oracle": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq3_oracle.tex"
+  },
+  "tab:bounds": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq3_bounds.tex"
+  },
+  "tab:rq1chain": {
+   "file": "sec/rq1.tex",
+   "table_tex": "tables/rq1_chain.tex"
+  },
+  "tab:rq2": {
+   "file": "sec/rq2.tex",
+   "table_tex": "tables/rq2_models.tex"
+  },
+  "tab:rq3": {
+   "file": "sec/rq3.tex",
+   "table_tex": "tables/rq3_main.tex"
+  },
+  "tab:rq3replay": {
+   "file": "sec/rq3.tex",
+   "table_tex": "tables/rq3_replay.tex"
+  },
+  "tab:rqt": {
+   "file": "sec/rqt.tex",
+   "table_tex": "tables/rq_transfer.tex"
+  },
+  "tab:setup": {
+   "file": "sec/setup.tex",
+   "table_tex": "tables/setup.tex"
+  }
+ },
+ "prose_macros_checked": 244,
+ "prose_macros_not_in_table": [
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensShiftMax",
+   "value": "3.0",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensLitSeen",
+   "value": "96.2",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensLitSeenUntouched",
+   "value": "95.4",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensLitNovel",
+   "value": "96.4",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensLitNovelUntouched",
+   "value": "95.7",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "ExecMaxShift",
+   "value": "3.9",
+   "tables": [
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "FidCamelUtilL",
+   "value": "50.5",
+   "tables": [
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "FidCamelUtilCamel",
+   "value": "53.6",
+   "tables": [
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "FidCamelUtilNoPol",
+   "value": "73.2",
+   "tables": [
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "FidCamelPubCamel",
+   "value": "76.3",
+   "tables": [
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "ClassValueShare",
+   "value": "96.6",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsN",
+   "value": "100",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsKeptFourOneMini",
+   "value": "85",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsKeptFourOMini",
+   "value": "55",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsKeptQwen",
+   "value": "37",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagKeptMin",
+   "value": "89.0",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagKeptMax",
+   "value": "94.6",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagBhKeptMin",
+   "value": "89.0",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagBhKeptMax",
+   "value": "93.6",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbKeptMin",
+   "value": "5.0",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbKeptMax",
+   "value": "9.0",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagDroppedMin",
+   "value": "23.6",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbAllMin",
+   "value": "3.5",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbAllMax",
+   "value": "5.0",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagAllMin",
+   "value": "54.1",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagAllMax",
+   "value": "85.4",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagKeptLo",
+   "value": "48.1",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbKeptHi",
+   "value": "16.7",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrNarrowN",
+   "value": "139",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrNarrowFlagMin",
+   "value": "93.7",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrNarrowFlagMax",
+   "value": "96.1",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrNarrowFbMax",
+   "value": "10.2",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideN",
+   "value": "38",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideFlagMin",
+   "value": "76.6",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideFlagMax",
+   "value": "83.7",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideFbMin",
+   "value": "1.1",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideFbMax",
+   "value": "6.9",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "LlamaValueBlocks",
+   "value": "105",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "LlamaValueBlocksUntouched",
+   "value": "46",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "LlamaRuns",
+   "value": "384",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "LlamaRunsUntouched",
+   "value": "216",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "LlamaBenignUtil",
+   "value": "20.3",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "LlamaBlockedUtil",
+   "value": "10.5",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "LlamaBlockedUtilUntouched",
+   "value": "2.2",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RqTwoInterceptPct",
+   "value": "28.4",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RqTwoInterceptPctUntouched",
+   "value": "26.8",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RqTwoNViol",
+   "value": "327",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RqTwoNViolUntouched",
+   "value": "179",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RecAMLP",
+   "value": "19.6",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RecAMLPUntouched",
+   "value": "20.1",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RqTwoInvisiblePct",
+   "value": "71.6",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "MarkMainN",
+   "value": "21",
+   "tables": [
+    "tab:rq3",
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "MarkMainFlips",
+   "value": "5",
+   "tables": [
+    "tab:rq3",
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "COneTarget",
+   "value": "80",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecAmlp",
+   "value": "28.4",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecAmlpUntouched",
+   "value": "26.8",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecMargin",
+   "value": "5",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeNPairs",
+   "value": "1,536",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeFbProgent",
+   "value": "18.5",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeFbProgentUntouched",
+   "value": "17.2",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeDLo",
+   "value": "12.6",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeDLoUntouched",
+   "value": "8.9",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeDHi",
+   "value": "25.2",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeDHiUntouched",
+   "value": "26.9",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecDiff",
+   "value": "-66.7",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecDiffUntouched",
+   "value": "-67.0",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecDiffLo",
+   "value": "-79.6",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecDiffLoUntouched",
+   "value": "-84.4",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecDiffHi",
+   "value": "-53.7",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecDiffHiUntouched",
+   "value": "-48.3",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecProgentUntouched",
+   "value": "93.9",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftAmlpLoQwen",
+   "value": "-10.4",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftAmlpLoQwenUntouched",
+   "value": "-24.7",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftAmlpHiQwen",
+   "value": "15.3",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftAmlpLoFourOneMini",
+   "value": "-6.9",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftAmlpLoFourOneMiniUntouched",
+   "value": "-12.3",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftAmlpHiFourOneMini",
+   "value": "9.0",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftProgentHiQwen",
+   "value": "25.7",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftProgentHiQwenUntouched",
+   "value": "27.2",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftProgentLoFourOneMini",
+   "value": "-4.2",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftProgentLoFourOneMiniUntouched",
+   "value": "-1.2",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftProgentHiFourOneMini",
+   "value": "11.8",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftProgentHiFourOneMiniUntouched",
+   "value": "21.0",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SensLitSeen",
+   "value": "96.2",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SensLitSeenUntouched",
+   "value": "95.4",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SensLitNovel",
+   "value": "96.4",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SensLitNovelUntouched",
+   "value": "95.7",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureSeen",
+   "value": "6.4",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureSeenUntouched",
+   "value": "5.2",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureNovel",
+   "value": "33.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureNovelUntouched",
+   "value": "27.1",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDelta",
+   "value": "27.5",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaUntouched",
+   "value": "21.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaLo",
+   "value": "17.8",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaLoUntouched",
+   "value": "9.6",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaHi",
+   "value": "37.7",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaHiUntouched",
+   "value": "35.8",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureSeen",
+   "value": "0.1",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureNovel",
+   "value": "7.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureNovelUntouched",
+   "value": "8.8",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureDelta",
+   "value": "7.8",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureDeltaUntouched",
+   "value": "8.7",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureDeltaHi",
+   "value": "14.3",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureDeltaHiUntouched",
+   "value": "17.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlySeen",
+   "value": "27.6",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlySeenUntouched",
+   "value": "27.1",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyNovel",
+   "value": "74.0",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyNovelUntouched",
+   "value": "73.5",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyDeltaLo",
+   "value": "38.2",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyDeltaLoUntouched",
+   "value": "35.1",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyDeltaHi",
+   "value": "54.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsArgOnlyDelta",
+   "value": "54.7",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FidProgentAsrDiff",
+   "value": "2.7",
+   "tables": [
+    "tab:baselines"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FidProgentAsrDiffLo",
+   "value": "-4.1",
+   "tables": [
+    "tab:baselines"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FidProgentAsrDiffHi",
+   "value": "10.8",
+   "tables": [
+    "tab:baselines"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FidProgentUtilDiffLo",
+   "value": "-2.7",
+   "tables": [
+    "tab:baselines"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FidProgentUtilDiffHi",
+   "value": "21.6",
+   "tables": [
+    "tab:baselines"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "SentryInBench",
+   "value": "96.4",
+   "tables": [
+    "tab:baselines"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "SentryTransferLo",
+   "value": "64.4",
+   "tables": [
+    "tab:baselines"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "SentryTransferHi",
+   "value": "79.1",
+   "tables": [
+    "tab:baselines"
+   ]
+  }
+ ],
+ "inputs_sha256": {
+  "analysis/out/all48/amlp_cost_mcnemar.json": "cc6d80785039c162f6005603e4c548d6df937cd90bcd7cac698befaf01ec6e4a",
+  "analysis/out/all48/extra.json": "0ec1079c33dcf90613c63c9e9f9d6ae5d11f4617d680f31404699929b387fc74",
+  "analysis/out/all48/per_suite.json": "6e45ae969b3210c5b582cbf4ee5ba5b6d7400405bc070dcc86e727e60cb8e85a",
+  "analysis/out/all48/refusal_bounds.json": "637452a8dd09e9adc332dc3d8aa896fd559eb3f08b003c5449c5be96dd443269",
+  "analysis/out/all48/rq12.json": "9664f0b722919a742a41424e677a8286ce2ceebb2ce50292757fec6d0cfb2651",
+  "analysis/out/all48/rq34.json": "c1f704ec7d043d0f000fe82b2e07cc4b95b2bfb140e903bffacb9a4193576db0",
+  "analysis/out/all48/rq34_agentdojo.json": "ecf36ce2f1f1af1cb8fb49d30076a5cca4c5d123df873288a6aab3d0aa142511",
+  "analysis/out/all48/seen_novel.json": "7937edb55f1347149da94b515821599296c8d4a530b32510c0e0a1ad1f202819",
+  "analysis/out/all48/seen_novel_curve.json": "e168541f5a67fce97188e9e10fe93c60a1ae8eabcaee60fc23ed4c2d611c4a54",
+  "analysis/out/all48/seen_novel_pure.json": "92091623938cd5b73381e8f309cada5f36a9a1b6511ee568ab174cc40c4151d8",
+  "analysis/out/all48/seen_novel_split.json": "d4764ddbd2fe710bbd3fc291580bbf4deb541a0edd83557c91aa8c748911052e",
+  "analysis/out/all48/tests.json": "d8671a39188f0db0383d0b16374c749c46c6e029098abacfd9c93327e730e2f9",
+  "analysis/out/calib_rules.json": "4612231d4ff46cc55d9f9e766c3f4f866accd5357d569a528e5f7bc8c753926e",
+  "analysis/out/clean27/amlp_cost_mcnemar.json": "6be78c2deb29a6638079d9e63ab5716e51d7c0dd6fb855db0861b5f0dedfdc22",
+  "analysis/out/clean27/extra.json": "0ec1079c33dcf90613c63c9e9f9d6ae5d11f4617d680f31404699929b387fc74",
+  "analysis/out/clean27/per_suite.json": "91c3a91dea23d1edb52287c804129f16e6c63e6493abeb1170e9471f73bbe82a",
+  "analysis/out/clean27/refusal_bounds.json": "6cde1764b436531a47390c0fa8d6a8faa1baceb7b332fb2759500f097b0fff33",
+  "analysis/out/clean27/rq12.json": "ba19c55f902bc3b6bd57756d57e7b790d4c1be10179f23dbc11cae8c35e80094",
+  "analysis/out/clean27/rq34.json": "378ccd5b8316a475ef1986c406b839352069bcb240c449c1dfadb646a9719a4e",
+  "analysis/out/clean27/rq34_agentdojo.json": "118d558fff999c092f1e4379089bf96b5930656fdcc76869ba1c56853ca885b6",
+  "analysis/out/clean27/seen_novel.json": "17ed77469ff9de04014ed3b19c0da55f545269e68a83c8ff5902457d3a9d9253",
+  "analysis/out/clean27/seen_novel_curve.json": "4e00df06350dc445afcb2b5a4adb1a7db574a7272f6fd741a18da67bd59c3868",
+  "analysis/out/clean27/seen_novel_pure.json": "e0b21f309f8b47ade10ba849276afe5d5d8edc5f4c4fcef7163659a44e0782f8",
+  "analysis/out/clean27/seen_novel_split.json": "3d667a376e7b8b046d49f8fb2bf6ab27c42fdee710cd500ddad162bd9ad3d53f",
+  "analysis/out/clean27/tests.json": "612a1ded70cc4b96d18436a50139226e513e4858c023ffd3057c02272b2b4a6f",
+  "analysis/out/extra.json": "0ec1079c33dcf90613c63c9e9f9d6ae5d11f4617d680f31404699929b387fc74",
+  "analysis/out/fidelity_benign.json": "c7c97194e522f563b751c301ac9ec6f8ca9ba41965199c394fb50e38c9536bdc",
+  "analysis/out/flag_before_harm.json": "41bf695ae96e1f6870cdbb7ca8fc1091a4bbdd3a47a88dcf19d52cd5a33fa5f1",
+  "analysis/out/melon_fidelity.json": "6c9c7453babf3cc18643100d889c1333f58b0edcb25c15b5b4d50ff3600f5439",
+  "analysis/out/per_suite.json": "cfe1444cdbf6b2ae0d6271df8707ba9574feef535c2a11c1c567c72b8961318a",
+  "analysis/out/praetor_asb.json": "0691f99c0393e8a4e8a15d79d1f69445f48863be515d0552c3812ca4352361ae",
+  "analysis/out/resplit.json": "42e95e9eb68c46540239366af1594b9199c375bda5e69cb91ed764d431fcf8c8",
+  "analysis/out/resplit_altchain.json": "499a263fed9214d20044a78be8473a758b3edd70ab10ed18cce58d366e591ed6",
+  "analysis/out/resplit_breadth.json": "ebfd8acf777256666ae27721b0423448ca5f220217eda103a3457dca10c12dcc",
+  "analysis/out/rq12.json": "f9c52d3db2a313016bc9b20c701ef37b67c93fe97c95d390ed95ba641a5eedad",
+  "analysis/out/rq34.json": "e08c6348b67bab4a2002d5600f2103326cef177e8a41b53ff7f45da3a4a10f23",
+  "analysis/out/seen_novel.json": "7937edb55f1347149da94b515821599296c8d4a530b32510c0e0a1ad1f202819",
+  "analysis/out/seen_novel_curve.json": "e168541f5a67fce97188e9e10fe93c60a1ae8eabcaee60fc23ed4c2d611c4a54",
+  "analysis/out/seen_novel_pure.json": "bbfde98ca1c8c6db02c9116d89329fb8e1f009dc2ee53f7db4299b7008e177bf",
+  "analysis/out/seen_novel_split.json": "d4764ddbd2fe710bbd3fc291580bbf4deb541a0edd83557c91aa8c748911052e",
+  "analysis/out/table_marks.json": "fc37a8d9ff0ac46807c1fd0a42f5b7ff883f6bac8a5372be0aa7a53631ceda38",
+  "analysis/out/value_block_cause.json": "6a6687fee56623603b921403a5cbbe0f452310c85e230cb1b1a72406ca313c26",
+  "baselines/agentsentry_fidelity_results.json": "1d9935da8ad019450100a2b0347520f8bb2f3027ee710611e7b6e52f0473a8da",
+  "baselines/fidelity_camel.jsonl": "22f58e2a8da4c65a6dd22c57751fa304ce350e6cde1016d96541bf2151b73f5b",
+  "baselines/fidelity_camel_nosecpol.jsonl": "e1a558d09b2b7f89c01b39f795560a1ef810219d720c01dff849f8bdf1b75bf5",
+  "baselines/fidelity_toolfence.jsonl": "d5bc3db1123a6e24596326aa820e26211106290effec3da3956c96094f8f7fb7",
+  "baselines/fidelity_toolfence_nocache.jsonl": "b7a131c75c57ce50563d0941a76b471361bd6308509a40c5fa70455556308c7a",
+  "baselines/progent_ab_port.jsonl": "9801aaaba30b527f9ae633a0a471e0af8e486e45d902fa8acc9262cf2e8652c3",
+  "baselines/progent_ab_upstream.jsonl": "0ec4e55043f2b866b2586c2a7e9d21e7de1f957ba0c241b52231b5d55719f8ec",
+  "data/m3/paraphrase_gpt-4.1-mini-2025-04-14.jsonl": "f46a3f3318c3d818dbfbfa8b52e0e26b4935abe5e2a426a01ed969ba6667abae",
+  "data/m3/paraphrase_qwen3-8b-local.jsonl": "b7d751c0602c12673a0d996e7d131bcd4873b4baedc88961e3b7225f66ccb153",
+  "holdout_split.json": "2187206f07616bc33f7ca457feb4ab9a11c81167288a17cac0b613fcbd1b2dca"
+ }
+}

@@ -36,8 +36,9 @@ def main(argv=None):
     if a.dry_run:
         print(f"{RUNNER} {a.model}: jobs {len(J)} (48 holdout tasks × {REPS} reps), pending {len(R.todo(J))}")
         return
-    os.makedirs(C.data_dir(a.smoke), exist_ok=True)
+    os.makedirs(C.data_dir(a.smoke, a.model), exist_ok=True)
     C.install_capture()
+    C.install_hublog(f"{C.data_dir(a.smoke, a.model)}/hubcalls_{a.model}.jsonl")
     w = C.effective_workers(a.model, a.workers)
     C.start_guard(a.model, w)
     todo = R.todo(J)[: a.limit] if a.limit else J

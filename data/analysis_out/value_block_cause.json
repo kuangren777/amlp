@@ -2,33 +2,17 @@
  "qwen3-8b-local": {
   "all48": {
    "runs": 384,
-   "blocked_tool": 0,
-   "blocked_value": 13,
-   "benign_utility": 0.6536458333333334,
-   "utility_of_blocked": 0.23076923076923078
+   "blocked_tool": 4,
+   "blocked_value": 8,
+   "benign_utility": 0.4635416666666667,
+   "utility_of_blocked": 0.16666666666666666
   },
   "clean27": {
    "runs": 216,
-   "blocked_tool": 0,
-   "blocked_value": 10,
-   "benign_utility": 0.6203703703703703,
-   "utility_of_blocked": 0.0
-  }
- },
- "llama31-8b-local": {
-  "all48": {
-   "runs": 384,
-   "blocked_tool": 0,
-   "blocked_value": 105,
-   "benign_utility": 0.203125,
-   "utility_of_blocked": 0.10476190476190476
-  },
-  "clean27": {
-   "runs": 216,
-   "blocked_tool": 0,
-   "blocked_value": 46,
-   "benign_utility": 0.21296296296296297,
-   "utility_of_blocked": 0.021739130434782608
+   "blocked_tool": 4,
+   "blocked_value": 2,
+   "benign_utility": 0.5092592592592593,
+   "utility_of_blocked": 0.3333333333333333
   }
  },
  "gpt-4o-mini-2024-07-18": {

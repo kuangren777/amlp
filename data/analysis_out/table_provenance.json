@@ -1,0 +1,1448 @@
+{
+ "tables": {
+  "app_llama": {
+   "cells": 49,
+   "numeric_cells": 27,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "example_replay": {
+   "cells": 31,
+   "numeric_cells": 13,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "oracle_s5": {
+   "cells": 61,
+   "numeric_cells": 44,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq1_chain": {
+   "cells": 224,
+   "numeric_cells": 154,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq1_eps_grid": {
+   "cells": 16,
+   "numeric_cells": 7,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq1_rules": {
+   "cells": 78,
+   "numeric_cells": 51,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq1_sens": {
+   "cells": 63,
+   "numeric_cells": 41,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq2_models": {
+   "cells": 16,
+   "numeric_cells": 12,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_bounds": {
+   "cells": 36,
+   "numeric_cells": 26,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_ci": {
+   "cells": 88,
+   "numeric_cells": 67,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_main": {
+   "cells": 88,
+   "numeric_cells": 67,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_oracle": {
+   "cells": 88,
+   "numeric_cells": 67,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq3_replay": {
+   "cells": 20,
+   "numeric_cells": 12,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq4_poison": {
+   "cells": 20,
+   "numeric_cells": 19,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq4_shift": {
+   "cells": 35,
+   "numeric_cells": 26,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq4_transfer_flag": {
+   "cells": 12,
+   "numeric_cells": 8,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "rq_transfer": {
+   "cells": 50,
+   "numeric_cells": 38,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "s4_fidelity": {
+   "cells": 89,
+   "numeric_cells": 67,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "setup": {
+   "cells": 14,
+   "numeric_cells": 7,
+   "mismatches": [],
+   "byte_identical": true
+  },
+  "tests_utility": {
+   "cells": 20,
+   "numeric_cells": 16,
+   "mismatches": [],
+   "byte_identical": true
+  }
+ },
+ "numbers_tex_identical": true,
+ "floats": {
+  "tab:baselines": {
+   "file": "sec/appendix.tex",
+   "table_tex": null
+  },
+  "tab:tests": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/tests_utility.tex"
+  },
+  "tab:rq3ci": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq3_ci.tex"
+  },
+  "tab:rq3replay": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq3_replay.tex"
+  },
+  "tab:rq1rules": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq1_rules.tex"
+  },
+  "tab:transferflag": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq4_transfer_flag.tex"
+  },
+  "tab:sens": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq1_sens.tex"
+  },
+  "tab:sfour": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/s4_fidelity.tex"
+  },
+  "tab:rq4": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq4_shift.tex"
+  },
+  "tab:rq4poison": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq4_poison.tex"
+  },
+  "tab:oracle": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq3_oracle.tex"
+  },
+  "tab:oracles5": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/oracle_s5.tex"
+  },
+  "tab:bounds": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/rq3_bounds.tex"
+  },
+  "tab:llama": {
+   "file": "sec/appendix.tex",
+   "table_tex": "tables/app_llama.tex"
+  },
+  "tab:rq1chain": {
+   "file": "sec/rq1.tex",
+   "table_tex": "tables/rq1_chain.tex"
+  },
+  "tab:rq2": {
+   "file": "sec/rq2.tex",
+   "table_tex": "tables/rq2_models.tex"
+  },
+  "tab:rq3": {
+   "file": "sec/rq3.tex",
+   "table_tex": "tables/rq3_main.tex"
+  },
+  "tab:rqt": {
+   "file": "sec/rqt.tex",
+   "table_tex": "tables/rq_transfer.tex"
+  },
+  "tab:setup": {
+   "file": "sec/setup.tex",
+   "table_tex": "tables/setup.tex"
+  }
+ },
+ "prose_macros_checked": 275,
+ "prose_macros_not_in_table": [
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensShiftMax",
+   "value": "2.8",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensLitSeen",
+   "value": "92.4",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensLitSeenUntouched",
+   "value": "90.4",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensLitNovel",
+   "value": "94.2",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SensLitNovelUntouched",
+   "value": "92.4",
+   "tables": [
+    "tab:sens"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SfourPersonas",
+   "value": "4",
+   "tables": [
+    "tab:sfour"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SfourPooledN",
+   "value": "842",
+   "tables": [
+    "tab:sfour"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SfourPooledLo",
+   "value": "10.6",
+   "tables": [
+    "tab:sfour"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SfourPooledHi",
+   "value": "15.1",
+   "tables": [
+    "tab:sfour"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SfourCurveFiftyQwen",
+   "value": "61.3",
+   "tables": [
+    "tab:sfour"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "SfourCurveFiftyFourOMini",
+   "value": "69.1",
+   "tables": [
+    "tab:sfour"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "ExecMaxShift",
+   "value": "13.2",
+   "tables": [
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "ExecOtherMaxShift",
+   "value": "12.3",
+   "tables": [
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "OraLabelN",
+   "value": "150",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "OraExecAccSHi",
+   "value": "76.8",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "OraRepAccSHi",
+   "value": "96.8",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "FidCamelUtilL",
+   "value": "50.5",
+   "tables": [
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "FidCamelUtilCamel",
+   "value": "53.6",
+   "tables": [
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "FidCamelUtilNoPol",
+   "value": "73.2",
+   "tables": [
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/appendix.tex",
+   "macro": "FidCamelPubCamel",
+   "value": "76.3",
+   "tables": [
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsN",
+   "value": "100",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsKeptFourOneMini",
+   "value": "85",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsKeptFourOMini",
+   "value": "55",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsKeptQwen",
+   "value": "50",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagKeptMax",
+   "value": "94.7",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagBhKeptMin",
+   "value": "90.1",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagBhKeptMax",
+   "value": "94.7",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbKeptMin",
+   "value": "5.0",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbKeptMax",
+   "value": "9.7",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagDroppedMin",
+   "value": "22.9",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagDroppedMax",
+   "value": "35.1",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbAllMin",
+   "value": "4.3",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbAllMax",
+   "value": "5.0",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagAllMin",
+   "value": "60.0",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagAllMax",
+   "value": "85.4",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFlagKeptLo",
+   "value": "52.3",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "RsFbKeptHi",
+   "value": "19.5",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrNarrowN",
+   "value": "144",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrNarrowFlagMin",
+   "value": "95.7",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrNarrowFlagMax",
+   "value": "98.7",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrNarrowFbMax",
+   "value": "12.0",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideN",
+   "value": "46",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideFlagMin",
+   "value": "77.1",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideFlagMax",
+   "value": "85.4",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideFbMin",
+   "value": "1.1",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq1.tex",
+   "macro": "BrWideFbMax",
+   "value": "6.4",
+   "tables": [
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RqTwoInterceptPctUntouched",
+   "value": "30.0",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RqTwoNViol",
+   "value": "357",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RqTwoNViolUntouched",
+   "value": "203",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RecAMLP",
+   "value": "19.9",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq2.tex",
+   "macro": "RecAMLPUntouched",
+   "value": "23.2",
+   "tables": [
+    "tab:rq2"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "MarkMainN",
+   "value": "21",
+   "tables": [
+    "tab:rq3",
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "MarkMainFlips",
+   "value": "6",
+   "tables": [
+    "tab:rq3",
+    "tab:bounds"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "RqThreeAmlpBlockMinUntouched",
+   "value": "14.5",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "RqThreeAmlpBlockMaxUntouched",
+   "value": "40.7",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "BndAmlpIntervened",
+   "value": "8",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "BndAmlpIntervenedUntouched",
+   "value": "8",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "BndAmlpRuns",
+   "value": "1152",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "BndAmlpRunsUntouched",
+   "value": "648",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "BndAmlpHi",
+   "value": "0.0",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "BndAmlpHiUntouched",
+   "value": "5.1",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "RqThreeTripwireBlockMinUntouched",
+   "value": "74.2",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "RqThreeTripwireBlockMaxUntouched",
+   "value": "83.3",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "BndTripwireHi",
+   "value": "0.7",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "TwPairs",
+   "value": "837",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "TwPairsUntouched",
+   "value": "468",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "TwOnlyAmlp",
+   "value": "7",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "TwOnlyAmlpUntouched",
+   "value": "1",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "TwOnlyTripwire",
+   "value": "178",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "TwOnlyTripwireUntouched",
+   "value": "100",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "TwNeither",
+   "value": "82",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "TwNeitherUntouched",
+   "value": "41",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "RqThreeSpotBlockMaxUntouched",
+   "value": "24.2",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "OraAmlpGainQwen",
+   "value": "5.0",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "OraAmlpGainFourOMini",
+   "value": "6.9",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "OraAmlpGainFourOneMini",
+   "value": "6.8",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "OraAmlpMaxRankShift",
+   "value": "1",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "OraMaxCellDiff",
+   "value": "12.6",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "FreshExecAccW",
+   "value": "94.5",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "FreshRepAccW",
+   "value": "95.7",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "FreshFullAccW",
+   "value": "94.3",
+   "tables": [
+    "tab:oracles5"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "COneTarget",
+   "value": "80",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecAmlp",
+   "value": "29.8",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecAmlpUntouched",
+   "value": "31.1",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecMargin",
+   "value": "5",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeNPairs",
+   "value": "1,152",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeFbAmlp",
+   "value": "0.3",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeFbProgent",
+   "value": "15.2",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeFbProgentUntouched",
+   "value": "14.5",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeDLo",
+   "value": "9.1",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeDLoUntouched",
+   "value": "5.9",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeDHi",
+   "value": "21.4",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeDHiUntouched",
+   "value": "23.8",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq3.tex",
+   "macro": "CThreeRecProgentUntouched",
+   "value": "94.8",
+   "tables": [
+    "tab:tests"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftAmlpHiFourOneMini",
+   "value": "9.0",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftAmlpHiFourOneMiniUntouched",
+   "value": "13.6",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftProgentHiFourOneMini",
+   "value": "11.8",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rq4.tex",
+   "macro": "ParaShiftProgentHiFourOneMiniUntouched",
+   "value": "21.0",
+   "tables": [
+    "tab:rq4",
+    "tab:transferflag"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureSeenUntouched",
+   "value": "1.2",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureNovel",
+   "value": "30.6",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureNovelUntouched",
+   "value": "27.2",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDelta",
+   "value": "29.3",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaUntouched",
+   "value": "25.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaLo",
+   "value": "19.1",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaLoUntouched",
+   "value": "13.3",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaHi",
+   "value": "39.8",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpValPureDeltaHiUntouched",
+   "value": "39.8",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureSeen",
+   "value": "0.2",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureNovel",
+   "value": "9.0",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureNovelUntouched",
+   "value": "11.1",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureDelta",
+   "value": "8.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureDeltaUntouched",
+   "value": "11.0",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureDeltaLoUntouched",
+   "value": "2.5",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SpToolPureDeltaHi",
+   "value": "16.1",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlySeen",
+   "value": "16.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlySeenUntouched",
+   "value": "15.7",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyNovel",
+   "value": "68.4",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyNovelUntouched",
+   "value": "66.7",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyDelta",
+   "value": "51.5",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyDeltaLo",
+   "value": "41.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyDeltaLoUntouched",
+   "value": "38.9",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyDeltaHi",
+   "value": "61.2",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsSeqOnlyDeltaHiUntouched",
+   "value": "62.7",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsArgOnlyDelta",
+   "value": "64.8",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/rqt.tex",
+   "macro": "SsArgOnlyDeltaUntouched",
+   "value": "67.4",
+   "tables": [
+    "tab:sens",
+    "tab:rqt"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "AdynTasks",
+   "value": "60",
+   "tables": [
+    "tab:setup"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "QwenUnparsedPara",
+   "value": "5.6",
+   "tables": [
+    "tab:llama",
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "QwenUnparsedAdynAttack",
+   "value": "10.3",
+   "tables": [
+    "tab:llama",
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "QwenUnparsedAdynMonitor",
+   "value": "8.1",
+   "tables": [
+    "tab:llama",
+    "tab:rq1chain"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FreshN",
+   "value": "120",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FreshRepAcc",
+   "value": "86.7",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FreshRepAccLo",
+   "value": "79.4",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FreshExecAcc",
+   "value": "60.0",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FreshExecAccLo",
+   "value": "51.1",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FreshExecAccHi",
+   "value": "68.3",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "RqTwoNViol",
+   "value": "357",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "RqTwoNViolUntouched",
+   "value": "203",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "RqTwoNViolAdojo",
+   "value": "346",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "RqTwoNViolAdojoUntouched",
+   "value": "193",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FbhProgentN",
+   "value": "346",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  },
+  {
+   "file": "sec/setup.tex",
+   "macro": "FbhProgentNUntouched",
+   "value": "193",
+   "tables": [
+    "tab:oracles5",
+    "tab:oracle"
+   ]
+  }
+ ],
+ "inputs_sha256": {
+  "analysis/out/all48/amlp_cost_mcnemar.json": "4624aed5048104c1f7f176e29b9a85042d2e25b00327c1e44cd098b2babb411f",
+  "analysis/out/all48/extra.json": "e129ccb13bd458f3d874a1d8eab1851247d1d5bf7d648c7b2a6d60c9903309b0",
+  "analysis/out/all48/per_suite.json": "43bfe0b9e3ea773ef600db77216715fb9926eb81386fe7d185403a9c0c28d074",
+  "analysis/out/all48/refusal_bounds.json": "27b4b7347da69b07c1b37525041929f8e122c967bfd2fb94be035703f98b1685",
+  "analysis/out/all48/rq12.json": "eeff674c5b1c3aef7832e9e478407490e6ec6ba3d7dd23a73536bfc8d883ef93",
+  "analysis/out/all48/rq34.json": "dcd910ca41b479b89cdfd3fb5014f5efa31aedc71d262285946924cefd2ae4f6",
+  "analysis/out/all48/rq34_agentdojo.json": "73e8e000a9b3b186c55f7a6e2d509783c37d839a37ee6a6e8527344585a4a5e2",
+  "analysis/out/all48/seen_novel.json": "415fb0f3bb52adfc81830631fb89d8bdd54aa82bb1b7d8e7bd1d790433915bbb",
+  "analysis/out/all48/seen_novel_curve.json": "783f3e6dff27c488a094793ecd2e35eb710917a887cfa36f1c1c031fffab9806",
+  "analysis/out/all48/seen_novel_pure.json": "137433a91a09db79a360b7f5dd75d040002c91eeeee17ea76eb7289395a03e46",
+  "analysis/out/all48/seen_novel_split.json": "501b8e89880699e1bf712e2400f81b1b077341049328ebdb7971a1c2dcb6ac76",
+  "analysis/out/all48/tests.json": "6a08442b8171b9775ac530fe69fdfc4015e274fd02275462474d913af7cee7ba",
+  "analysis/out/clean27/amlp_cost_mcnemar.json": "d515069b03f155990adcdbbb3d70a76b08f82714b61f799b707270395c69f0ce",
+  "analysis/out/clean27/extra.json": "e129ccb13bd458f3d874a1d8eab1851247d1d5bf7d648c7b2a6d60c9903309b0",
+  "analysis/out/clean27/per_suite.json": "0db89bf05819648e7d49420b66089bc4ffc5ea8b85a397e960c4a9a3d6211042",
+  "analysis/out/clean27/refusal_bounds.json": "1cb2e1ae0223ed6c3f182d77a3685d239a23f47f9442ff7ab6e0bb458cf2e32f",
+  "analysis/out/clean27/rq12.json": "976f108563c119d2f597f9442ac14d4469c73203f5a0da65c58ab1af5f529d50",
+  "analysis/out/clean27/rq34.json": "e30cb1febf1844c7ebf2cf888a4702db7f07b2443823f29b439bd9758c9c2778",
+  "analysis/out/clean27/rq34_agentdojo.json": "64d732bc0f1a2931d931618535624791cd614586935d6c4c1fd7a07524f7200d",
+  "analysis/out/clean27/seen_novel.json": "f631bb70c55953745f6f152c4c24cc8e1546a955e139c671a945e5bd19bac939",
+  "analysis/out/clean27/seen_novel_curve.json": "4b2899a03819aa0ccfebd7f0438894dd8af03677762abdeff5741ffd6c60a891",
+  "analysis/out/clean27/seen_novel_pure.json": "6b9976a70e0febe3250479a3db836d07efa6dd135be6915aef58bfa3889ae6a5",
+  "analysis/out/clean27/seen_novel_split.json": "df4dcd00abc9bde353452fc2340aa39604ba13ce57f16cc1d767223333731cf7",
+  "analysis/out/clean27/tests.json": "fbb78efde846c9a0a4566bbcf16050c503ed0cb5624458a320d4b598fc3d66cd",
+  "analysis/out/extra.json": "0ec1079c33dcf90613c63c9e9f9d6ae5d11f4617d680f31404699929b387fc74",
+  "analysis/out/fidelity_benign.json": "c7c97194e522f563b751c301ac9ec6f8ca9ba41965199c394fb50e38c9536bdc",
+  "analysis/out/flag_before_harm.json": "fb057f622f9e558f9573c36f847402f2a18752e0d776a42ae75de9a4809c9914",
+  "analysis/out/melon_fidelity.json": "6c9c7453babf3cc18643100d889c1333f58b0edcb25c15b5b4d50ff3600f5439",
+  "analysis/out/per_suite.json": "cfe1444cdbf6b2ae0d6271df8707ba9574feef535c2a11c1c567c72b8961318a",
+  "analysis/out/praetor_asb.json": "0691f99c0393e8a4e8a15d79d1f69445f48863be515d0552c3812ca4352361ae",
+  "analysis/out/resplit.json": "bca36eba856e2267eb13e128a81a7546c15699a773cce01eefb9136e499df4d7",
+  "analysis/out/resplit_altchain.json": "d3042c86523c40736508608f7aa819734d08b21da2d60d77f0ef2f70614968b5",
+  "analysis/out/resplit_breadth.json": "dbce4ececbf7c940d03842b50210f951e1217c359027b526d9ff5d1e18ccdc7d",
+  "analysis/out/rq12.json": "f9c52d3db2a313016bc9b20c701ef37b67c93fe97c95d390ed95ba641a5eedad",
+  "analysis/out/rq34.json": "e08c6348b67bab4a2002d5600f2103326cef177e8a41b53ff7f45da3a4a10f23",
+  "analysis/out/s3_parse_rate.json": "e57fa8975d4e8f699d7f889b3d698bbcee73bdd02940e2d6a011840205f782d8",
+  "analysis/out/s4/fidelity.json": "2773cfaa5d967116a2659ebae8d9b3625b7cf196e1420984fb7f74e53968a7d6",
+  "analysis/out/s5/all48/scored_llama.jsonl": "240c593dca3c82fe3ec6094945d2268858006e635626ed372bcd385da9c66261",
+  "analysis/out/seen_novel.json": "7937edb55f1347149da94b515821599296c8d4a530b32510c0e0a1ad1f202819",
+  "analysis/out/seen_novel_curve.json": "e168541f5a67fce97188e9e10fe93c60a1ae8eabcaee60fc23ed4c2d611c4a54",
+  "analysis/out/seen_novel_pure.json": "bbfde98ca1c8c6db02c9116d89329fb8e1f009dc2ee53f7db4299b7008e177bf",
+  "analysis/out/seen_novel_split.json": "d4764ddbd2fe710bbd3fc291580bbf4deb541a0edd83557c91aa8c748911052e",
+  "analysis/out/table_marks.json": "c83704565e131528f4fd426455731319d0b6ca261c414f8838988036b60605da",
+  "analysis/out/value_block_cause.json": "72e9c281bc5b43e98c434bec1b9fc865f6bc6cbb79d4a203b2e33814c4431f9c",
+  "analysis/out_all4/all48/rq34.json": "ad10b1b63217ad60eca473b042023bd657cd0413e5aee92fc913436a88563a6f",
+  "analysis/out_all4/all48/tests.json": "f5d87577cdbb39baf69aa8c468f5c73217fe54ee546a745b04cb746c9430b295",
+  "analysis/s5_fresh/eval.json": "e109b678516499f0b99a339a71a9253721bc20c3952cf3d95b887849827d9653",
+  "baselines/agentsentry_fidelity_results.json": "1d9935da8ad019450100a2b0347520f8bb2f3027ee710611e7b6e52f0473a8da",
+  "baselines/agentsentry_judge_cache.jsonl": "3f269480b9af558ac4d13b3c03256ded4dbc8fbba513cbd298bae902b4b85a50",
+  "baselines/fidelity_camel.jsonl": "22f58e2a8da4c65a6dd22c57751fa304ce350e6cde1016d96541bf2151b73f5b",
+  "baselines/fidelity_camel_nosecpol.jsonl": "e1a558d09b2b7f89c01b39f795560a1ef810219d720c01dff849f8bdf1b75bf5",
+  "baselines/fidelity_toolfence.jsonl": "d5bc3db1123a6e24596326aa820e26211106290effec3da3956c96094f8f7fb7",
+  "baselines/fidelity_toolfence_nocache.jsonl": "b7a131c75c57ce50563d0941a76b471361bd6308509a40c5fa70455556308c7a",
+  "baselines/progent_ab_port.jsonl": "9801aaaba30b527f9ae633a0a471e0af8e486e45d902fa8acc9262cf2e8652c3",
+  "baselines/progent_ab_upstream.jsonl": "0ec4e55043f2b866b2586c2a7e9d21e7de1f957ba0c241b52231b5d55719f8ec",
+  "data/m3/paraphrase_gpt-4.1-mini-2025-04-14.jsonl": "f46a3f3318c3d818dbfbfa8b52e0e26b4935abe5e2a426a01ed969ba6667abae",
+  "data/m3/paraphrase_qwen3-8b-local.jsonl": "028b42ff6fb20507218272f9223e2d322682a5235707d59ecf514e2629dec139",
+  "data/m3/paraphrases_holdout.json": "4567cf4b26648c5891cca2c5174742d4dfcfca4d4ed875c65b1bf7fa5b1374d8",
+  "data/praetor_asb_runs.jsonl": "921361187cb14f6a8a79710debcf84be99e936b4184bb4f8df9970a2bef2422b",
+  "holdout_split.json": "2187206f07616bc33f7ca457feb4ab9a11c81167288a17cac0b613fcbd1b2dca",
+  "pilot/snap/llm_envelope_gpt-5.5.json": "b299b55c2d844a79ba8e63dfca1567ca0e2a91b434f2392c70632af5161fc9db",
+  "review/s5_fresh/labels_a.jsonl": "73c63b91ff0de6d3e281598d0c478459bcca33f38b630c38110aa4267a5cda2f",
+  "review/s5_fresh/labels_b.jsonl": "917465af463a37a9ba2cca30ca1b2a81f1e3b74f11fc09a7ffb524fa1b818ef1",
+  "review/s5_fresh/labels_c.jsonl": "32cf11327fe648f03e23492e096f276128750aeca37555b015d8ffe1fef8d7a4"
+ }
+}

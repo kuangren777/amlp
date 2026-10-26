@@ -1,0 +1,66 @@
+{
+ "qwen3-8b-local": {
+  "all48": {
+   "runs": 384,
+   "blocked_tool": 4,
+   "blocked_value": 8,
+   "benign_utility": 0.4635416666666667,
+   "utility_of_blocked": 0.16666666666666666
+  },
+  "clean27": {
+   "runs": 216,
+   "blocked_tool": 4,
+   "blocked_value": 2,
+   "benign_utility": 0.5092592592592593,
+   "utility_of_blocked": 0.3333333333333333
+  }
+ },
+ "llama31-8b-local": {
+  "all48": {
+   "runs": 384,
+   "blocked_tool": 0,
+   "blocked_value": 105,
+   "benign_utility": 0.203125,
+   "utility_of_blocked": 0.10476190476190476
+  },
+  "clean27": {
+   "runs": 216,
+   "blocked_tool": 0,
+   "blocked_value": 46,
+   "benign_utility": 0.21296296296296297,
+   "utility_of_blocked": 0.021739130434782608
+  }
+ },
+ "gpt-4o-mini-2024-07-18": {
+  "all48": {
+   "runs": 384,
+   "blocked_tool": 0,
+   "blocked_value": 2,
+   "benign_utility": 0.7135416666666666,
+   "utility_of_blocked": 0.0
+  },
+  "clean27": {
+   "runs": 216,
+   "blocked_tool": 0,
+   "blocked_value": 2,
+   "benign_utility": 0.7037037037037037,
+   "utility_of_blocked": 0.0
+  }
+ },
+ "gpt-4.1-mini-2025-04-14": {
+  "all48": {
+   "runs": 384,
+   "blocked_tool": 0,
+   "blocked_value": 0,
+   "benign_utility": 0.7890625,
+   "utility_of_blocked": null
+  },
+  "clean27": {
+   "runs": 216,
+   "blocked_tool": 0,
+   "blocked_value": 0,
+   "benign_utility": 0.7916666666666666,
+   "utility_of_blocked": null
+  }
+ }
+}

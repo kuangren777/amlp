@@ -200,13 +200,14 @@ def main(argv=None):
               + ("; skipped " + "; ".join(f"{s['arm']} ({s['reason']})" for s in skips) if skips else ""))
         return
     check_interpreter(a.group)
-    os.makedirs(C.data_dir(a.smoke), exist_ok=True)
+    os.makedirs(C.data_dir(a.smoke, a.model), exist_ok=True)
     if skips:
-        with open(f"{C.data_dir(a.smoke)}/online_skips.jsonl", "a") as f:
+        with open(f"{C.data_dir(a.smoke, a.model)}/online_skips.jsonl", "a") as f:
             for s in skips:
                 f.write(json.dumps({**s, "ts_sgt": C.now_sgt(), "git_head": C.GIT_HEAD}) + "\n")
     arms_obj = Arms(a.model, a.group, a.smoke, set(arms))
     C.install_capture()                       # after camel's patch, so CaMeL pipelines are captured too
+    C.install_hublog(f"{C.data_dir(a.smoke, a.model)}/hubcalls_{a.model}.jsonl", tag=lambda: getattr(_x, "task", None))
     w = C.effective_workers(a.model, a.workers)
     C.start_guard(a.model, w)
     todo = R.todo(J)

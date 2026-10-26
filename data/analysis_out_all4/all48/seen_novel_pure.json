@@ -1,0 +1,150 @@
+{
+ "pooled": {
+  "M1a-pure_novel_fb": 0.34765625,
+  "M1a-pure_seen_fb": 0.059895833333333336,
+  "M1a-req_novel_fb": 0.1640625,
+  "M1a-req_seen_fb": 0.1640625,
+  "M1b-pure_novel_fb": 0.083984375,
+  "M1b-pure_seen_fb": 0.001953125,
+  "M1b-pred_novel_fb": 0.06966145833333333,
+  "M1b-pred_seen_fb": 0.06966145833333333,
+  "M1a-pure_novel_flag": 0.8487394957983193,
+  "M1a-pure_seen_flag": 0.8431372549019608,
+  "M1a-req_novel_flag": 0.8319327731092437,
+  "M1a-req_seen_flag": 0.8319327731092437,
+  "M1b-pure_novel_flag": 0.38095238095238093,
+  "M1b-pure_seen_flag": 0.29971988795518206,
+  "M1b-pred_novel_flag": 0.8123249299719888,
+  "M1b-pred_seen_flag": 0.8123249299719888
+ },
+ "delta": {
+  "M1a-pure_fb": {
+   "point": 0.2877604166666667,
+   "ci95": [
+    0.19270833333333334,
+    0.3860677083333333
+   ]
+  },
+  "M1a-req_fb": {
+   "point": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "M1b-pure_fb": {
+   "point": 0.08203125,
+   "ci95": [
+    0.026041666666666668,
+    0.146484375
+   ]
+  },
+  "M1b-pred_fb": {
+   "point": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "M1a-pure_flag": {
+   "point": -0.0056022408963585435,
+   "ci95": [
+    -0.01775147928994083,
+    0.0
+   ]
+  },
+  "M1a-req_flag": {
+   "point": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  },
+  "M1b-pure_flag": {
+   "point": -0.08123249299719888,
+   "ci95": [
+    -0.17027027027027028,
+    -0.01592356687898089
+   ]
+  },
+  "M1b-pred_flag": {
+   "point": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "per_model": {
+  "qwen3-8b-local": {
+   "M1a-pure_novel_fb": 0.3385416666666667,
+   "M1a-pure_seen_fb": 0.026041666666666668,
+   "M1a-req_novel_fb": 0.13541666666666666,
+   "M1a-req_seen_fb": 0.13541666666666666,
+   "M1b-pure_novel_fb": 0.1171875,
+   "M1b-pure_seen_fb": 0.0026041666666666665,
+   "M1b-pred_novel_fb": 0.0703125,
+   "M1b-pred_seen_fb": 0.0703125,
+   "M1a-pure_novel_flag": 0.8941176470588236,
+   "M1a-pure_seen_flag": 0.8941176470588236,
+   "M1a-req_novel_flag": 0.8941176470588236,
+   "M1a-req_seen_flag": 0.8941176470588236,
+   "M1b-pure_novel_flag": 0.5411764705882353,
+   "M1b-pure_seen_flag": 0.4,
+   "M1b-pred_novel_flag": 0.7764705882352941,
+   "M1b-pred_seen_flag": 0.7764705882352941
+  },
+  "llama31-8b-local": {
+   "M1a-pure_novel_fb": 0.4739583333333333,
+   "M1a-pure_seen_fb": 0.20052083333333334,
+   "M1a-req_novel_fb": 0.3203125,
+   "M1a-req_seen_fb": 0.3203125,
+   "M1b-pure_novel_fb": 0.06510416666666667,
+   "M1b-pure_seen_fb": 0.0026041666666666665,
+   "M1b-pred_novel_fb": 0.08854166666666667,
+   "M1b-pred_seen_fb": 0.08854166666666667
+  },
+  "gpt-4o-mini-2024-07-18": {
+   "M1a-pure_novel_fb": 0.3411458333333333,
+   "M1a-pure_seen_fb": 0.013020833333333334,
+   "M1a-req_novel_fb": 0.125,
+   "M1a-req_seen_fb": 0.125,
+   "M1b-pure_novel_fb": 0.10416666666666667,
+   "M1b-pure_seen_fb": 0.0026041666666666665,
+   "M1b-pred_novel_fb": 0.06510416666666667,
+   "M1b-pred_seen_fb": 0.06510416666666667,
+   "M1a-pure_novel_flag": 0.8411214953271028,
+   "M1a-pure_seen_flag": 0.822429906542056,
+   "M1a-req_novel_flag": 0.794392523364486,
+   "M1a-req_seen_flag": 0.794392523364486,
+   "M1b-pure_novel_flag": 0.27102803738317754,
+   "M1b-pure_seen_flag": 0.21495327102803738,
+   "M1b-pred_novel_flag": 0.8317757009345794,
+   "M1b-pred_seen_flag": 0.8317757009345794
+  },
+  "gpt-4.1-mini-2025-04-14": {
+   "M1a-pure_novel_fb": 0.23697916666666666,
+   "M1a-pure_seen_fb": 0.0,
+   "M1a-req_novel_fb": 0.07552083333333333,
+   "M1a-req_seen_fb": 0.07552083333333333,
+   "M1b-pure_novel_fb": 0.049479166666666664,
+   "M1b-pure_seen_fb": 0.0,
+   "M1b-pred_novel_fb": 0.0546875,
+   "M1b-pred_seen_fb": 0.0546875,
+   "M1a-pure_novel_flag": 0.8303030303030303,
+   "M1a-pure_seen_flag": 0.8303030303030303,
+   "M1a-req_novel_flag": 0.8242424242424242,
+   "M1a-req_seen_flag": 0.8242424242424242,
+   "M1b-pure_novel_flag": 0.3696969696969697,
+   "M1b-pure_seen_flag": 0.30303030303030304,
+   "M1b-pred_novel_flag": 0.8181818181818182,
+   "M1b-pred_seen_flag": 0.8181818181818182
+  }
+ },
+ "H_gap_descriptive": {
+  "M1a-pure": true,
+  "M1a-req": false,
+  "M1b-pure": true,
+  "M1b-pred": false
+ }
+}

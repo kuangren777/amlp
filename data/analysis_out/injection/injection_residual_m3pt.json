@@ -1,0 +1,54 @@
+{
+ "persist_taint_gpt-4o-mini-2024-07-18": {
+  "rows": 432,
+  "calls": 2079,
+  "rows_flagged": 24,
+  "steps": true,
+  "excess_p50": 0.20000000000004547,
+  "excess_p99": 316.53333333333353,
+  "excess_max": 557.8,
+  "flagged_blocked": 21,
+  "blocked_rows": 243,
+  "flagged_calls_mean": 6.416666666666667,
+  "calls_mean": 4.8125
+ },
+ "persist_taint_t0_gpt-4o-mini-2024-07-18": {
+  "rows": 432,
+  "calls": 2189,
+  "rows_flagged": 22,
+  "steps": true,
+  "excess_p50": 0.0,
+  "excess_p99": 374.66666666666674,
+  "excess_max": 624.7179487179485,
+  "flagged_blocked": 16,
+  "blocked_rows": 246,
+  "flagged_calls_mean": 9.363636363636363,
+  "calls_mean": 5.06712962962963
+ },
+ "persist_taint_gpt-4.1-mini-2025-04-14": {
+  "rows": 432,
+  "calls": 1819,
+  "rows_flagged": 15,
+  "steps": true,
+  "excess_p50": 0.0,
+  "excess_p99": 381.5,
+  "excess_max": 570.6666666666665,
+  "flagged_blocked": 13,
+  "blocked_rows": 240,
+  "flagged_calls_mean": 4.333333333333333,
+  "calls_mean": 4.210648148148148
+ },
+ "persist_taint_t0_gpt-4.1-mini-2025-04-14": {
+  "rows": 432,
+  "calls": 1851,
+  "rows_flagged": 24,
+  "steps": true,
+  "excess_p50": 0.0,
+  "excess_p99": 471.1999999999998,
+  "excess_max": 899.8461538461538,
+  "flagged_blocked": 18,
+  "blocked_rows": 242,
+  "flagged_calls_mean": 5,
+  "calls_mean": 4.284722222222222
+ }
+}

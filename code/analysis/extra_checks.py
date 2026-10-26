@@ -15,6 +15,7 @@ import m3_common as C          # noqa: E402
 import m3_envelope as ME       # noqa: E402
 import m3_select as MS         # noqa: E402
 import holdout_set as HS       # noqa: E402
+from rq12 import holdout_violations  # noqa: E402
 
 SECURITY = ["qwen3-8b-local", "gpt-4o-mini-2024-07-18", "gpt-4.1-mini-2025-04-14"]
 
@@ -39,9 +40,7 @@ def main():
         cfg, pool = e["chosen"], ME.Pool(m, False, k=e["k"])
         C.assert_pool_clean(pool.tasks(), "analysis/extra_checks")
         ben = [r for r in C.read_jsonl(C.rows_path(False, "monitor", m)) if r.get("err") is None and (r["suite"], r["ut"]) in clean]
-        viol = [r for r in C.read_jsonl(C.rows_path(False, "online", m, "main"))
-                if r.get("defense") in (None, "none") and r.get("part") == "b" and r.get("err") is None and r["security"]
-                and (r["suite"], r["it"]) not in C.TEXT_ONLY and (r["suite"], r["ut"]) in clean]
+        viol = [r for r in holdout_violations(m) if (r["suite"], r["ut"]) in clean]   # plan.md §26.6: replay-oracle set
         envs = {}
         def env(t, lv, r):
             k = (t, lv, r)

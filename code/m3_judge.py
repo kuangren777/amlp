@@ -25,11 +25,11 @@ sys.path.insert(0, D)
 import m3_common as C  # noqa: E402
 
 PM = "gpt-4o-2024-08-06"
-N_PAIRS = 48 * 4 * 8
+N_PAIRS = 48 * len(C.MODELS) * 8  # holdout tasks x models x benign reps (4 models in the frozen paper, 3 without Llama: project lead)
 
 
 def judge_path(smoke, model):
-    return f"{C.data_dir(smoke)}/judge_{model}.jsonl"
+    return f"{C.data_dir(smoke, model)}/judge_{model}.jsonl"
 
 
 def steps_index(path: str) -> dict:
@@ -143,7 +143,7 @@ def run_target(model, target, smoke, workers, dry):
         J = [j for j in C.read_jsonl(out) if j["target"] == "selection" and j["policy"] == "progent"]
         res = {"model": model, "fb": sum(j["block"] for j in J) / len(J) if J else None, "n": len(J),
                "task_ids": sorted({f"{j['suite']}|{j['ut']}" for j in J}), "ts_sgt": C.now_sgt()}
-        json.dump(res, open(f"{C.data_dir(smoke)}/progent_selection_fb_{model}.json", "w"), indent=1)
+        json.dump(res, open(f"{C.data_dir(smoke, model)}/progent_selection_fb_{model}.json", "w"), indent=1)
         print(json.dumps(res)[:300])
 
 

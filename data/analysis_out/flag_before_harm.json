@@ -1,67 +1,75 @@
 {
- "plan": "\u00a722.2 a703606e4 / \u00a722.5 23767e221",
+ "plan": "\u00a722.2 a703606e4 / \u00a722.5 23767e221 / \u00a726 6e57e5363 / \u00a726.5",
  "harm_index_modes": {
-  "value": 309,
-  "name": 16,
-  "none": 2
+  "value": 339,
+  "replay_nomatch": 18
  },
  "replay": {
   "calibrated": {
-   "n": 327,
-   "flag": 0.28440366972477066,
-   "flag_before_harm": 0.19571865443425077,
-   "diff_pp": 8.868501529051988
+   "n": 357,
+   "flag": 0.2913165266106443,
+   "flag_before_harm": 0.19887955182072828,
+   "diff_pp": 9.243697478991596
   },
   "exact_all": {
-   "n": 327,
-   "flag": 0.7675840978593272,
-   "flag_before_harm": 0.7584097859327217,
-   "diff_pp": 0.9174311926605505
+   "n": 357,
+   "flag": 0.7787114845938375,
+   "flag_before_harm": 0.7675070028011205,
+   "diff_pp": 1.1204481792717087
   },
   "mined_tools_only": {
-   "n": 327,
-   "flag": 0.345565749235474,
-   "flag_before_harm": 0.22018348623853212,
-   "diff_pp": 12.53822629969419
+   "n": 357,
+   "flag": 0.38095238095238093,
+   "flag_before_harm": 0.23809523809523808,
+   "diff_pp": 14.285714285714286
   },
   "predicted_tools_only": {
-   "n": 327,
-   "flag": 0.8409785932721713,
-   "flag_before_harm": 0.8409785932721713,
+   "n": 357,
+   "flag": 0.8123249299719888,
+   "flag_before_harm": 0.8123249299719888,
    "diff_pp": 0.0
   },
   "progent": {
-   "n": 327,
-   "flag": 0.9510703363914373,
-   "flag_before_harm": 0.9418960244648318,
-   "diff_pp": 0.9174311926605505
+   "n": 346,
+   "flag": 0.9508670520231214,
+   "flag_before_harm": 0.9421965317919075,
+   "diff_pp": 0.8670520231213873
   },
   "clean27": {
    "calibrated": {
-    "n": 179,
-    "flag": 0.2681564245810056,
-    "flag_before_harm": 0.2011173184357542
+    "n": 203,
+    "flag": 0.30049261083743845,
+    "flag_before_harm": 0.2315270935960591
    },
    "exact_all": {
-    "n": 179,
-    "flag": 0.7877094972067039,
-    "flag_before_harm": 0.7821229050279329
+    "n": 203,
+    "flag": 0.812807881773399,
+    "flag_before_harm": 0.7931034482758621
    },
    "mined_tools_only": {
-    "n": 179,
-    "flag": 0.3463687150837989,
-    "flag_before_harm": 0.22905027932960895
+    "n": 203,
+    "flag": 0.4236453201970443,
+    "flag_before_harm": 0.28078817733990147
    },
    "predicted_tools_only": {
-    "n": 179,
-    "flag": 0.88268156424581,
-    "flag_before_harm": 0.88268156424581
+    "n": 203,
+    "flag": 0.8423645320197044,
+    "flag_before_harm": 0.8423645320197044
    },
    "progent": {
-    "n": 179,
-    "flag": 0.9385474860335196,
-    "flag_before_harm": 0.9385474860335196
+    "n": 193,
+    "flag": 0.9481865284974094,
+    "flag_before_harm": 0.9378238341968912
    }
+  },
+  "n_agentdojo": {
+   "all48": 346,
+   "clean27": 193
+  },
+  "goal_step_26_2": {
+   "n": 357,
+   "calibrated_flag_before_harm": 0.28851540616246496,
+   "rows_goal_later": 47
   }
  },
  "online": {

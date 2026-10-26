@@ -1,0 +1,69 @@
+{
+ "c3prime_fb": {
+  "n_pairs": 1536,
+  "n_tasks": 48,
+  "fb_progent": 0.203125,
+  "fb_amlp": 0.0026041666666666665,
+  "progent_only": 308,
+  "amlp_only": 0,
+  "mcnemar_p": 3.835229269763849e-93,
+  "d": 0.20052083333333334,
+  "d_ci95": [
+   0.13802083333333334,
+   0.2701822916666667
+  ],
+  "mcnemar_pass": true,
+  "bootstrap_pass": true,
+  "fb_test_pass": true
+ },
+ "recall_A2rev": {
+  "n_violations": 336,
+  "recall_amlp": 0.2916666666666667,
+  "recall_amlp_wilson": [
+   0.24563922223477033,
+   0.34240397749472207
+  ],
+  "recall_progent": 0.9553571428571429,
+  "recall_progent_wilson": [
+   0.9276578971161604,
+   0.9727619663322351
+  ],
+  "recall_diff_amlp_minus_progent": -0.6636904761904762,
+  "recall_diff_ci95": [
+   -0.7864077669902912,
+   -0.538961038961039
+  ],
+  "recall_matched_point": false,
+  "recall_noninferior": false
+ },
+ "recall_all35": {
+  "n_violations": 350,
+  "recall_amlp": 0.28,
+  "recall_amlp_wilson": [
+   0.23554438836451838,
+   0.3292324456252411
+  ],
+  "recall_progent": 0.9171428571428571,
+  "recall_progent_wilson": [
+   0.8835365176625223,
+   0.9416918230841675
+  ],
+  "recall_diff_amlp_minus_progent": -0.6371428571428571,
+  "recall_diff_ci95": [
+   -0.760797342192691,
+   -0.5152671755725191
+  ],
+  "recall_matched_point": false,
+  "recall_noninferior": false
+ },
+ "C3prime": {
+  "fb_test_pass": true,
+  "recall_noninferior": false,
+  "C3prime_holds": false,
+  "verdict": "not established"
+ },
+ "smoke": false,
+ "ts_sgt": "2026-10-20 10:58:24 SGT",
+ "git_head": "980867a76c6cb05e08ec5a372d2409d87af45ed1",
+ "code_sha": "160242d2485445b6"
+}

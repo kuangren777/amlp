@@ -1,57 +1,57 @@
 {
  "c3prime_fb": {
-  "n_pairs": 1536,
+  "n_pairs": 1152,
   "n_tasks": 48,
-  "fb_progent": 0.18489583333333334,
-  "fb_amlp": 0.0,
-  "progent_only": 284,
+  "fb_progent": 0.1519097222222222,
+  "fb_amlp": 0.003472222222222222,
+  "progent_only": 171,
   "amlp_only": 0,
-  "mcnemar_p": 6.434446986835036e-86,
-  "d": 0.18489583333333334,
+  "mcnemar_p": 6.681911775230489e-52,
+  "d": 0.1484375,
   "d_ci95": [
-   0.12565104166666666,
-   0.251953125
+   0.09114583333333333,
+   0.2144097222222222
   ],
   "mcnemar_pass": true,
   "bootstrap_pass": true,
   "fb_test_pass": true
  },
  "recall_A2rev": {
-  "n_violations": 327,
-  "recall_amlp": 0.28440366972477066,
+  "n_violations": 346,
+  "recall_amlp": 0.2976878612716763,
   "recall_amlp_wilson": [
-   0.23823099838579656,
-   0.3355829955532461
+   0.2519443686235076,
+   0.3478743594149462
   ],
-  "recall_progent": 0.9510703363914373,
+  "recall_progent": 0.9508670520231214,
   "recall_progent_wilson": [
-   0.9220050900681758,
-   0.9696606672934018
+   0.9227320039563235,
+   0.969100544986551
   ],
-  "recall_diff_amlp_minus_progent": -0.6666666666666666,
+  "recall_diff_amlp_minus_progent": -0.653179190751445,
   "recall_diff_ci95": [
-   -0.7962466487935657,
-   -0.5373563218390804
+   -0.7717041800643086,
+   -0.5335276967930029
   ],
   "recall_matched_point": false,
   "recall_noninferior": false
  },
  "recall_all35": {
-  "n_violations": 343,
-  "recall_amlp": 0.27113702623906705,
+  "n_violations": 363,
+  "recall_amlp": 0.2837465564738292,
   "recall_amlp_wilson": [
-   0.22681891156468692,
-   0.3205247061608626
+   0.2398229940245534,
+   0.33219920739515385
   ],
-  "recall_progent": 0.9067055393586005,
+  "recall_progent": 0.90633608815427,
   "recall_progent_wilson": [
-   0.8712627659083235,
-   0.9331393401717508
+   0.8719636253729627,
+   0.9321984802396893
   ],
-  "recall_diff_amlp_minus_progent": -0.6355685131195336,
+  "recall_diff_amlp_minus_progent": -0.6225895316804407,
   "recall_diff_ci95": [
-   -0.7625,
-   -0.510989010989011
+   -0.7418300653594772,
+   -0.5059952038369304
   ],
   "recall_matched_point": false,
   "recall_noninferior": false
@@ -63,7 +63,7 @@
   "verdict": "not established"
  },
  "smoke": false,
- "ts_sgt": "2026-10-06 21:39:47 SGT",
- "git_head": "69c8e2a8b9591c213476db1429f1983620effc0f",
- "code_sha": "5f0c95b26322db2b"
+ "ts_sgt": "2026-10-25 23:07:36 SGT",
+ "git_head": "806a0c91462fc3cb2cab552d0ed264aed5f54944",
+ "code_sha": "66f5cc125c5dad00"
 }

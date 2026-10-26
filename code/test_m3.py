@@ -22,7 +22,7 @@ import envbuild as EB  # noqa: E402
 
 @pytest.fixture
 def tmpdata(tmp_path, monkeypatch):
-    monkeypatch.setattr(C, "data_dir", lambda smoke: str(tmp_path))
+    monkeypatch.setattr(C, "data_dir", lambda smoke, model=None: str(tmp_path))
     monkeypatch.setattr(C, "selection_log", lambda smoke: str(tmp_path / "sel.jsonl"))
     return tmp_path
 
@@ -440,7 +440,7 @@ def test_amendment_b_chain_is_nested_and_levels_behave(tmpdata):
 
 
 def test_guard_reexec_waits_for_write_lock():
-    """The guard's os.execv must not interrupt a row + step-log write (af4 fix 2026-10-06)."""
+    """The guard's os.execv must not interrupt a row + step-log write (analyst fix 2026-10-06)."""
     import inspect
     src = inspect.getsource(C.start_guard)
     assert src.index("WRITE_LOCK.acquire()") < src.index("os.execv")
@@ -454,3 +454,68 @@ def test_baseline_reps_extend_without_touching_rep0():
     J3, _ = MO.jobs("gpt-4o-mini-2024-07-18", ["progent"], "bc", 3)
     key = lambda j: (j["defense"], j["suite"], j["ut"], j["it"], j["rep"], j["part"])
     assert {key(j) for j in J1} <= {key(j) for j in J3} and len(J3) == 3 * len(J1)
+
+
+def _fake_client(model_served, pt, ct=7):
+    class U:
+        prompt_tokens, completion_tokens = pt, ct
+
+    class Resp:
+        model, usage = model_served, U()
+
+    class Inner:
+        class chat:
+            class completions:
+                @staticmethod
+                def create(**k):
+                    return Resp()
+    return Inner(), U
+
+
+def test_hublog_records_served_usage_cost_and_injection_flag(tmp_path, monkeypatch):
+    monkeypatch.setitem(C.BUDGETS, "e0", (str(tmp_path), 40.0))
+    p = tmp_path / "hubcalls_x.jsonl"
+    inner, U = _fake_client("gpt-4o-2024-08-06", 4050)
+    cl = C.HubLogClient(inner, str(p), tag=lambda: "row-1")
+    msgs = [{"role": "user", "content": "hello world"}]
+    cl.chat.completions.create(model="gpt-4o-2024-08-06", messages=msgs)
+    rec = json.loads(p.read_text().strip())
+    assert rec["served_ok"] is True and rec["row"] == "row-1" and rec["budget"] == "e0"
+    assert abs(rec["cost"] - (4050 * 2.5 + 7 * 10.0) / 1e6) < 1e-12
+    assert rec["o200k"] == C.o200k_count(msgs) and rec["injected"] is True
+    U.prompt_tokens = rec["o200k"] + 10
+    cl.chat.completions.create(model="gpt-4o-2024-08-06", messages=msgs)
+    assert json.loads(p.read_text().splitlines()[1])["injected"] is False
+
+
+def test_hublog_flags_served_mismatch_and_ss_has_no_prefix_fields(tmp_path, monkeypatch):
+    monkeypatch.setitem(C.BUDGETS, "ss", (str(tmp_path), 280.0))
+    p = tmp_path / "hubcalls_y.jsonl"
+    inner, _ = _fake_client("gpt-5.6-sol", 100)
+    cl = C.HubLogClient(inner, str(p), tag=lambda: "r", budget="ss", prefix_check=False)
+    cl.chat.completions.create(model="gemini-2.5-flash", messages=[{"role": "user", "content": "x"}])
+    rec = json.loads(p.read_text().strip())
+    assert rec["served_ok"] is False and "residual" not in rec and "injected" not in rec
+
+
+def test_hublog_stops_at_budget_limit_across_files(tmp_path, monkeypatch):
+    monkeypatch.setitem(C.BUDGETS, "ss", (str(tmp_path), 1.0))
+    (tmp_path / "e1").mkdir()
+    (tmp_path / "e1" / "hubcalls_other.jsonl").write_text(json.dumps({"requested": "gpt-4o-2024-08-06", "cost": 1.2}) + "\n")
+    inner, _ = _fake_client("claude-haiku-4-5-20251001", 10)
+    cl = C.HubLogClient(inner, str(tmp_path / "hubcalls_z.jsonl"), budget="ss", prefix_check=False)
+    with pytest.raises(C.BudgetExceeded):
+        cl.chat.completions.create(model="claude-haiku-4-5", messages=[])
+    assert not (tmp_path / "hubcalls_z.jsonl").exists()
+
+
+def test_hublog_unknown_model_price_stops():
+    with pytest.raises(C.BudgetExceeded):
+        C.call_cost("some-new-model", 1, 1)
+
+
+
+
+def test_served_alias_list():
+    assert "gpt-4o" in C.SERVED_OK["gpt-4o-2024-08-06"] and "gpt-5.6-sol" not in C.SERVED_OK["gemini-2.5-flash"]
+

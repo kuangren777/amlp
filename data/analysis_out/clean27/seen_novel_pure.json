@@ -1,28 +1,28 @@
 {
  "pooled": {
-  "M1a-pure_novel_fb": 0.2708333333333333,
-  "M1a-pure_seen_fb": 0.052083333333333336,
-  "M1a-req_novel_fb": 0.16087962962962962,
-  "M1a-req_seen_fb": 0.16087962962962962,
-  "M1b-pure_novel_fb": 0.08796296296296297,
-  "M1b-pure_seen_fb": 0.0011574074074074073,
-  "M1b-pred_novel_fb": 0.041666666666666664,
-  "M1b-pred_seen_fb": 0.041666666666666664,
-  "M1a-pure_novel_flag": 0.8547486033519553,
-  "M1a-pure_seen_flag": 0.8435754189944135,
-  "M1a-req_novel_flag": 0.8324022346368715,
-  "M1a-req_seen_flag": 0.8324022346368715,
-  "M1b-pure_novel_flag": 0.3463687150837989,
-  "M1b-pure_seen_flag": 0.2681564245810056,
-  "M1b-pred_novel_flag": 0.88268156424581,
-  "M1b-pred_seen_flag": 0.88268156424581
+  "M1a-pure_novel_fb": 0.2716049382716049,
+  "M1a-pure_seen_fb": 0.012345679012345678,
+  "M1a-req_novel_fb": 0.10030864197530864,
+  "M1a-req_seen_fb": 0.10030864197530864,
+  "M1b-pure_novel_fb": 0.1111111111111111,
+  "M1b-pure_seen_fb": 0.0015432098765432098,
+  "M1b-pred_novel_fb": 0.044753086419753084,
+  "M1b-pred_seen_fb": 0.044753086419753084,
+  "M1a-pure_novel_flag": 0.8719211822660099,
+  "M1a-pure_seen_flag": 0.8620689655172413,
+  "M1a-req_novel_flag": 0.8522167487684729,
+  "M1a-req_seen_flag": 0.8522167487684729,
+  "M1b-pure_novel_flag": 0.4236453201970443,
+  "M1b-pure_seen_flag": 0.30049261083743845,
+  "M1b-pred_novel_flag": 0.8423645320197044,
+  "M1b-pred_seen_flag": 0.8423645320197044
  },
  "delta": {
   "M1a-pure_fb": {
-   "point": 0.21875,
+   "point": 0.25925925925925924,
    "ci95": [
-    0.09606481481481481,
-    0.3576388888888889
+    0.13271604938271606,
+    0.39814814814814814
    ]
   },
   "M1a-req_fb": {
@@ -33,10 +33,10 @@
    ]
   },
   "M1b-pure_fb": {
-   "point": 0.08680555555555555,
+   "point": 0.1095679012345679,
    "ci95": [
-    0.009259259259259259,
-    0.17939814814814814
+    0.024691358024691357,
+    0.21141975308641975
    ]
   },
   "M1b-pred_fb": {
@@ -47,9 +47,9 @@
    ]
   },
   "M1a-pure_flag": {
-   "point": -0.0111731843575419,
+   "point": -0.009852216748768473,
    "ci95": [
-    -0.03389830508474576,
+    -0.030612244897959183,
     0.0
    ]
   },
@@ -61,10 +61,10 @@
    ]
   },
   "M1b-pure_flag": {
-   "point": -0.0782122905027933,
+   "point": -0.12315270935960591,
    "ci95": [
-    -0.2215568862275449,
-    0.0
+    -0.2669902912621359,
+    -0.01327433628318584
    ]
   },
   "M1b-pred_flag": {
@@ -77,32 +77,22 @@
  },
  "per_model": {
   "qwen3-8b-local": {
-   "M1a-pure_novel_fb": 0.24537037037037038,
-   "M1a-pure_seen_fb": 0.041666666666666664,
-   "M1a-req_novel_fb": 0.16203703703703703,
-   "M1a-req_seen_fb": 0.16203703703703703,
-   "M1b-pure_novel_fb": 0.1111111111111111,
+   "M1a-pure_novel_fb": 0.36574074074074076,
+   "M1a-pure_seen_fb": 0.018518518518518517,
+   "M1a-req_novel_fb": 0.10648148148148148,
+   "M1a-req_seen_fb": 0.10648148148148148,
+   "M1b-pure_novel_fb": 0.16666666666666666,
    "M1b-pure_seen_fb": 0.0,
-   "M1b-pred_novel_fb": 0.041666666666666664,
-   "M1b-pred_seen_fb": 0.041666666666666664,
-   "M1a-pure_novel_flag": 0.8918918918918919,
-   "M1a-pure_seen_flag": 0.8918918918918919,
-   "M1a-req_novel_flag": 0.8648648648648649,
-   "M1a-req_seen_flag": 0.8648648648648649,
-   "M1b-pure_novel_flag": 0.40540540540540543,
-   "M1b-pure_seen_flag": 0.2972972972972973,
-   "M1b-pred_novel_flag": 0.8378378378378378,
-   "M1b-pred_seen_flag": 0.8378378378378378
-  },
-  "llama31-8b-local": {
-   "M1a-pure_novel_fb": 0.3888888888888889,
-   "M1a-pure_seen_fb": 0.14814814814814814,
-   "M1a-req_novel_fb": 0.28703703703703703,
-   "M1a-req_seen_fb": 0.28703703703703703,
-   "M1b-pure_novel_fb": 0.07407407407407407,
-   "M1b-pure_seen_fb": 0.0,
-   "M1b-pred_novel_fb": 0.046296296296296294,
-   "M1b-pred_seen_fb": 0.046296296296296294
+   "M1b-pred_novel_fb": 0.05555555555555555,
+   "M1b-pred_seen_fb": 0.05555555555555555,
+   "M1a-pure_novel_flag": 0.9259259259259259,
+   "M1a-pure_seen_flag": 0.9259259259259259,
+   "M1a-req_novel_flag": 0.9074074074074074,
+   "M1a-req_seen_flag": 0.9074074074074074,
+   "M1b-pure_novel_flag": 0.6481481481481481,
+   "M1b-pure_seen_flag": 0.42592592592592593,
+   "M1b-pred_novel_flag": 0.7962962962962963,
+   "M1b-pred_seen_flag": 0.7962962962962963
   },
   "gpt-4o-mini-2024-07-18": {
    "M1a-pure_novel_fb": 0.28703703703703703,
@@ -113,14 +103,14 @@
    "M1b-pure_seen_fb": 0.004629629629629629,
    "M1b-pred_novel_fb": 0.041666666666666664,
    "M1b-pred_seen_fb": 0.041666666666666664,
-   "M1a-pure_novel_flag": 0.847457627118644,
-   "M1a-pure_seen_flag": 0.8135593220338984,
-   "M1a-req_novel_flag": 0.7966101694915254,
-   "M1a-req_seen_flag": 0.7966101694915254,
-   "M1b-pure_novel_flag": 0.22033898305084745,
-   "M1b-pure_seen_flag": 0.13559322033898305,
-   "M1b-pred_novel_flag": 0.847457627118644,
-   "M1b-pred_seen_flag": 0.847457627118644
+   "M1a-pure_novel_flag": 0.8548387096774194,
+   "M1a-pure_seen_flag": 0.8225806451612904,
+   "M1a-req_novel_flag": 0.8064516129032258,
+   "M1a-req_seen_flag": 0.8064516129032258,
+   "M1b-pure_novel_flag": 0.20967741935483872,
+   "M1b-pure_seen_flag": 0.12903225806451613,
+   "M1b-pred_novel_flag": 0.8064516129032258,
+   "M1b-pred_seen_flag": 0.8064516129032258
   },
   "gpt-4.1-mini-2025-04-14": {
    "M1a-pure_novel_fb": 0.16203703703703703,
@@ -131,14 +121,14 @@
    "M1b-pure_seen_fb": 0.0,
    "M1b-pred_novel_fb": 0.037037037037037035,
    "M1b-pred_seen_fb": 0.037037037037037035,
-   "M1a-pure_novel_flag": 0.8433734939759037,
-   "M1a-pure_seen_flag": 0.8433734939759037,
-   "M1a-req_novel_flag": 0.8433734939759037,
-   "M1a-req_seen_flag": 0.8433734939759037,
-   "M1b-pure_novel_flag": 0.40963855421686746,
-   "M1b-pure_seen_flag": 0.3493975903614458,
-   "M1b-pred_novel_flag": 0.927710843373494,
-   "M1b-pred_seen_flag": 0.927710843373494
+   "M1a-pure_novel_flag": 0.8505747126436781,
+   "M1a-pure_seen_flag": 0.8505747126436781,
+   "M1a-req_novel_flag": 0.8505747126436781,
+   "M1a-req_seen_flag": 0.8505747126436781,
+   "M1b-pure_novel_flag": 0.4367816091954023,
+   "M1b-pure_seen_flag": 0.3448275862068966,
+   "M1b-pred_novel_flag": 0.896551724137931,
+   "M1b-pred_seen_flag": 0.896551724137931
   }
  },
  "H_gap_descriptive": {

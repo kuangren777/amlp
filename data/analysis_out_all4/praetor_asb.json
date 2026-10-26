@@ -1,0 +1,14 @@
+{
+ "plan": "\u00a722.11 P ef6e19456",
+ "agent": "financial_analyst_agent",
+ "model": "gpt-4o-mini-2024-07-18",
+ "n_runs": 500,
+ "n_train": 400,
+ "n_test": 100,
+ "btfr": 0.0,
+ "praetor_reported": 0.02,
+ "empty_traces": 102,
+ "n_test_nonempty": 79,
+ "n_tools": 2,
+ "distinct_name_sequences": 12
+}

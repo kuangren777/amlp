@@ -1,0 +1,26 @@
+{
+ "qwen3-8b-local": {
+  "pairs": 216,
+  "none_only": 17,
+  "amlp_only": 16,
+  "p": 1.0
+ },
+ "llama31-8b-local": {
+  "pairs": 216,
+  "none_only": 9,
+  "amlp_only": 7,
+  "p": 0.803619384765625
+ },
+ "gpt-4o-mini-2024-07-18": {
+  "pairs": 216,
+  "none_only": 14,
+  "amlp_only": 22,
+  "p": 0.2429849540349096
+ },
+ "gpt-4.1-mini-2025-04-14": {
+  "pairs": 216,
+  "none_only": 23,
+  "amlp_only": 12,
+  "p": 0.0895310789346695
+ }
+}
