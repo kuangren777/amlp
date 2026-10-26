@@ -4,12 +4,23 @@ import sys
 
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
+import importlib.util  # noqa: E402
+
+import pytest  # noqa: E402
+
 import agentsentry_port as P  # noqa: E402
 import harness  # noqa: E402
 from agentdojo.agent_pipeline import ToolsExecutionLoop  # noqa: E402
 from agentdojo.agent_pipeline.base_pipeline_element import BasePipelineElement  # noqa: E402
 from agentdojo.functions_runtime import FunctionCall, FunctionsRuntime  # noqa: E402
 from agentdojo.types import ChatAssistantMessage, ChatUserMessage, text_content_block_from_string  # noqa: E402
+
+# Layer 1 of Agent-Sentry trains a gradient-boosted classifier with scikit-learn (and xgboost when installed, see README)
+_skip_without_sklearn = pytest.mark.skipif(importlib.util.find_spec("sklearn") is None, reason="scikit-learn not installed")
+
+
+def needs_sklearn(f):
+    return pytest.mark.optional(_skip_without_sklearn(f))
 
 GOOD = "GB29NWBK60161331926819"
 OTHER = "DE89370400440532013000"
@@ -43,6 +54,7 @@ def adv_set():
     return out
 
 
+@needs_sklearn
 def test_mined_triplet_passes_layer2():
     m = P.fit(benign_set(), adv_set())
     assert ("send_money", "recipient", P.nv(GOOD)) in m.allow
@@ -50,6 +62,7 @@ def test_mined_triplet_passes_layer2():
     assert P.layer2(m, "banking", t["prompt"], t["calls"], 0)[0] == "allow"
 
 
+@needs_sklearn
 def test_unseen_sensitive_value_flagged():
     m = P.fit(benign_set(), adv_set())
     new = "FR7630006000011234567890189"
@@ -64,6 +77,7 @@ def test_unseen_sensitive_value_flagged():
     assert d2 == "amb" and "unverifiable" in info2["why"]
 
 
+@needs_sklearn
 def test_exclude_tasks_removes_training_traces():
     full = P.fit(benign_set(), adv_set())
     assert ("send_money", "recipient", P.nv(OTHER)) in full.allow
@@ -77,6 +91,7 @@ def test_exclude_tasks_removes_training_traces():
     assert all(isinstance(v, list) for v in r.rules.values())
 
 
+@needs_sklearn
 def test_gbm_and_rules_layer1_run():
     for kind in ("gbm", "rules"):
         m = P.fit(benign_set(), adv_set(), kind=kind)
@@ -141,8 +156,9 @@ def test_loop_continues_after_block():
     assert env2.user_account.password != "pwned" and len(ex.flags) == 1
 
 
+@needs_sklearn
 def test_layer1_uses_xgboost_when_available():
-    """af-man 10-06: Layer 1 must be the paper's XGBoost wherever xgboost is importable (agentsentry_env)."""
+    """project lead 10-06: Layer 1 must be the paper's XGBoost wherever xgboost is importable (agentsentry_env)."""
     import importlib.util
     m = P.fit(benign_set(), adv_set(), kind="gbm")
     if getattr(m, "clf", None) is None:

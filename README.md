@@ -87,7 +87,7 @@ pip install agentdojo==0.1.35 openai numpy matplotlib jsonschema pydantic pytest
 cd code && python3 -m pytest -q test_amlp.py test_m3.py test_m3_paraphrase.py
 ```
 
-Four tests in `code/baselines/camel_test.py` need the upstream CaMeL package (`camel`, installed in the CaMeL environment from `CAMEL_REPO`) and are skipped when it is missing. `test_m3.py::test_r5_served_root_hub_and_port_commit` asks `git` for the commit of `baselines/progent_port.py` and
+Four tests in `code/baselines/camel_test.py` need the upstream CaMeL package (`camel`, installed in the CaMeL environment from `CAMEL_REPO`) and are skipped when it is missing. Five tests in `code/baselines/agentsentry_test.py` need `scikit-learn` and are skipped when it is missing. `test_m3.py::test_r5_served_root_hub_and_port_commit` asks `git` for the commit of `baselines/progent_port.py` and
 fails outside a git checkout. All other tests are offline.
 
 ## Model access
